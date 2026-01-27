@@ -1,0 +1,237 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Incident Report</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  <script>
+/* 🔒 Block direct access without login */
+if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
+  window.location.replace("index.html");
+}
+</script>
+
+
+
+<div class="form-container">
+<div class="form-header">
+  <h1>Incident Report</h1>
+ </div>
+  
+  <hr>
+
+<form id="incidentform">
+
+<!-- REPORTER -->
+  
+<div class="section">
+  <h3>Reporter's Details</h3>
+  <label>Name</label>
+  <input type="text" id="name" name="name" data-maxchars="35" required>
+
+
+   <label>Designation</label>
+  <select id="designation" name="designation" required>
+  <option value="">-- Designation --</option>  
+<option value="Project Manager">Project Manager</option>
+<option value="patrolling supervisor">patrolling supervisor</option>
+</select>
+
+
+  <label>Employee Number</label>
+  <input type="text" id="empno" name="empno" data-maxchars="7" required>
+
+   <label>Location</label>
+  <select id="location" name="location" required>
+  <option value="">-- Location --</option>  
+  <option value="Muntazah Plaza 140 A& B">Muntazah Plaza 140 A& B</option>
+<option value="QRIOC">QRIOC</option>
+<option value="QROC - Parking">QROC - Parking</option>
+<option value="Matar Qadeem 38">Matar Qadeem 38</option>
+<option value="Barwa City B1">Barwa City B1</option>
+<option value="Barwa City B2">Barwa City B2</option>
+<option value="Barwa City B3">Barwa City B3</option>
+<option value="Barwa City B4">Barwa City B4</option>
+<option value="Barwa City B5">Barwa City B5</option>
+<option value="Barwa City B6">Barwa City B6</option>
+<option value="Matar Qadeem 26">Matar Qadeem 26</option>
+<option value="Hasan Bilal 28">Hasan Bilal 28</option>
+<option value="Hamda 1">Hamda 1</option>
+<option value="Hamda 2">Hamda 2</option>
+<option value="Hamda 3">Hamda 3</option>
+<option value="Hamda 4">Hamda 4</option>
+<option value="Lazordi - Mansoura 56">Lazordi - Mansoura 56</option>
+<option value="Mushairab 112">Mushairab 112</option>
+<option value="Al Saad 50">Al Saad 50</option>
+<option value="La Falisia (Murekh)">La Falisia (Murekh)</option>
+<option value="Oryx Tower">Oryx Tower</option>
+<option value="Al Maha Pk 2">Al Maha Pk 2</option>
+<option value="Salata 70">Salata 70</option>
+<option value="Fareeda 2">Fareeda 2</option>
+<option value="Fareeda 3">Fareeda 3</option>
+<option value="Stanly 2">Stanly 2</option>
+<option value="Loly 2">Loly 2</option>
+<option value="Matar Qadeem 42 - Victory Old Airport">Matar Qadeem 42 - Victory Old Airport</option>
+<option value="Awqaf 28">wqaf 28</option>
+<option value="Mansoura 106">Mansoura 106</option>
+<option value="Tamara 50">Tamara 50</option>
+<option value="Duhail 52">Duhail 52</option>
+<option value="Zenon 5">Zenon 5</option>
+  </select>
+
+   <label>Contact Number</label>
+  <input type="number" id="contact" name="contact" data-maxdigits="10" required>
+
+   <label>Shift</label>
+  <select id="shift" name="shift" required>
+  <option value="">-- Shift --</option>  
+  <option value="Morning">Morning</option>
+  <option value="Night">Night</option>
+  </select>
+   </div>
+
+  <div class="section">
+    <h3>Described The Incident</h3>
+   <label>Exact Location of Incdent</label>
+  <input type="text" id="exactLocation" name="exactLocation" data-maxchars="36" required>
+    
+  <label>Date</label>
+  <input type="date" id="date" name="date" required>
+
+  <label for="time">Time</label>
+  <input type="time" id="reporttime" name="reporttime" required>
+
+   <label>Blue Plate</label>
+  <input type="text" id="blueplate" name="blueplate" data-maxchars="16" required>
+
+      <label>Type of Incident</label>
+  <select id="incidentType" name="incidentType" required>
+  <option value="">-- Select Incident --</option>  
+  <option value="Medical Emergency">Medical Emergency</option>
+  <option value="Electrical Failure">Electrical Failure</option>
+  <option value="Fire/ Fire Alarm">Fire/ Fire Alarm</option>
+    <option value="Theft">Theft</option>
+    <option value="Lift Emergency">Lift Emergency</option>
+    <option value="Missing Person/ Items">Missing Person/ Items</option>
+    <option value="Scuffle">Scuffle</option>
+    <option value="Assault">Assault</option>
+    <option value="Vehicular Incident">Vehicular Incident</option>
+    <option value="Property Damaged">Property Damaged</option>
+    <option value="Fuel/ Chemical Spills">Fuel/ Chemical Spills</option>
+    <option value="Suspicious Activity">Suspicious Activity</option>
+    <option value="Crime">Crime</option>
+    <option value="Contravention">Contravention</option>
+    <option value="Others">Others</option>
+    </select>
+
+     <label>Other Incident Type</label>
+     <input type="text" id="otherIncident" name="otherIncident" data-maxchars="31">
+
+  <label>Name of Witness (if applicable)</label>
+  <input id="witnessName" name="witnessName" data-maxchars="60">
+
+   <label>Witness Contact Number</label>
+  <input type="number" id="witnessContact" name="witnessContact" data-maxdigits="10">
+
+  <label>Witness Signature</label>
+  <canvas id="witnessSignPad" name="witnessSignPad"></canvas>
+  
+  <button type="button" class="secondary" onclick="clearWitnessSignature()">Clear Signature</button>
+   </div>
+
+    <div class="section">
+      <h3>Brief description of incident</h3>
+   
+     <textarea id="briefIncident" name="briefIncident" data-maxchars="900" required></textarea>
+      </div>
+
+  <div class="section">
+    <h3>Acknowledgement of Report</h3>
+  <label>Attachment Type</label><br>
+   <div class="check-row">
+    <label><input type="checkbox" id="attachmentType" name="attachmentType" value="Description continuation">
+      <span>DESCRIPTION CONTINUATION</span></label>
+    </div>
+    
+     <div class="check-row">
+    <label><input type="checkbox" id="attachmentType" name="attachmentType" value="Photo">
+      <span>PICTURES / PHOTOGRAPHS</span></label>
+      </div>
+       <div class="check-row">
+    <label><input type="checkbox" id="attachmentType" name="attachmentType" value="Statement">
+      <span>WITNESS STATEMENT</span></label>
+       </div>
+         <div class="check-row">
+    <label><input type="checkbox" id="attachmentType" name="attachmentType" value="Others">
+      <span>OTHERS</span></label>
+  </div>
+    </div>
+    
+
+ 
+
+      
+
+ <div class="section">
+  <h3>Attachments</h3>
+
+      <label>📸Upload Images (10 max)</label><input type="file" input id="attach1" name="attach1" accept="image/*" multiple>
+      <small id="attach1Error" style="color:red;"></small>
+      <label>📄Upload file 1</label><input type="file" input id="attach2" name="attach2" accept="image/*,application/pdf">
+    <label>📄Upload file 2</label><input type="file" input id="attach3" name="attach3" accept="image/*,application/pdf">
+    <label>📄Upload file 3</label><input type="file" input id="attach4" name="attach4" accept="image/*,application/pdf">
+    </div>
+
+
+  
+    <label>Prepared and Reported by</label>
+  <input id="reportedBy" name="reportedBy" type="text"  required readonly>
+
+
+
+ <!-- SIGNATURE -->
+
+  <label>Signature</label>
+  <canvas id="supSignPad" name="supSignPad"></canvas>
+  
+<button type="button" class="secondary" onclick="clearSupSignature()">Clear Signature</button>
+   
+
+<button type="submit" id="submitBtn">Submit</button>
+<div id="status"></div>
+
+
+
+</form>
+<button type="button" onclick="goBack()">
+  ⬅ Back to Menu
+</button>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+
+<script src="js/incident.js"></script>
+</body>
+</html>
+   
+ 
+    
+  

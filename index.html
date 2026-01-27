@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patrol Login</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="form-container">
+  <img src="Logo.png" alt="Company Logo" class="logo">
+  <h1 style="font-family: Arial, sans-serif; font-weight:700; font-size:25px; text-align:center; color:#701a1a;">NSS PATROLLING</h1>
+
+  <h2 style="text-align:center; font-size:18px">Supervisor Login</h2>
+
+  <input id="user" type="text" placeholder="Username" autocomplete="username">
+  <input id="pass" type="password" placeholder="Password" autocomplete="current-password">
+
+  <button id="loginBtn">Login</button>
+
+  <p id="msg" class="message"></p>
+</div>
+
+<script>
+/*if (sessionStorage.getItem("LOGGED_IN") === "YES") {
+  window.location.replace("menu.html");
+}*/
+  
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx01n_PPM_ONprWtB8j4som7R995jkGYkkZwp2hOdb3QBqAcNA5UhMcipdRhOXxDJDS/exec";
+
+const msg = document.getElementById("msg");
+const loginBtn = document.getElementById("loginBtn");
+
+loginBtn.addEventListener("click", login);
+
+function login() {
+  const username = user.value.trim();
+  const password = pass.value.trim();
+
+  if (!username || !password) {
+    msg.innerText = "⚠️ Enter username and password";
+    msg.className = "message error";
+    return;
+  }
+
+  msg.innerText = "Checking...";
+  msg.className = "message";
+
+  fetch(SCRIPT_URL, {
+    method: "POST",
+    body: JSON.stringify({
+      action: "login",
+      username: username,
+      password: password
+    })
+  })
+  .then(r => r.json())
+  .then(res => {
+    if (res.status === "success") {
+      sessionStorage.setItem("LOGGED_IN", "YES");
+      sessionStorage.setItem("LOGIN_NAME", res.name);
+      sessionStorage.setItem("QAID",res.qaid);
+      window.location.replace("menu.html");
+    } else {
+      msg.innerText = "❌ Wrong username or password";
+      msg.className = "message error";
+    }
+  })
+  .catch(() => {
+    msg.innerText = "⚠️ Server error";
+    msg.className = "message error";
+  });
+}
+</script>
+
+</body>
+</html>

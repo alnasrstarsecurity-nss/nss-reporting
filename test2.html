@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accommodation Quality Check List</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/test2.css">
+</head>
+
+<body>
+
+<script>
+/* 🔒 Block direct access without login */
+if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
+  window.location.replace("index.html");
+}
+</script>
+
+<div class="app">
+
+<header class="top-bar">
+  <h1>Accommodation Quality Check List</h1>
+</header>
+
+<form id="aqclForm">
+
+<div class="form-layout">
+
+<!-- Accommodation -->
+<section class="card full">
+  <h3>Accommodation Name</h3>
+  <select id="accName" required>
+    <option value="">-- Select Accommodation --</option>
+    <!-- YOUR OPTIONS UNCHANGED -->
+    <option value="Muntazah Plaza 140 A& B">Muntazah Plaza 140 A& B</option>
+    <option value="QRIOC">QRIOC</option>
+    <option value="QROC - Parking">QROC - Parking</option>
+    <option value="Matar Qadeem 38">Matar Qadeem 38</option>
+    <option value="Barwa City B1">Barwa City B1</option>
+    <option value="Barwa City B2">Barwa City B2</option>
+    <option value="Barwa City B3">Barwa City B3</option>
+    <option value="Barwa City B4">Barwa City B4</option>
+    <option value="Barwa City B5">Barwa City B5</option>
+    <option value="Barwa City B6">Barwa City B6</option>
+  </select>
+</section>
+
+<!-- Guard -->
+<section class="card">
+  <h3>Guard</h3>
+
+  <div class="radio-group">
+    <label>Guard in position</label>
+    <label><input type="radio" name="guardPosition" value="YES" required> Yes</label>
+    <label><input type="radio" name="guardPosition" value="NO"> No</label>
+  </div>
+
+  <label>Number of guards</label>
+  <input type="number" id="numGuards" required>
+
+  <label>Appearance of guard on duty</label>
+  <textarea id="guardAppearance" required></textarea>
+
+  <label>Guard desk / work area</label>
+  <textarea id="deskAppearance" required></textarea>
+
+  <label>Guard contact numbers</label>
+  <input id="guardContact" required>
+</section>
+
+<!-- Patrol -->
+<section class="card">
+  <h3>Review Guards Patrol</h3>
+
+  <div class="radio-group">
+    <label>Walk Patrol</label>
+    <label><input type="radio" name="walkPatrol" value="YES" required> Yes</label>
+    <label><input type="radio" name="walkPatrol" value="NO"> No</label>
+  </div>
+
+  <div class="radio-group">
+    <label>Patrol Effective</label>
+    <label><input type="radio" name="patrolEffective" value="YES" required> Yes</label>
+    <label><input type="radio" name="patrolEffective" value="NO"> No</label>
+  </div>
+
+  <label>Changes made</label>
+  <textarea id="changesMade" required></textarea>
+
+  <div class="radio-group">
+    <label>QR ID Check</label>
+    <label><input type="radio" name="qrCheck" value="YES" required> Yes</label>
+    <label><input type="radio" name="qrCheck" value="NO"> No</label>
+  </div>
+</section>
+
+<!-- Supervisor -->
+<section class="card">
+  <h3>Supervisor Visit</h3>
+
+  <label>Last Visit</label>
+  <input type="date" id="supervisorLastVisit" required>
+
+  <label>Supervisor Name</label>
+  <input id="supervisorName" required>
+
+  <label>Visits (Last 7 Days)</label>
+  <input type="number" id="supervisors7Days" required>
+
+  <div class="radio-group">
+    <label>Key Cabinet Locked</label>
+    <label><input type="radio" name="keyCabinet" value="YES" required> Yes</label>
+    <label><input type="radio" name="keyCabinet" value="NO"> No</label>
+  </div>
+
+  <div class="radio-group">
+    <label>Key Log Maintained</label>
+    <label><input type="radio" name="keyLog" value="YES" required> Yes</label>
+    <label><input type="radio" name="keyLog" value="NO"> No</label>
+  </div>
+
+  <label>Keys Audited</label>
+  <textarea id="keysAudited" required></textarea>
+</section>
+
+<!-- Building -->
+<section class="card">
+  <h3>Building</h3>
+
+  <div class="radio-group">
+    <label>Cameras Working</label>
+    <label><input type="radio" name="camerasWorking" value="YES" required> Yes</label>
+    <label><input type="radio" name="camerasWorking" value="NO"> No</label>
+  </div>
+
+  <label>Number of Cameras</label>
+  <input type="number" id="numCameras" required>
+
+  <label>ACS Functional</label>
+  <input id="acsFunctional" required>
+
+  <label>Perimeter Secure</label>
+  <input id="perimeterSecure" required>
+</section>
+
+<!-- Signature -->
+<section class="card full">
+  <h3>Signature</h3>
+
+  <div class="signature-wrapper">
+    <canvas id="sign"></canvas>
+  </div>
+
+  <button type="button" class="ghost" onclick="clearAqclSignature()">Clear Signature</button>
+</section>
+
+</div>
+
+<button type="submit" id="submitBtn" disabled class="submit">Submit</button>
+<div id="status"></div>
+
+</form>
+
+<button class="back" onclick="goBack()">⬅ Back to Menu</button>
+
+</div>
+
+<script>
+function goBack() {
+  window.location.replace("menu.html");
+}
+</script>
+
+<script src="js/aqcl.js"></script>
+</body>
+</html>

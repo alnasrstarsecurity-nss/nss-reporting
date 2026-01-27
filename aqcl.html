@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accommodation Quality Check List</title>
+
+  <!-- Font -->
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  
+</head>
+
+  
+<body>
+
+    <script>
+/* 🔒 Block direct access without login */
+if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
+  window.location.replace("index.html");
+}
+</script>
+  
+ 
+<div class="form-container">
+<div class="form-header">
+  <h1>Accommodation Quality Check List</h1>
+ </div>
+  
+  <hr>
+
+<form id="aqclForm">
+
+<!-- Accommodation -->
+<div class="section">
+  <h3>Accommodation Name</h3>
+  <select id="accName" required style="width:100%" required>
+  <<option value="">-- Select Accommodation --</option> 
+<option value="Muntazah Plaza 140 A& B">Muntazah Plaza 140 A& B</option>
+<option value="QRIOC">QRIOC</option>
+<option value="QROC - Parking">QROC - Parking</option>
+<option value="Matar Qadeem 38">Matar Qadeem 38</option>
+<option value="Barwa City B1">Barwa City B1</option>
+<option value="Barwa City B2">Barwa City B2</option>
+<option value="Barwa City B3">Barwa City B3</option>
+<option value="Barwa City B4">Barwa City B4</option>
+<option value="Barwa City B5">Barwa City B5</option>
+<option value="Barwa City B6">Barwa City B6</option>
+<option value="Matar Qadeem 26">Matar Qadeem 26</option>
+<option value="Hasan Bilal 28">Hasan Bilal 28</option>
+<option value="Hamda 1">Hamda 1</option>
+<option value="Hamda 2">Hamda 2</option>
+<option value="Hamda 3">Hamda 3</option>
+<option value="Hamda 4">Hamda 4</option>
+<option value="Lazordi - Mansoura 56">Lazordi - Mansoura 56</option>
+<option value="Mushairab 112">Mushairab 112</option>
+<option value="Al Saad 50">Al Saad 50</option>
+<option value="La Falisia (Murekh)">La Falisia (Murekh)</option>
+<option value="Oryx Tower">Oryx Tower</option>
+<option value="Al Maha Pk 2">Al Maha Pk 2</option>
+<option value="Salata 70">Salata 70</option>
+<option value="Fareeda 2">Fareeda 2</option>
+<option value="Fareeda 3">Fareeda 3</option>
+<option value="Stanly 2">Stanly 2</option>
+<option value="Loly 2">Loly 2</option>
+<option value="Matar Qadeem 42 - Victory Old Airport">Matar Qadeem 42 - Victory Old Airport</option>
+<option value="Awqaf 28">wqaf 28</option>
+<option value="Mansoura 106">Mansoura 106</option>
+<option value="Tamara 50">Tamara 50</option>
+<option value="Duhail 52">Duhail 52</option>
+<option value="Zenon 5">Zenon 5</option>
+</select>
+
+</div>
+
+<!-- Guard Position -->
+<div class="section">
+    <h3>Guard</h3>
+   
+       <div class="yesno">
+       <label>Guard in position :</label> 
+       <label class="radio-box">Yes <input type="radio" name="guardPosition" value="YES" required></label>
+       <label class="radio-box">No <input type="radio" name="guardPosition" value="NO"></label>
+       </div>
+
+  <label>Number of guards</label>
+  <input type="number" id="numGuards" data-maxdigits="3" required>
+
+
+  <label>Appearance of guard on duty (comment)</label>
+  <input type="text" id="guardAppearance" data-maxchars="45" required>
+
+
+  <label>Appearance of guard desk / work area (comment)</label>
+  <input type="text" id="deskAppearance" data-maxchars="40" required>
+
+
+
+  <label>Does the guard have all relevant contact numbers?</label>
+  <input type="text" id="guardContact" data-maxchars="38" required>
+</div>
+
+<div class="section">
+  <h3>Review Guards Patrol</h3>
+   
+  <div class="yesno">
+     <label>Did you Walk Patrol with Guard?</label><label class="radio-box">Yes <input type="radio" name="walkPatrol" value="YES" required></label>
+    <label class="radio-box">No <input type="radio" name="walkPatrol" value="NO"></label>
+  </div>
+
+
+
+ 
+  <div class="yesno">
+    <label>Is the Patrol Effective?</label> <label class="radio-box">Yes <input type="radio" name="patrolEffective" value="YES" required></label>
+    <label class="radio-box">No <input type="radio" name="patrolEffective" value="NO"></label>
+  </div>
+
+
+
+  <label>What changes have you made?</label>
+  <input type="text" id="changesMade" data-maxchars="52" required>
+
+
+  <label>Is security guard visually checking 10% of QR ID Cards for personal entering commercial premises </label>
+  <div class="yesno">
+    <label class="radio-box">Yes <input type="radio" name="qrCheck" value="YES" required></label>
+    <label class="radio-box">No <input type="radio" name="qrCheck" value="NO"></label>
+  </div>
+</div>
+
+<div class="section">
+  <h3>Check Supervisor Visitation Recored</h3>
+  <label>When did guard supervisor Last Visit?</label>
+  <input type="date" id="supervisorLastVisit" required>
+
+
+
+  <label>Supervisor name</label>
+  <input type="text" id="supervisorName" data-maxchars="19" required>
+
+
+
+  <label>How many Supervisors Visited in the last 7 days?)</label>
+  <input type="number" id="supervisors7Days" data-maxdigits="2" required>
+
+
+
+ 
+  <div class="yesno">
+    <label>Is key cabinet Locked and secured?</label> <label class="radio-box">Yes <input type="radio" name="keyCabinet" value="YES" required></label>
+    <label class="radio-box">No <input type="radio" name="keyCabinet" value="NO"></label>
+  </div>
+
+
+
+  
+  <div class="yesno">
+   <label>Is key log being maintained? </label> <label class="radio-box">Yes <input type="radio" name="keyLog" value="YES" required></label>
+    <label class="radio-box">No <input type="radio" name="keyLog" value="NO"></label>
+  </div>
+
+
+
+  <label>List keys audited</label>
+  <input type="text" id="keysAudited" data-maxchars="62" required>
+</div>
+
+<div class="section">
+  <h3>Building</h3>
+ 
+  <div class="yesno">
+    <label>Cameras, working and clear?</label> <label class="radio-box">Yes <input type="radio" name="camerasWorking" value="YES" required></label>
+    <label class="radio-box">No <input type="radio" name="camerasWorking" value="NO"></label>
+  </div>
+
+
+
+  <label>How many cameras?</label>
+  <input type="number" id="numCameras" data-maxdigits="3" required>
+
+
+
+  <label>Locking and security on doors (ACS) Functional</label>
+  <input type="text" id="acsFunctional" data-maxchars="41" required>
+
+
+
+  <label>Is the perimeter secure?</label>
+  <input type="text" id="perimeterSecure" data-maxchars="57" required>
+</div>
+
+<div class="section">
+  <h3>Apartment Inspection</h3>
+  <label>Apartment inspection</label>
+  <input type="text" id="apartmentInspection" data-maxchars="57" required>
+
+
+
+  <label>Remarks</label>
+  <input type="text" id="apartmentRemark" data-maxchars="67">
+
+</div>
+
+  <div class="section">
+  <label>LIst below actions you have taken or plan to take to rectify faults found</label>
+  <textarea id="actionsTaken" data-maxchars="450"></textarea>
+  </div>
+  
+
+<!-- GUARD 1 CAG -->
+<div class="section">
+
+
+
+  <div class="radio-row">
+     <label>Guard Communication</label> 
+    <label class="radio-box">A <input type="radio" name="g1_comm" value="A" required></label>
+    <label class="radio-box">B <input type="radio" name="g1_comm" value="B"></label>
+    <label class="radio-box">C <input type="radio" name="g1_comm" value="C"></label>
+  </div>
+
+  
+  <div class="radio-row">
+   <label>Guard Awareness&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label> 
+    <label class="radio-box">A <input type="radio" name="g1_awar" value="A" required></label>
+    <label class="radio-box">B <input type="radio" name="g1_awar" value="B"></label>
+    <label class="radio-box">C <input type="radio" name="g1_awar" value="C"></label>
+  </div>
+
+  
+  <div class="radio-row">
+   <label>Guard Grooming&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label> 
+    <label class="radio-box">A <input type="radio" name="g1_groom" value="A" required></label>
+    <label class="radio-box">B <input type="radio" name="g1_groom" value="B"></label>
+    <label class="radio-box">C <input type="radio" name="g1_groom" value="C"></label>
+  </div>
+</div>
+
+<!-- GUARD 2 CAG -->
+<div class="section">
+  
+
+ 
+  <div class="radio-row">
+    <label>Guard Communication</label><label class="radio-box">A <input type="radio" name="g2_comm" value="A" required></label> 
+    <label class="radio-box">B <input type="radio" name="g2_comm" value="B"></label>
+    <label class="radio-box">C <input type="radio" name="g2_comm" value="C"></label>
+  </div>
+
+ 
+  <div class="radio-row">
+     <label>Guard Awareness&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><label class="radio-box">A <input type="radio" name="g2_awar" value="A" required></label>
+    <label class="radio-box">B <input type="radio" name="g2_awar" value="B"></label>
+    <label class="radio-box">C <input type="radio" name="g2_awar" value="C"></label>
+  </div>
+
+ 
+  <div class="radio-row">
+    <label>Guard Grooming&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label> <label class="radio-box">A <input type="radio" name="g2_groom" value="A" required></label>
+    <label class="radio-box">B <input type="radio" name="g2_groom" value="B"></label>
+    <label class="radio-box">C <input type="radio" name="g2_groom" value="C"></label>
+  </div>
+</div>
+
+<div class="section">
+  <label>Patrolling Supervisor</label> 
+<input id="patrollingSupervisor"
+  name="patrollingSupervisor"
+  type="text" data-maxchars="28" required readonly>
+  
+  <label>S/N</label>
+  <input id="serialNumber" name="serialNumber" type="text" data-maxchars="15" required readonly>
+  
+  <label>Building security name</label>
+  <input type="text" id="buildingSecurityName" data-maxchars="18" required>
+
+
+
+  <label>Security staff number</label>
+  <input type="number" id="securityStaffNumber" data-maxdigits="10" required>
+
+
+
+  <label>Building landline number</label>
+  <input type="number" id="buildingLandline" data-maxdigits="8" required>
+
+
+
+  <label>Security duty mobile number</label>
+  <input type="number" id="securityDutyMobile" data-maxdigits="10" required>
+</div>
+
+  <div class="section">
+  <h3>Attachments</h3>
+
+      <label>📸Upload Images (10 max)</label><input type="file" input id="attach1" name="attach1" accept="image/*" multiple>
+      <small id="attach1Error" style="color:red;"></small>
+      <label>📄Upload file 1</label><input type="file" input id="attach2" name="attach2" accept="image/*,application/pdf">
+    <label>📄Upload file 2</label><input type="file" input id="attach3" name="attach3" accept="image/*,application/pdf">
+    <label>📄Upload file 3</label><input type="file" input id="attach4" name="attach4" accept="image/*,application/pdf">
+    </div>
+
+<!-- SIGNATURE -->
+<div class="section">
+  <label>Signature</label>
+  <canvas id="sign" required></canvas>
+  
+  <button type="button" class="secondary" onclick="clearAqclSignature()"">Clear Signature</button>
+</div>
+
+<button type="submit" id="submitBtn" disabled>Submit</button>
+<div id="status"></div>
+
+</form>
+  <button type="button" onclick="goBack()">
+  ⬅ Back to Menu
+</button>
+</div>
+
+  <script>
+function goBack() {
+  window.location.replace("menu.html");
+}
+</script>
+  
+  <script src="js/aqcl.js" defer></script>
+</body>
+</html>

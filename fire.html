@@ -1,0 +1,417 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Fire Alarm</title>
+
+  <!-- Font -->
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  
+</head>
+
+  
+<body>
+
+    <script>
+/* 🔒 Block direct access without login */
+if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
+  window.location.replace("index.html");
+}
+</script>
+  
+ 
+<div class="form-container">
+<div class="form-header">
+  <h1>Building Security Fire Alarm Report</h1>
+ </div>
+  
+  <hr>
+
+<form id="fireForm">
+
+  <div class="section">
+  <h3>Incident Details</h3>
+  <select id="BuildingName" required style="width:100%">
+  <<option value="">-- Select Building --</option> 
+  <option value="Muntazah Plaza 140 A& B">Muntazah Plaza 140 A& B</option>
+<option value="QRIOC">QRIOC</option>
+<option value="QROC - Parking">QROC - Parking</option>
+<option value="Matar Qadeem 38">Matar Qadeem 38</option>
+<option value="Barwa City B1">Barwa City B1</option>
+<option value="Barwa City B2">Barwa City B2</option>
+<option value="Barwa City B3">Barwa City B3</option>
+<option value="Barwa City B4">Barwa City B4</option>
+<option value="Barwa City B5">Barwa City B5</option>
+<option value="Barwa City B6">Barwa City B6</option>
+<option value="Matar Qadeem 26">Matar Qadeem 26</option>
+<option value="Hasan Bilal 28">Hasan Bilal 28</option>
+<option value="Hamda 1">Hamda 1</option>
+<option value="Hamda 2">Hamda 2</option>
+<option value="Hamda 3">Hamda 3</option>
+<option value="Hamda 4">Hamda 4</option>
+<option value="Lazordi - Mansoura 56">Lazordi - Mansoura 56</option>
+<option value="Mushairab 112">Mushairab 112</option>
+<option value="Al Saad 50">Al Saad 50</option>
+<option value="La Falisia (Murekh)">La Falisia (Murekh)</option>
+<option value="Oryx Tower">Oryx Tower</option>
+<option value="Al Maha Pk 2">Al Maha Pk 2</option>
+<option value="Salata 70">Salata 70</option>
+<option value="Fareeda 2">Fareeda 2</option>
+<option value="Fareeda 3">Fareeda 3</option>
+<option value="Stanly 2">Stanly 2</option>
+<option value="Loly 2">Loly 2</option>
+<option value="Matar Qadeem 42 - Victory Old Airport">Matar Qadeem 42 - Victory Old Airport</option>
+<option value="Awqaf 28">wqaf 28</option>
+<option value="Mansoura 106">Mansoura 106</option>
+<option value="Tamara 50">Tamara 50</option>
+<option value="Duhail 52">Duhail 52</option>
+<option value="Zenon 5">Zenon 5</option>
+  </select>
+
+
+       <div class="yesno">
+       <label style="font-weight: bold;">Type of Incident:</label> 
+       <label class="radio-box">Fire Alarm <input type="radio" name="TypeofInciden" value="Fire Alarm" required></label>
+       <label class="radio-box">Fire Incident <input type="radio" name="TypeofInciden" value="Fire Incident"></label>
+       </div>
+
+      <div class="yesno">
+       <label style="font-weight: bold;">Evacuated: &nbsp&nbsp&nbsp</label> 
+       <label class="radio-box">Yes <input type="radio" name="guardPosition" value="Yes" required></label>
+       <label class="radio-box">No <input type="radio" name="guardPosition" value="No"></label>
+       </div>
+      
+
+    
+      <label>Date of Incident</label>
+      <input type="date" id="Incidentdate" name="Incidentdate" required>
+
+      <label for="time">Incident Time</label>
+      <input type="time" id="Incidenttime" name="incidenttime" required>
+
+      <label for="time">Panel Reset Time</label>
+      <input type="time" id="paneltime" name="paneltime" required>
+
+      <label>Alarm Activated In</label><br>
+      <div class="check-row">
+      <label><input type="checkbox" name="AlarmActivated" value="Kitchen">
+      <span>Kitchen</span></label>
+      </div>
+    
+     <div class="check-row">
+     <label><input type="checkbox"  name="AlarmActivated" value="LIving Room">
+     <span>LIving Room</span></label>
+     </div>
+    
+     <div class="check-row">
+     <label><input type="checkbox"  name="AlarmActivated" value="Hall">
+     <span>Hall</span></label>
+     </div>
+
+     <div class="check-row">
+     <label><input type="checkbox"  name="AlarmActivated" value="Bed Room">
+     <span>Bed Room</span></label>
+     </div>
+
+     <div class="check-row">
+     <label><input type="checkbox"  name="AlarmActivated" value="Electrical Room">
+     <span>Electrical Room</span></label>
+     </div>
+
+     <div class="check-row">
+     <label><input type="checkbox"  name="AlarmActivated" value="Garbage Room">
+     <span>Garbage Room</span></label>
+     </div>
+
+     <div class="check-row">
+     <label><input type="checkbox"  name="AlarmActivated" value="Corridor">
+     <span>Corridor</span></label>
+     </div>
+
+     <div class="check-row">
+     <label><input type="checkbox"  name="AlarmActivated" value="Basement">
+     <span>Basement</span></label>
+     </div>
+
+     <div class="check-row">
+     <label><input type="checkbox"  name="AlarmActivated" value="Other Area">
+     <span>Other Area</span></label>
+     </div>
+ <p id="alarmError" style="color:red; display:none;">
+  ⚠️ Please select at least one area
+       </p>
+    
+    <div id="otherAreaWrapper" style="display:none;">
+    <input type="text" placeholder="Other Area" id="Area" data-maxchars="23">
+
+    </div>
+
+    <div class="section">
+    <h3>Occupant(s) Details</h3>
+
+    <label>Occupant Name</label>
+    <input type="text" id="OccupantName" data-maxchars="30">
+
+    <label>Occupant Nationality</label>
+    <input type="text" id="OccupantNationality" data-maxchars="25">
+
+    <label>Floor No</label>
+    <input type="text" id="FloorNo" data-maxchars="8">
+
+    <label>Flat No</label>
+    <input type="text" id="FlatNo" data-maxchars="8">
+
+    <label>Staff Number</label>
+    <input type="text" id="StaffNumber" data-maxchars="8">
+
+    <label>Department</label>
+    <input type="text" id="Department" data-maxchars="14">
+
+    <label>Room No</label>
+    <input type="text" id="RoomNo" data-maxchars="8">
+
+     <label>At The Time Of Fire Alarm Occupant Was In</label><br>
+      <div class="check-row">
+      <label><input type="checkbox" id="OccupantWasIn" name="OccupantWasIn" value="Kitchen">
+      <span>Kitchen</span></label>
+      </div>
+      
+     <div class="check-row">
+     <label><input type="checkbox" id="OccupantWasIn" name="OccupantWasIn" value="Wash Room">
+     <span>Wash Room</span></label>
+     </div>
+    
+     <div class="check-row">
+     <label><input type="checkbox" id="OccupantWasIn" name="OccupantWasIn" value="Living Room">
+     <span>Living Room</span></label>
+     </div>
+
+     <div class="check-row">
+     <label><input type="checkbox" id="OccupantWasIn" name="OccupantWasIn" value="Outside Apt">
+     <span>Outside Apt.</span></label>
+     </div>
+
+     <div class="check-row">
+     <label><input type="checkbox" id="OccupantWasIn" name="OccupantWasIn" value="Bed Room">
+     <span>Bed Room</span></label>
+     </div>
+
+     <div class="check-row">
+     <label><input type="checkbox" id="OccupantWasIn" name="OccupantWasIn" value="Outside Bldg">
+     <span>Outside Bldg.</span></label>
+     </div>
+     </div>
+
+     <div class="section">
+     <h3>Incident Details</h3>
+     <div class="yesno">
+       <label style="font-weight: bold;">Exhaust Fan Was: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label> 
+       <label class="radio-box">Off<input type="radio" name="ExhaustFan" value="Off"></label>
+       <label class="radio-box">On<input type="radio" name="ExhaustFan" value="On"></label>
+       </div>
+
+     <div class="yesno">
+       <label style="font-weight: bold;">Kitchen Cooking Hood Was:</label> 
+       <label class="radio-box">Off<input type="radio" name="KitchenCookingHood" value="Off"></label>
+       <label class="radio-box">On<input type="radio" name="KitchenCookingHood" value="On"></label>
+       </div>
+
+       <div class="yesno">
+       <label style="font-weight: bold;">Kitchen Door Was: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>    
+       <label class="radio-box">Open<input type="radio" name="KitchenDoor" value="Open"></label>
+       <label class="radio-box">Closed<input type="radio" name="KitchenDoor" value="Closed"></label>
+       <label class="radio-box">N/A<input type="radio" name="KitchenDoor" value="N/A"></label>
+       </div>
+
+       <div class="yesno">
+        <label style="font-weight: bold;">Fire Blanket Used: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>    
+       <label class="radio-box">Yes<input type="radio" name="FireBlanket" required value="Yes"></label>
+       <label class="radio-box">No<input type="radio" name="FireBlanket" value="No"></label>
+       </div>
+
+       <div class="yesno">
+        <label style="font-weight: bold;">Fire Extinguisher Used:</label>    
+        <label class="radio-box">Yes<input type="radio" name="FireExtinguisher" required value="Yes"></label>
+       <label class="radio-box">No<input type="radio" name="FireExtinguisher" value="No"></label>
+       </div>
+       </div>
+
+       <div class="section">
+       <label>Type of Fire Extinguisher</label><br>
+      <div class="check-row">
+      <label><input type="checkbox" id="TypeFireExtinguisher" name="TypeFireExtinguisher" value="Form">
+      <span>Form</span></label>
+      </div>
+    
+     <div class="check-row">
+     <label><input type="checkbox" id="TypeFireExtinguisher" name="TypeFireExtinguisher" value="Water">
+     <span>Water</span></label>
+     </div>
+
+      <div class="check-row">
+     <label><input type="checkbox" id="TypeFireExtinguisher" name="TypeFireExtinguisher" value="Dry Powder">
+     <span>Dry Powder</span></label>
+     </div>
+
+      <div class="check-row">
+     <label><input type="checkbox" id="TypeFireExtinguisher" name="TypeFireExtinguisher" value="Wet Chemical">
+     <span>Wet Chemical</span></label>
+     </div>
+
+     <div class="check-row">
+     <label><input type="checkbox" id="TypeFireExtinguisher" name="TypeFireExtinguisher" value="CO2">
+     <span>CO2</span></label>
+     </div>
+
+         <div class="yesno">
+       <label style="font-weight: bold;">Civil Defense Present:</label> 
+       <label class="radio-box">Yes<input type="radio" name="Civil Defense" required value="Yes"></label>
+       <label class="radio-box">No<input type="radio" name="Civil Defense" value="No"></label>
+       </div>
+
+       <div class="yesno">
+       <label style="font-weight: bold;">CAMS activated: &nbsp&nbsp&nbsp&nbsp</label>    
+       <label class="radio-box">Yes<input type="radio" name="CAMS" required value="Yes"></label>
+       <label class="radio-box">No<input type="radio" name="CAMS" value="No"></label>
+       <label class="radio-box">N/A<input type="radio" name="CAMS" value="N/A"></label>
+       </div>
+
+       <div class="yesno">
+        <label style="font-weight: bold;">Injury reported by Occupant:</label>    
+       <label class="radio-box">Yes<input type="radio" name="Injury" required value="Yes"></label>
+       <label class="radio-box">No<input type="radio" name="Injury" value="No"></label>
+       </div>
+
+         <label>Description of the Incident</label>
+         <input type="text" id="DescriptionIncident" required data-maxchars="59">
+         
+
+         <label>Cause of the incident</label>
+         <select id="Cause" name="Cause" required style="width:100%">
+         <<option value="">-- Select Cause of the incident --</option> 
+         <option value="It was due to Cooking Smoke ">It was due to Cooking Smoke </option>
+<option value="It was due to Unattended Cooking ">It was due to Unattended Cooking </option>
+<option value="It was due to Staff using hair dryer ">It was due to Staff using hair dryer </option>
+<option value="It was due to Steam from washroom ">It was due to Steam from washroom </option>
+<option value="It was due to Steam from ironing ">It was due to Steam from ironing </option>
+<option value="It was due to dust ">It was due to dust </option>
+<option value="It was not confirmed as occupant wasn’t available ">It was not confirmed as occupant wasn’t available </option>
+<option value="It was due to Faulty device ">It was due to Faulty device </option>
+<option value="It was due to using air freshener ">It was due to using air freshener </option>
+<option value="It was due to burning incense ">It was due to burning incense </option>
+<option value="Access denied by occupant (Bedroom) ">Access denied by occupant (Bedroom) </option>
+<option value="It Due to System error ">It Due to System error </option>
+<option value="It was due to High pressure ">It was due to High pressure </option>
+<option value="It was due to Low pressure ">It was due to Low pressure </option>
+<option value="It was due to humidity ">It was due to humidity </option>
+<option value="It was due to moisture in device ">It was due to moisture in device </option>
+<option value="It was due to Staff Smoking  ">It was due to Staff Smoking  </option>
+<option value="It was due to Heat ">It was due to Heat </option>
+<option value="Others">Others</option>
+           </select>
+         <input type="text" id="OtherCause" placeholder="Specify Cuase Of Incident" style="display:none;" data-maxchars="54">
+
+
+       <div class="yesno">
+        <label style="font-weight: bold;">Any Property Damage:</label>    
+       <label class="radio-box">Yes<input type="radio" name="Damage" required value="Yes"></label>
+       <label class="radio-box">No<input type="radio" name="Damage" value="No"></label>
+       </div>
+
+         
+         <input type="text" id="SpecifyDamage" placeholder="Specify damage details" style="display:none;" data-maxchars="43">
+
+          <label>Action taken/observations by the guard</label>
+         <textarea id="Actiontaken" required data-maxchars="230"></textarea>
+         
+     </div>
+
+       <div class="section">
+       <h3>Attachments</h3>
+
+      <label>📸Upload Images (10 max)</label><input type="file" input id="attach1" name="attach1" accept="image/*" multiple>
+      <small id="attach1Error" style="color:red;"></small>
+      <label>📄Upload file 1</label><input type="file" input id="attach2" name="attach2" accept="image/*,application/pdf">
+      <label>📄Upload file 2</label><input type="file" input id="attach3" name="attach3" accept="image/*,application/pdf">
+      <label>📄Upload file 3</label><input type="file" input id="attach4" name="attach4" accept="image/*,application/pdf">
+      </div>
+
+  
+       <div class="section">
+         <h3>Other Information</h3>
+         <label>Name of the Security Guard :</label>
+         <input type="text" id="GuardName" required data-maxchars="31">
+
+         <label>Staff No: </label>
+         <input type="text" id="StaffNo" required data-maxchars="8">
+
+         <div class="yesno">
+        <label style="font-weight: bold;">Company Name:</label>    
+        <label class="radio-box">Al Nasr Star Security Services<input type="radio" name="Company" value="Al Nasr Star Security Services"></label>
+           </div>
+
+        <div class="yesno">
+        <label style="font-weight: bold;">Did you Inform QR Facilities Staff:</label>    
+       <label class="radio-box">Yes<input type="radio" name="InformQR" required value="Yes"></label>
+       <label class="radio-box">No<input type="radio" name="InformQR" value="No"></label>
+          </div>
+
+          <label>Name :</label>
+         <input type="text" id="QRStafName" required data-maxchars="30">
+
+         <div class="yesno">
+        <label style="font-weight: bold;">Did you meet the occupant during the incident:</label>    
+       <label class="radio-box">Yes<input type="radio" name="MeetOccupant" required value="Yes"></label>
+       <label class="radio-box">No<input type="radio" name="MeetOccupant" value="No"></label>
+           </div>
+       </div>  
+
+
+       <div class="section">
+         <h3>For Cabin Crew Building</h3>
+
+         <div class="yesno">
+        <label style="font-weight: bold;">Did you inform Cabin Crew Housing Officer?</label>    
+       <label class="radio-box">Yes<input type="radio" name="informCabinCrew" value="Yes"></label>
+       <label class="radio-box">No<input type="radio" name="informCabinCrew" value="No"></label>
+           </div>
+
+         <div class="yesno">
+        <label style="font-weight: bold;">Did the housing officer visit the site?</label>    
+       <label class="radio-box">Yes<input type="radio" name="housingofficerVisit" value="Yes"></label>
+       <label class="radio-box">No<input type="radio" name="housingofficerVisit" value="No"></label>
+           </div>
+
+         <label>Name of the Housing Officer: </label>
+         <input type="text" id="HousingOfficerName" data-maxchars="35">
+
+       </div> 
+ 
+<button type="submit" id="submitBtn">Submit</button>
+<div id="status"></div>
+
+</form>
+  <button type="button" onclick="goBack()">
+  ⬅ Back to Menu
+</button>
+</div>
+
+  <script>
+function goBack() {
+  window.location.replace("menu.html");
+}
+</script>
+  
+<script src="js/fire.js" defer></script>
+</body>
+</html>
