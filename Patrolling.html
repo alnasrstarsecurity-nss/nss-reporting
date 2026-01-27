@@ -35,26 +35,36 @@ if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
   
   <hr>
 
-<form id="incidentform">
+<form id="patrollingform">
 
 <!-- REPORTER -->
   
 <div class="section">
-  <h3>Reporter's Details</h3>
+  <h3>Incident Details </h3>
   <label>Name</label>
-  <input type="text" id="name" name="name" data-maxchars="35" required>
+  <input type="text" id="name" name="name" data-maxchars="40" >
 
+   <label>Employee Number</label>
+  <input type="text" id="empno" name="empno" data-maxchars="4" >
 
    <label>Designation</label>
-  <select id="designation" name="designation" required>
+  <select id="designation" name="designation" >
   <option value="">-- Designation --</option>  
-<option value="Project Manager">Project Manager</option>
-<option value="patrolling supervisor">patrolling supervisor</option>
-</select>
+  <option value="Security Guard">Security Guard</option>
+  <option value="Supervisor">pSupervisor</option>
+  </select>
+
+    <label>Location/Project</label>
+  <select id="location" name="location" >
+  <option value="">-- Designation --</option>  
+  <option value="Baladiya">Baladiya</option>
+  <option value="Civil Aviation">Civil Aviation</option>
+  </select>
+_________________________________________________________________________________________________________________________________
+  
 
 
-  <label>Employee Number</label>
-  <input type="text" id="empno" name="empno" data-maxchars="7" required>
+ 
 
    <label>Location</label>
   <select id="location" name="location" required>
