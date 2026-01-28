@@ -195,7 +195,7 @@ form.addEventListener("submit", async e => {
   action: "submitIncident",
 
   Employee_Name: form.name.value,
-  Job_Number: form.designation.value,
+  Emp_Number: form.designation.value,
   empno: form.empno.value,
   location: form.location.value,
   contact: form.contact.value,
