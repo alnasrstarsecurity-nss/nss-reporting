@@ -192,44 +192,30 @@ form.addEventListener("submit", async e => {
   status.style.color = "blue";
 
   const payload = {
-  action: "submitIncident",
+  "Timestamp": new Date().toLocaleString(),
+  "Employee Name": name.value,
+  "Emp Number": empno.value,
+  "Emp Designation": designation.value,
+  "Location/Project" : location.value,
+  "Location Remark" : LocationRemark.value,
+  "Incident Type" : IncidentType.value,
+  "Incident Remark" : IncidentRemark.value,
+     
+  "UPLOAD IMAGE 1" : await fileToBase64(form.Images1),
+  "UPLOAD IMAGE 2" : await fileToBase64(form.Images2),
 
-  Employee_Name: form.name.value,
-  Emp_Number: form.empno.value,
-  Emp_Designation: form.designation.value,
-  //____________________________________________________
-  Location: form.contact.value,
-  shift: form.shift.value,
-  exactLocation: form.exactLocation.value,
-  date: form.date.value,
-  time: form.reporttime.value,
+  "Witness Name" : witnessName.value,
+  "Witness Emp Number" : WitnessEmployeeNo.value,
+  "Witness Signature": document.getElementById("witnessSignPad").toDataURL(),
 
-  blueplate: form.blueplate.value,
-  incidentType: form.incidentType.value,
-  otherIncident: form.otherIncident.value,
-
-  witnessName: form.witnessName.value,
-  witnessContact: form.witnessContact.value,
-  witnessSign: document.getElementById("witnessSignPad").toDataURL(),
-
-  briefIncident: form.briefIncident.value,
-
-  attachmentType: Array.from(
-    form.querySelectorAll('input[name="attachmentType"]:checked')
-  ).map(c => c.value).join(", "),
-
-  attach1: await filesToBase64(form.attach1, 10),
-  attach2: await fileToBase64(form.attach2),
-  attach3: await fileToBase64(form.attach3),
-  attach4: await fileToBase64(form.attach4),
-
-  reportedBy: form.reportedBy.value,
-  supSign: document.getElementById("supSignPad").toDataURL(),
-
-};
-
-
-
+  "Sup Name" : SupervisorName.value,
+  "Designation" : SupDesignation.value,
+  "Sup Emp Number" : SupEmpNumber.value,
+  "Sup Signature" : document.getElementById("supSignPad").toDataURL(), 
+  "GPS Location"  : GPSLocation.value
+   };
+     
+    
   fetch(SCRIPT_URL, {
     method: "POST",
     body: JSON.stringify(payload)
