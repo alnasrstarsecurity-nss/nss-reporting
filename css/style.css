@@ -21,9 +21,9 @@ body {
   border-radius: 12px 12px 0 0;
   box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 
-    display: flex;
+  display: flex;
   align-items: center;
-  gap: 16px;
+  justify-content: space-between;
 }
 
 .header-logo {
