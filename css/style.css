@@ -29,6 +29,7 @@ body {
 .header-logo {
   height: 80px;
   width: auto;
+  align-items: left;
 }
 
 .form-header h1 {
