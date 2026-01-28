@@ -3,7 +3,7 @@
 ================================ */
 const SCRIPT_URL = "https://s";
 
-const form = document.getElementById("incidentform");
+const form = document.getElementById("patrollingform");
 const status = document.getElementById("status");
 
 
