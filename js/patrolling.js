@@ -26,43 +26,6 @@ if (!loginName) {
 document.getElementById("reportedBy").value = loginName;
 
 
-//other insident
-const incidentType = document.getElementById("incidentType");
-const otherIncident = document.getElementById("otherIncident");
-
-incidentType.addEventListener("change", function () {
-  if (this.value === "Others") {
-    otherIncident.required = true;
-    otherIncident.focus();
-  } else {
-    otherIncident.required = false;
-    otherIncident.value = ""; // clear if not needed
-  }
-});
-//other incident
-/* ===============================
-   MAX_IMAGES  10
-================================ */
-const MAX_IMAGES = 10;
-const attach1Input = document.getElementById("attach1");
-const attach1Error = document.getElementById("attach1Error");
-
-attach1Input.addEventListener("change", function () {
-  if (this.files.length > MAX_IMAGES) {
-    attach1Error.textContent = `⚠️ Maximum ${MAX_IMAGES} images allowed`;
-    this.value = ""; // clear selection
-  } else {
-    attach1Error.textContent = "";
-  }
-});
-
-/* ===============================
-   RADIO HELPER
-================================ */
-function radio(name) {
-  const r = document.querySelector(`input[name="${name}"]:checked`);
-  return r ? r.value : "";
-}
 /* ===============================
    attachment HELPER
 ================================ */
@@ -75,23 +38,6 @@ function fileToBase64(fileInput) {
     reader.onload = e => resolve(e.target.result);
     reader.readAsDataURL(file);
   });
-}
-/* ===============================
-  10 image attachment HELPER
-================================ */
-async function filesToBase64(fileInput, maxFiles = 10) {
-  const files = Array.from(fileInput.files || []).slice(0, maxFiles);
-
-  const results = [];
-  for (const file of files) {
-    const base64 = await new Promise(resolve => {
-      const reader = new FileReader();
-      reader.onload = e => resolve(e.target.result);
-      reader.readAsDataURL(file);
-    });
-    results.push(base64);
-  }
-  return results;
 }
 
 /* ===============================
@@ -248,8 +194,8 @@ form.addEventListener("submit", async e => {
   const payload = {
   action: "submitIncident",
 
-  name: form.name.value,
-  designation: form.designation.value,
+  Employee_Name: form.name.value,
+  Job_Number: form.designation.value,
   empno: form.empno.value,
   location: form.location.value,
   contact: form.contact.value,
