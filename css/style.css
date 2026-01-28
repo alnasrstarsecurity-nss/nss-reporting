@@ -161,7 +161,7 @@ button.secondary {
   background: #ebdefc;
   padding: 20px;
   border-radius: 16px;
-  /*box-shadow: 6px 10px 24px rgba(0, 0, 0, 0.12);*/
+
   box-shadow:
     4px 6px 12px rgba(0, 0, 0, 0.08),
     10px 14px 30px rgba(0, 0, 0, 0.1);
