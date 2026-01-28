@@ -212,8 +212,8 @@ form.addEventListener("submit", async e => {
   "Sup Name" : SupervisorName.value,
   "Designation" : SupDesignation.value,
   "Sup Emp Number" : SupEmpNumber.value,
-  "Sup Signature" : document.getElementById("supSignPad").toDataURL(), 
-  "GPS Location"  : GPSLocation.value
+  "Sup Signature" : document.getElementById("supSignPad").toDataURL() 
+ 
    };
      
     
