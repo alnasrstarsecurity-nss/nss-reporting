@@ -75,7 +75,11 @@ if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
   
    <label>Location Remark</label>
   <input type="text" id="LocationRemark" name="LocationRemark" data-maxchars="200">
+  </div>
 
+
+   <div class="section">
+     <h3>Incident Details</h3>
 
      <label>Incident Type</label>
   <select id="IncidentType" name="IncidentType" >
@@ -93,6 +97,30 @@ if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
     <option value="Not Following Site Instruction">Not Following Site Instruction</option>
     <option value="Lack of Required Materials">Lack of Required Materials</option>
   </select>
+
+     <label>Incident Remark</label>
+  <input type="text" id="IncidentRemark" name="IncidentRemark" data-maxchars="200">
+
+    <label>📸Upload Images 1</label><input type="file" input id="Images1" name="Images1" accept="image/*,application/pdf">
+    <label>📸Upload Images 2</label><input type="file" input id="Images2" name="Images2" accept="image/*,application/pdf">
+  </div>
+
+
+  <div class="section">
+     <h3>Witness Details</h3>
+
+    <label>Name of Witness (if applicable)</label>
+  <input id="witnessName" name="witnessName" data-maxchars="60">
+
+   <label>Witness Employee Number</label>
+  <input type="number" id="WitnessEmployeeNo" name="WitnessEmployeeNo" data-maxdigits="4">
+
+  <label>Witness Signature</label>
+  <canvas id="witnessSignPad" name="witnessSignPad"></canvas>
+  
+  <button type="button" class="secondary" onclick="clearWitnessSignature()">Clear Signature</button>
+   </div>
+
 _________________________________________________________________________________________________________________________________
   
 
