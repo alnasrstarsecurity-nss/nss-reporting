@@ -210,7 +210,6 @@ form.addEventListener("submit", async e => {
   "Witness Signature": document.getElementById("witnessSignPad").toDataURL(),
 
   "Sup Name" : SupervisorName.value,
-  "Designation" : SupDesignation.value,
   "Sup Emp Number" : SupEmpNumber.value,
   "Sup Signature" : document.getElementById("supSignPad").toDataURL() 
  
