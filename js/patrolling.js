@@ -216,17 +216,19 @@ form.addEventListener("submit", async e => {
    };
      
     
-  fetch(SCRIPT_URL, {
+fetch(SCRIPT_URL, {
   method: "POST",
-  headers: { "Content-Type": "application/json" },
+  mode: "no-cors",
+  headers: {
+    "Content-Type": "application/json"
+  },
   body: JSON.stringify(payload)
 })
-    .then(r => r.json())
-    .then(res => {
-      if (res.status === "success") {
-        status.innerText = "✅ Submitted Successfully";
-        status.style.color = "green";
-        form.reset();
+.then(() => {
+  status.innerText = "✅ Submitted Successfully";
+  status.style.color = "green";
+  form.reset();
+  
          document.getElementById("reportedBy").value = loginName;
          submitBtn.disabled = false;
         clearWitnessSignature();
