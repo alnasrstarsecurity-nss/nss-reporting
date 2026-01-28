@@ -210,7 +210,7 @@ form.addEventListener("submit", async e => {
   status.style.color = "blue";
 
   const payload = {
-  action: "submitIncident",
+  action: "submitpatrolling",
 
   EmployeeName: form.name.value,
   EmpNumber: form.empno.value,  
