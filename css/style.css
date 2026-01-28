@@ -33,7 +33,7 @@ body {
  /*Card */
 .form-container {
  /* background: #f4f6f8;*/
-  background: linear-gradient(90deg, #752828, #2e2157);
+  background: linear-gradient(90deg, #f7dfdf, #ebe6fc);
   width: 100%;
   max-width: 720px;   /* Wider on desktop */
   padding: 20px;
