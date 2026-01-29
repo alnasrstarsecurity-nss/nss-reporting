@@ -16,7 +16,7 @@ submitBtn.disabled = false;
    user full name
 ================================ */
 const loginName = sessionStorage.getItem("LOGIN_NAME");
-const loginempnumber = sessionStorage.getItem("EMP_NUMBER");
+const loginempnumber = sessionStorage.getItem("EMP_NO");
 
 if (!loginName) {
   alert("Session expired. Please login again.");
