@@ -9,7 +9,7 @@ const status = document.getElementById("status");
 
 //signature validation
 const submitBtn = document.getElementById("submitBtn");
-submitBtn.disabled = false;
+submitBtn.disabled = true;
 //signature validation
 
 /* ===============================
