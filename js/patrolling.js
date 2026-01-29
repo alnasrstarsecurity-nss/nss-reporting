@@ -212,24 +212,26 @@ form.addEventListener("submit", async e => {
   const payload = {
   action: "submitpatrolling",
 
-  EmployeeName: form.name.value,
-  EmpNumber: form.empno.value,  
-  EmpDesignation: form.designation.value,
-  location: form.location.value,   
-  LocationRemark: form.LocationRemark.value,  
-  IncidentType: form.IncidentType.value,
-  IncidentRemark: form.IncidentRemark.value,
+  name: form.name.value,
+  empno: form.empno.value,
+  designation: form.designation.value,
+  location: form.location.value,
+  locationRemark: form.LocationRemark.value,
+
+  incidentType: form.IncidentType.value,
+  incidentRemark: form.IncidentRemark.value,
+
   Images1: await fileToBase64(form.Images1),
-  Images2: await fileToBase64(form.Images2),   
-  WitnessName: form.witnessName.value,   
-  WitnessEmpNumber: form.WitnessEmployeeNo.value,
+  Images2: await fileToBase64(form.Images2),
+
+  witnessName: form.witnessName.value,
+  witnessEmployeeNo: form.WitnessEmployeeNo.value,
   witnessSign: document.getElementById("witnessSignPad").toDataURL(),
-  SupName: form.SupervisorName.value,   
-  SupEmpNumber: form.SupEmpNumber.value,
+
+  supervisorName: form.SupervisorName.value,
+  supEmpNumber: form.SupEmpNumber.value,
   supSign: document.getElementById("supSignPad").toDataURL()
-
 };
-
 
 
   fetch(SCRIPT_URL, {
