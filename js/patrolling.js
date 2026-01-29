@@ -5,7 +5,7 @@ const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwR7hA2IdzWe-jyug6h0
 
 const form = document.getElementById("patrollingform");
 const status = document.getElementById("status");
-const gpsLocation = await getGPSLocation();
+
 
 
 //signature validation
@@ -236,6 +236,7 @@ window.clearSupSignature = clearSupSignature;
 ================================ */
 form.addEventListener("submit", async e => {
   e.preventDefault();
+   const gpsLocation = await getGPSLocation();
    submitBtn.disabled = true;
 
   status.innerText = "Submitting...";
