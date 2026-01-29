@@ -193,7 +193,7 @@ const clearWitnessSignature = initSignaturePad("witnessSignPad");
 const clearSupSignature = initSignaturePad(
   "supSignPad",
   () => submitBtn.disabled = false, // on signed
-  //() => submitBtn.disabled = true   // on cleared
+  () => submitBtn.disabled = true   // on cleared
 );
 
 // Attach clear buttons
