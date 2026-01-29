@@ -27,8 +27,6 @@ if (!loginName) {
 document.getElementById("SupervisorName").value = loginName;
 document.getElementById("SupEmpNumber").value = loginempnumber;
 
-SupEmpNumber
-
 
 /* ===============================
    attachment HELPER
