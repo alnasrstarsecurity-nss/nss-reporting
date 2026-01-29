@@ -5,6 +5,7 @@ const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwdA5vVcm8iM4sf9typ9
 
 const form = document.getElementById("patrollingform");
 const status = document.getElementById("status");
+const gpsLocation = await getGPSLocation();
 
 
 //signature validation
@@ -12,6 +13,35 @@ const submitBtn = document.getElementById("submitBtn");
 submitBtn.disabled = true;
 //signature validation
 
+/* ===============================
+  GPS
+================================ */
+function getGPSLocation() {
+  return new Promise(resolve => {
+    if (!navigator.geolocation) {
+      return resolve("");
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        const lat = pos.coords.latitude.toFixed(6);
+        const lng = pos.coords.longitude.toFixed(6);
+        resolve(`${lat},${lng}`);
+      },
+      err => {
+        resolve(""); // permission denied or error
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 0
+      }
+    );
+  });
+}
+/* ===============================
+  GPS
+================================ */
 /* ===============================
    user full name
 ================================ */
@@ -233,6 +263,8 @@ form.addEventListener("submit", async e => {
   supervisorName: form.SupervisorName.value,
   supEmpNumber: form.SupEmpNumber.value,
   supSign: document.getElementById("supSignPad").toDataURL()
+
+  GPS_Location: gpsLocation   
 };
 
 
