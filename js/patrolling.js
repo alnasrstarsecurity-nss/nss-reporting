@@ -220,7 +220,7 @@ form.addEventListener("submit", async e => {
   IncidentType: form.IncidentType.value,
   IncidentRemark: form.IncidentRemark.value,
   Images1: await fileToBase64(form.Images1),
-  Images2: await fileToBase64(form.Images1),   
+  Images2: await fileToBase64(form.Images2),   
   WitnessName: form.witnessName.value,   
   WitnessEmpNumber: form.WitnessEmployeeNo.value,
   witnessSign: document.getElementById("witnessSignPad").toDataURL(),
