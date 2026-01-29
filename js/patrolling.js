@@ -247,6 +247,7 @@ form.addEventListener("submit", async e => {
         status.style.color = "green";
         form.reset();
          document.getElementById("SupervisorName").value = loginName;
+         document.getElementById("SupEmpNumber").value = loginempnumber;
          submitBtn.disabled = false;
         clearWitnessSignature();
         clearSupSignature();
