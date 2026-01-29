@@ -23,7 +23,7 @@ if (!loginName) {
 }
 
 // 🔹 Auto-fill supervisor name
-document.getElementById("reportedBy").value = loginName;
+document.getElementById("SupervisorName").value = loginName;
 
 
 /* ===============================
