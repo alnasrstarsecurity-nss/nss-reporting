@@ -16,6 +16,7 @@ submitBtn.disabled = false;
    user full name
 ================================ */
 const loginName = sessionStorage.getItem("LOGIN_NAME");
+const loginempnumber = sessionStorage.getItem("EMP_NUMBER");
 
 if (!loginName) {
   alert("Session expired. Please login again.");
@@ -24,6 +25,9 @@ if (!loginName) {
 
 // 🔹 Auto-fill supervisor name
 document.getElementById("SupervisorName").value = loginName;
+document.getElementById("SupEmpNumber").value = loginempnumber;
+
+SupEmpNumber
 
 
 /* ===============================
