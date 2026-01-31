@@ -1,7 +1,7 @@
 /* ===============================
    CONFIG
 ================================ */
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxo-OPpwk7wOVmGMiIVPcL5oLVUlRmi_CY_9pPScmQ3ObN1k5Ra6WnidAkLImju4xLd/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx6md-_afxTUIaxth0tbmwCD9Q_DnA71nl8qOlNnnIzT2STIvocTueMlpdN3RtjGAJg/exec";
 
 const form = document.getElementById("patrollingform");
 const status = document.getElementById("status");
