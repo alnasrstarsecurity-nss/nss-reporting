@@ -47,7 +47,7 @@ function getGPSLocation() {
 ================================ */
 const loginName = sessionStorage.getItem("LOGIN_NAME");
 const loginempnumber = sessionStorage.getItem("EMP_NO");
-const logindesi = sessionStorage.getItem("DESIGNATION");
+const logindesi = sessionStorage.getItem("DESI");
 
 if (!loginName) {
   alert("Session expired. Please login again.");
