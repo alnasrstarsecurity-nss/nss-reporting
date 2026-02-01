@@ -265,6 +265,8 @@ form.addEventListener("submit", async e => {
 
   supervisorName: form.SupervisorName.value,
   supEmpNumber: form.SupEmpNumber.value,
+  Supdesignation: form.Supdesignation.value,
+     
   supSign: document.getElementById("supSignPad").toDataURL(),
 
   gps_Location: gpsLocation   
