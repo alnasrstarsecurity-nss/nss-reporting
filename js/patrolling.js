@@ -47,6 +47,7 @@ function getGPSLocation() {
 ================================ */
 const loginName = sessionStorage.getItem("LOGIN_NAME");
 const loginempnumber = sessionStorage.getItem("EMP_NO");
+const logindesi = sessionStorage.getItem("DESIGNATION");
 
 if (!loginName) {
   alert("Session expired. Please login again.");
@@ -56,6 +57,7 @@ if (!loginName) {
 // 🔹 Auto-fill supervisor name
 document.getElementById("SupervisorName").value = loginName;
 document.getElementById("SupEmpNumber").value = loginempnumber;
+document.getElementById("Supdesignation").value = logindesi;
 
 
 /* ===============================
