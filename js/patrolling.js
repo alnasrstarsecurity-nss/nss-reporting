@@ -57,7 +57,7 @@ if (!loginName) {
 // 🔹 Auto-fill supervisor name
 document.getElementById("SupervisorName").value = loginName;
 document.getElementById("SupEmpNumber").value = loginempnumber;
-document.getElementById("supdesignation").value = logindesi;
+document.getElementById("Supdesignation").value = logindesi;
 
 
 /* ===============================
@@ -265,7 +265,7 @@ form.addEventListener("submit", async e => {
 
   supervisorName: form.SupervisorName.value,
   supEmpNumber: form.SupEmpNumber.value,
-  supdesignation: form.supdesignation.value,
+  supdesignation: form.Supdesignation.value,
      
   supSign: document.getElementById("supSignPad").toDataURL(),
 
