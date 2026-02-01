@@ -285,6 +285,7 @@ form.addEventListener("submit", async e => {
         form.reset();
          document.getElementById("SupervisorName").value = loginName;
          document.getElementById("SupEmpNumber").value = loginempnumber;
+         document.getElementById("Supdesignation").value = logindesi;
          submitBtn.disabled = false;
         clearWitnessSignature();
         clearSupSignature();
