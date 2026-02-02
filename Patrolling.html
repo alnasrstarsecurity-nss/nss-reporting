@@ -43,13 +43,45 @@ if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
   <h3>Incident Details </h3>
 
    <label>Employee Number</label>
-  <input type="text" id="empno" name="empno" data-maxchars="4" onblur="fetchEmployee()">
-    
-  <label>Name</label>
-  <input type="text" id="name" name="name">
+<input type="text" id="empno" name="empno" data-maxchars="4" onblur="fetchEmployee()">
 
-   <label>Designation</label>
-  <input type="text" id="designation" name="designation" >
+<label>Name</label>
+<input type="text" id="name" name="name" readonly>
+
+<label>Designation</label>
+<input type="text" id="designation" name="designation" readonly>
+
+<script>
+function fetchEmployee() {
+  const empNo = document.getElementById("empno").value.trim();
+  if (!empNo) return;
+
+  google.script.run
+    .withSuccessHandler(fillEmployee)
+    .withFailureHandler(err => {
+      console.error(err);
+      clearEmployeeFields();
+    })
+    .getEmployeeByEmpNo(empNo);
+}
+
+function fillEmployee(data) {
+  if (!data) {
+    alert("Employee not found");
+    clearEmployeeFields();
+    return;
+  }
+
+  document.getElementById("name").value = data.name || "";
+  document.getElementById("designation").value = data.designation || "";
+}
+
+function clearEmployeeFields() {
+  document.getElementById("name").value = "";
+  document.getElementById("designation").value = "";
+}
+</script>
+
  
 
     <label>Location/Project</label>
