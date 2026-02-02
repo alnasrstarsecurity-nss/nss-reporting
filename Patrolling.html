@@ -41,18 +41,16 @@ if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
   
 <div class="section">
   <h3>Incident Details </h3>
+
+   <label>Employee Number</label>
+  <input type="text" id="empno" name="empno" data-maxchars="4" onblur="fetchEmployee()>
+    
   <label>Name</label>
   <input type="text" id="name" name="name" data-maxchars="40" >
 
-   <label>Employee Number</label>
-  <input type="text" id="empno" name="empno" data-maxchars="4" >
-
    <label>Designation</label>
-  <select id="designation" name="designation" >
-  <option value="">-- Designation --</option>  
-  <option value="Security Guard">Security Guard</option>
-  <option value="Supervisor">Supervisor</option>
-  </select>
+  <input type="text" id="designation" name="designation" >
+ 
 
     <label>Location/Project</label>
   <select id="location" name="location" >
