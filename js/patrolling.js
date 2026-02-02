@@ -43,36 +43,6 @@ function getGPSLocation() {
   EMPLOYEE MASTER
 ================================ */
 
-function fetchEmployee() {
-  const empNo = document.getElementById("empno").value.trim();
-  if (!empNo) return;
-
-  google.script.run
-    .withSuccessHandler(fillEmployee)
-    .withFailureHandler(err => {
-      console.error(err);
-      clearEmployeeFields();
-    })
-    .getEmployeeByEmpNo(empNo);
-}
-
-function fillEmployee(data) {
-  if (!data) {
-    alert("Employee not found");
-    clearEmployeeFields();
-    return;
-  }
-
-  document.getElementById("name").value = data.name || "";
-  document.getElementById("designation").value = data.designation || "";
-}
-
-function clearEmployeeFields() {
-  document.getElementById("name").value = "";
-  document.getElementById("designation").value = "";
-}
-
-
 /* ===============================
    user full name
 ================================ */
