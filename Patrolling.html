@@ -51,44 +51,6 @@ if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
 <label>Designation</label>
 <input type="text" id="designation" name="designation" readonly>
 
-<script>
-window.onload = function() {
-
-  function fetchEmployee() {
-    const empNo = document.getElementById("empno").value.trim();
-    if (!empNo) return;
-
-    google.script.run
-      .withSuccessHandler(fillEmployee)
-      .withFailureHandler(err => {
-        console.error(err);
-        clearEmployeeFields();
-      })
-      .getEmployeeByEmpNo(empNo);
-  }
-
-  function fillEmployee(data) {
-    if (!data) {
-      alert("Employee not found");
-      clearEmployeeFields();
-      return;
-    }
-
-    document.getElementById("name").value = data.name || "";
-    document.getElementById("designation").value = data.designation || "";
-  }
-
-  function clearEmployeeFields() {
-    document.getElementById("name").value = "";
-    document.getElementById("designation").value = "";
-  }
-
-  // expose fetchEmployee to the input field
-  document.getElementById("empno").onblur = fetchEmployee;
-
-};
-</script>
-
 
  
 
