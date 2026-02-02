@@ -47,7 +47,7 @@ async function fetchEmployee() {
   if (!empNo) return;
 
   try {
-    const res = await fetch(`${SCRIPT_URL}?empno=${empNo}`);
+    const res = await fetch(`${SCRIPT_URL}?empno=${encodeURIComponent(empNo)}`);
     const data = await res.json();
 
     if (data) {
@@ -62,8 +62,10 @@ async function fetchEmployee() {
     console.error(err);
     document.getElementById("name").value = "";
     document.getElementById("designation").value = "";
+    alert("Error fetching employee data");
   }
 }
+
 
 /* ===============================
    user full name
