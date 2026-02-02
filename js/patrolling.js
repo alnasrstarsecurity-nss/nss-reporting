@@ -1,7 +1,7 @@
 /* ===============================
    CONFIG
 ================================ */
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxkFyx0nnWd5XAO65SD0R11xlxscS64Sq5-UxLQKeKpxMLZLk-CwRIz33_8SG6JiThI/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz7Wah-t2eIj78--IrxUHzkediY0M78db6dRFhECmq3VqvznjY1r3FSzZ1rj5zeAcZ0/exec";
 
 const form = document.getElementById("patrollingform");
 const status = document.getElementById("status");
@@ -42,7 +42,7 @@ function getGPSLocation() {
 /* ===============================
   EMPLOYEE MASTER
 ================================ */
-<script>
+
 function fetchEmployee() {
   const empNo = document.getElementById("empno").value.trim();
   if (!empNo) return;
@@ -71,7 +71,7 @@ function clearEmployeeFields() {
   document.getElementById("name").value = "";
   document.getElementById("designation").value = "";
 }
-</script>
+
 
 /* ===============================
    user full name
