@@ -156,7 +156,7 @@ button.secondary {
 }
 button.search {
   width: 1in;              /* small width */
-  height: 0.5in;             /* 1 inch height */
+  height: 0.4in;             /* 1 inch height */
   margin-top: 6px;
   padding: 0;              /* keep compact */
   font-size: 12px;
