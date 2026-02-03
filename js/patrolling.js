@@ -56,7 +56,7 @@ function getGPSLocation() {
 /* ===============================
   EMPLOYEE MASTER
 ================================ */
-<script>
+
 function fetchEmployee() {
   const empNo = document.getElementById("empno").value.trim();
   const btn = document.getElementById("searchEmpBtn");
@@ -116,7 +116,7 @@ function showStatus(message, success) {
     el.style.color = "#555"; // neutral (searching)
   }
 }
-</script>
+
 
 
 /* ===============================
