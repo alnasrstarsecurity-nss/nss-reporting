@@ -45,7 +45,12 @@ if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
    <label>Employee Number</label>
 <input type="text" id="empno" name="empno" data-maxchars="4">
 
-  <button type="button" class="secondary" onclick="fetchEmployee()" style="margin-top:6px;" disabled>
+ <button
+  type="button"
+  id="searchEmpBtn"
+  class="secondary"
+  onclick="fetchEmployee()"
+  disabled>
   🔍 Search Employee
 </button>
 
