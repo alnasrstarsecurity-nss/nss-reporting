@@ -43,7 +43,11 @@ if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
   <h3>Incident Details </h3>
 
    <label>Employee Number</label>
-<input type="text" id="empno" name="empno" data-maxchars="4" onblur="fetchEmployee()">
+<input type="text" id="empno" name="empno" data-maxchars="4">
+
+  <button type="button" class="secondary" onclick="fetchEmployee()" style="margin-top:6px;" disabled>
+  🔍 Search Employee
+</button>
 
 <label>Name</label>
 <input type="text" id="name" name="name" readonly>
