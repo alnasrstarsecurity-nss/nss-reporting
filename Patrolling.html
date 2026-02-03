@@ -42,7 +42,22 @@ if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
 <div class="section">
   <h3>Incident Details </h3>
 
-   <label>Employee Number</label>
+  <label>Employee Number</label>
+<div class="emp-search-wrapper">
+  <input type="text" id="empno" name="empno" data-maxchars="4">
+  <button
+    type="button"
+    id="searchEmpBtn"
+    class="search"
+    onclick="fetchEmployee()"
+    disabled>
+    🔍 Search
+  </button>
+</div>
+<div id="empStatus" style="margin-top:6px;font-size:13px;"></div>
+
+
+  <!-- <label>Employee Number</label>
 <input type="text" id="empno" name="empno" data-maxchars="4">
 
  <button
@@ -55,6 +70,7 @@ if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
 </button>
 
 <div id="empStatus" style="margin-top:6px;font-size:13px;"></div>
+  -->
 
 <label>Name</label>
 <input type="text" id="name" name="name" readonly>
