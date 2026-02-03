@@ -145,12 +145,12 @@ button.secondary {
   color: #111827;
 }
 button.search {
-  width: 2in;              /* small width */
-  height: 1in;             /* 1 inch height */
+  width: 20px;              /* small width */
+  height: 10px;             /* 1 inch height */
   margin-top: 6px;
   padding: 0;              /* keep compact */
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 8px;
+  font-weight: 500;
 
   /* SAME color as main button */
   color: white;
