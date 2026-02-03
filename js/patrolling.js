@@ -12,10 +12,14 @@ const status = document.getElementById("status");
 const empInput = document.getElementById("empno");
 const searchBtn = document.getElementById("searchEmpBtn");
 
-empInput.addEventListener("input", () => {
-  const hasValue = empInput.value.trim().length > 0;
-  searchBtn.disabled = !hasValue;
-});
+if (empInput && searchBtn) {
+  empInput.addEventListener("input", e => {
+    searchBtn.disabled = !e.target.value.trim();
+    document.getElementById("empStatus").textContent = "";
+    clearEmployeeFields();
+  });
+}
+;
 
 
 
@@ -54,33 +58,31 @@ function getGPSLocation() {
   EMPLOYEE MASTER
 ================================ */
 
-function fetchEmployee() {
+async function fetchEmployee() {
   const empNo = document.getElementById("empno").value.trim();
-  const btn = document.getElementById("searchEmpBtn");
-  if (!empNo) return;
+  if (!empNo) {
+    alert("Please enter Employee Number");
+    return;
+  }
 
-  // UI state: searching
-  btn.disabled = true;
-  btn.textContent = "Searching...";
-  showStatus("Searching employee...", null);
+  try {
+    const res = await fetch(`${SCRIPT_URL}?empno=${encodeURIComponent(empNo)}`);
+    const data = await res.json();
 
-  google.script.run
-    .withSuccessHandler(data => {
-      btn.disabled = false;
-      btn.textContent = "🔍 Search Employee"; // keep icon
-      fillEmployee(data);
-    })
-    .withFailureHandler(err => {
-      console.error("Apps Script error:", err);
-
-      btn.disabled = false;
-      btn.textContent = "🔍 Search Employee";
-
-      clearEmployeeFields();
-      showStatus("⚠ Error fetching employee", false);
-    })
-    .getEmployeeByEmpNo(empNo);
+    if (data) {
+      document.getElementById("name").value = data.name || "";
+      document.getElementById("designation").value = data.designation || "";
+    } else {
+      document.getElementById("name").value = "";
+      document.getElementById("designation").value = "";
+      alert("Employee not found");
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Error fetching employee details");
+  }
 }
+
 
 
 
