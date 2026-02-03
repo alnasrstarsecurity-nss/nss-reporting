@@ -9,14 +9,17 @@ const status = document.getElementById("status");
 /* ===============================
   search button
 ================================ */
+document.addEventListener("DOMContentLoaded", () => {
   const empInput = document.getElementById("empno");
   const searchBtn = document.getElementById("searchEmpBtn");
 
+  // safety check
+  if (!empInput || !searchBtn) return;
+
   empInput.addEventListener("input", () => {
-    const hasValue = empInput.value.trim().length > 0;
-    searchBtn.disabled = !hasValue;
+    searchBtn.disabled = empInput.value.trim().length === 0;
   });
-});
+});;
 
 
 
