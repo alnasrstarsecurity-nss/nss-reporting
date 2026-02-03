@@ -6,6 +6,18 @@ const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzEgF1ZhJIdgojCmCxSD
 const form = document.getElementById("patrollingform");
 const status = document.getElementById("status");
 
+/* ===============================
+  search button
+================================ */
+const empInput = document.getElementById("empno");
+const searchBtn = document.getElementById("searchEmpBtn");
+
+if (empInput && searchBtn) {
+  empInput.addEventListener("input", e => {
+    searchBtn.disabled = !e.target.value.trim();
+  });
+}
+
 
 
 //signature validation
@@ -65,10 +77,6 @@ async function fetchEmployee() {
     alert("Error fetching employee data");
   }
 }
-
-document.getElementById("empno").addEventListener("input", e => {
-  document.getElementById("searchEmpBtn").disabled = !e.target.value.trim();
-});
 
 
 /* ===============================
