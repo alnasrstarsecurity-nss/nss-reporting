@@ -164,7 +164,7 @@ button.search {
 
   /* SAME color as main button */
   color: white;
-  background: linear-gradient(135deg, #7d5959, #443b63);
+  background: linear-gradient(135deg, #484899, #443b63);
 
   border-radius: 8px;
   cursor: pointer;
