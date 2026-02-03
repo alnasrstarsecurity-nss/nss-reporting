@@ -15,6 +15,8 @@ const searchBtn = document.getElementById("searchEmpBtn");
 if (empInput && searchBtn) {
   empInput.addEventListener("input", e => {
     searchBtn.disabled = !e.target.value.trim();
+    document.getElementById("empStatus").textContent = "";
+    clearEmployeeFields();
   });
 }
 
@@ -54,28 +56,47 @@ function getGPSLocation() {
 /* ===============================
   EMPLOYEE MASTER
 ================================ */
-async function fetchEmployee() {
+function fetchEmployee() {
   const empNo = document.getElementById("empno").value.trim();
+  const status = document.getElementById("empStatus");
+  const btn = document.getElementById("searchEmpBtn");
+
   if (!empNo) return;
 
-  try {
-    const res = await fetch(`${SCRIPT_URL}?empno=${encodeURIComponent(empNo)}`);
-    const data = await res.json();
+  status.textContent = "🔄 Searching...";
+  status.style.color = "#555";
+  btn.disabled = true;
 
-    if (data) {
+  google.script.run
+    .withSuccessHandler(data => {
+      btn.disabled = false;
+
+      if (!data) {
+        status.textContent = "❌ Employee not found";
+        status.style.color = "red";
+        clearEmployeeFields();
+        return;
+      }
+
       document.getElementById("name").value = data.name || "";
       document.getElementById("designation").value = data.designation || "";
-    } else {
-      document.getElementById("name").value = "";
-      document.getElementById("designation").value = "";
-      alert("Employee not found");
-    }
-  } catch (err) {
-    console.error(err);
-    document.getElementById("name").value = "";
-    document.getElementById("designation").value = "";
-    alert("Error fetching employee data");
-  }
+
+      status.textContent = "✅ Employee found";
+      status.style.color = "green";
+    })
+    .withFailureHandler(err => {
+      console.error(err);
+      btn.disabled = false;
+      status.textContent = "⚠ Error fetching employee";
+      status.style.color = "red";
+      clearEmployeeFields();
+    })
+    .getEmployeeByEmpNo(empNo);
+}
+
+function clearEmployeeFields() {
+  document.getElementById("name").value = "";
+  document.getElementById("designation").value = "";
 }
 
 
