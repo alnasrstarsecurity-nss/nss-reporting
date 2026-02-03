@@ -66,6 +66,10 @@ async function fetchEmployee() {
   }
 }
 
+document.getElementById("empno").addEventListener("input", e => {
+  document.getElementById("searchEmpBtn").disabled = !e.target.value.trim();
+});
+
 
 /* ===============================
    user full name
