@@ -9,17 +9,13 @@ const status = document.getElementById("status");
 /* ===============================
   search button
 ================================ */
-document.addEventListener("DOMContentLoaded", () => {
-  const empInput = document.getElementById("empno");
-  const searchBtn = document.getElementById("searchEmpBtn");
+const empInput = document.getElementById("empno");
+const searchBtn = document.getElementById("searchEmpBtn");
 
-  // safety check
-  if (!empInput || !searchBtn) return;
-
-  empInput.addEventListener("input", () => {
-    searchBtn.disabled = empInput.value.trim().length === 0;
-  });
-});;
+empInput.addEventListener("input", () => {
+  const hasValue = empInput.value.trim().length > 0;
+  searchBtn.disabled = !hasValue;
+});
 
 
 
@@ -61,7 +57,6 @@ function getGPSLocation() {
 function fetchEmployee() {
   const empNo = document.getElementById("empno").value.trim();
   const btn = document.getElementById("searchEmpBtn");
-
   if (!empNo) return;
 
   // UI state: searching
@@ -72,14 +67,14 @@ function fetchEmployee() {
   google.script.run
     .withSuccessHandler(data => {
       btn.disabled = false;
-      btn.textContent = "Search";
+      btn.textContent = "🔍 Search Employee"; // keep icon
       fillEmployee(data);
     })
     .withFailureHandler(err => {
       console.error("Apps Script error:", err);
 
       btn.disabled = false;
-      btn.textContent = "Search";
+      btn.textContent = "🔍 Search Employee";
 
       clearEmployeeFields();
       showStatus("⚠ Error fetching employee", false);
@@ -87,36 +82,6 @@ function fetchEmployee() {
     .getEmployeeByEmpNo(empNo);
 }
 
-function fillEmployee(data) {
-  if (!data) {
-    clearEmployeeFields();
-    showStatus("❌ Employee not found", false);
-    return;
-  }
-
-  document.getElementById("name").value = data.name || "";
-  document.getElementById("designation").value = data.designation || "";
-
-  showStatus("✅ Employee found", true);
-}
-
-function clearEmployeeFields() {
-  document.getElementById("name").value = "";
-  document.getElementById("designation").value = "";
-}
-
-function showStatus(message, success) {
-  const el = document.getElementById("empStatus");
-  el.textContent = message;
-
-  if (success === true) {
-    el.style.color = "green";
-  } else if (success === false) {
-    el.style.color = "red";
-  } else {
-    el.style.color = "#555"; // neutral (searching)
-  }
-}
 
 
 
