@@ -116,6 +116,16 @@ canvas {
   touch-action: none;
 }
 
+.emp-search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* space between input and button */
+}
+
+.emp-search-wrapper input {
+  flex: 1; /* input takes remaining width */
+}
+
 
 /* Buttons */
 button {
