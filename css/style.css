@@ -144,10 +144,28 @@ button.secondary {
   background: #e5e7eb;
   color: #111827;
 }
-button.search{
-  background: #e5e7eb;
-  color: #111827;
-  
+button.search {
+  width: 2in;              /* small width */
+  height: 1in;             /* 1 inch height */
+  margin-top: 6px;
+  padding: 0;              /* keep compact */
+  font-size: 14px;
+  font-weight: 600;
+
+  /* SAME color as main button */
+  color: white;
+  background: linear-gradient(135deg, #a13030, #5b0f0f);
+
+  border-radius: 8px;
+  cursor: pointer;
+
+  /* align left */
+  display: inline-block;
+}
+button.search:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
 }
 
 /* Messages */
