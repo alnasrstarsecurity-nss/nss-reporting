@@ -14,11 +14,23 @@ const searchBtn = document.getElementById("searchEmpBtn");
 
 if (empInput && searchBtn) {
   empInput.addEventListener("input", e => {
+    const hasValue = e.target.value.trim().length > 0;
+    searchBtn.disabled = !hasValue;
+
+    // Clear previous employee info and status
+    document.getElementById("name").value = "";
+    document.getElementById("designation").value = "";
+    document.getElementById("empStatus").textContent = "";
+  });
+}
+
+/*if (empInput && searchBtn) {
+  empInput.addEventListener("input", e => {
     searchBtn.disabled = !e.target.value.trim();
     document.getElementById("empStatus").textContent = "";
     clearEmployeeFields();
   });
-};
+};*/
 
 
 
@@ -374,6 +386,7 @@ form.addEventListener("submit", async e => {
          document.getElementById("SupervisorName").value = loginName;
          document.getElementById("SupEmpNumber").value = loginempnumber;
          document.getElementById("Supdesignation").value = logindesi;
+         document.getElementById("empStatus").textContent = "";
          submitBtn.disabled = false;
         clearWitnessSignature();
         clearSupSignature();
