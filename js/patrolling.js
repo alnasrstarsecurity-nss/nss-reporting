@@ -9,16 +9,14 @@ const status = document.getElementById("status");
 /* ===============================
   search button
 ================================ */
-const empInput = document.getElementById("empno");
-const searchBtn = document.getElementById("searchEmpBtn");
+  const empInput = document.getElementById("empno");
+  const searchBtn = document.getElementById("searchEmpBtn");
 
-if (empInput && searchBtn) {
-  empInput.addEventListener("input", e => {
-    searchBtn.disabled = !e.target.value.trim();
-    document.getElementById("empStatus").textContent = "";
-    clearEmployeeFields();
+  empInput.addEventListener("input", () => {
+    const hasValue = empInput.value.trim().length > 0;
+    searchBtn.disabled = !hasValue;
   });
-}
+});
 
 
 
