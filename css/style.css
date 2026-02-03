@@ -144,6 +144,11 @@ button.secondary {
   background: #e5e7eb;
   color: #111827;
 }
+button.search{
+  background: #e5e7eb;
+  color: #111827;
+  
+}
 
 /* Messages */
 .message {
