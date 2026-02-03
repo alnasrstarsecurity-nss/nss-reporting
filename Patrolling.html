@@ -48,11 +48,13 @@ if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
  <button
   type="button"
   id="searchEmpBtn"
-  class="secondary"
+  class="search"
   onclick="fetchEmployee()"
   disabled>
   🔍 Search Employee
 </button>
+
+<div id="empStatus" style="margin-top:6px;font-size:13px;"></div>
 
 <label>Name</label>
 <input type="text" id="name" name="name" readonly>
