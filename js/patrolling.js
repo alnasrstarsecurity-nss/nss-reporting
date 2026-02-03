@@ -24,13 +24,6 @@ if (empInput && searchBtn) {
   });
 }
 
-/*if (empInput && searchBtn) {
-  empInput.addEventListener("input", e => {
-    searchBtn.disabled = !e.target.value.trim();
-    document.getElementById("empStatus").textContent = "";
-    clearEmployeeFields();
-  });
-};*/
 
 
 
@@ -110,36 +103,6 @@ async function fetchEmployee() {
     statusEl.style.color = "red";
   }
 }
-
-
-
-/*async function fetchEmployee() {
-  const empNo = document.getElementById("empno").value.trim();
-  if (!empNo) {
-    alert("Please enter Employee Number");
-    return;
-  }
-
-  try {
-    const res = await fetch(`${SCRIPT_URL}?empno=${encodeURIComponent(empNo)}`);
-    const data = await res.json();
-
-    if (data) {
-      document.getElementById("name").value = data.name || "";
-      document.getElementById("designation").value = data.designation || "";
-    } else {
-      document.getElementById("name").value = "";
-      document.getElementById("designation").value = "";
-      alert("Employee not found");
-    }
-  } catch (err) {
-    console.error(err);
-    alert("Error fetching employee details");
-  }
-}*/
-
-
-
 
 
 /* ===============================
