@@ -18,8 +18,7 @@ if (empInput && searchBtn) {
     document.getElementById("empStatus").textContent = "";
     clearEmployeeFields();
   });
-}
-;
+};
 
 
 
