@@ -56,8 +56,52 @@ function getGPSLocation() {
 /* ===============================
   EMPLOYEE MASTER
 ================================ */
-
 async function fetchEmployee() {
+  const empNo = document.getElementById("empno").value.trim();
+  const searchBtn = document.getElementById("searchEmpBtn");
+  const statusEl = document.getElementById("empStatus");
+
+  if (!empNo) {
+    alert("Please enter Employee Number");
+    return;
+  }
+
+  // UI state: searching
+  searchBtn.disabled = true;
+  statusEl.textContent = "🔄 Searching...";
+  statusEl.style.color = "#555";
+
+  try {
+    const res = await fetch(`${SCRIPT_URL}?empno=${encodeURIComponent(empNo)}`);
+    const data = await res.json();
+
+    searchBtn.disabled = false;
+
+    if (data) {
+      document.getElementById("name").value = data.name || "";
+      document.getElementById("designation").value = data.designation || "";
+
+      statusEl.textContent = "✅ Employee found";
+      statusEl.style.color = "green";
+    } else {
+      document.getElementById("name").value = "";
+      document.getElementById("designation").value = "";
+
+      statusEl.textContent = "❌ Employee not found";
+      statusEl.style.color = "red";
+    }
+  } catch (err) {
+    console.error(err);
+    searchBtn.disabled = false;
+
+    statusEl.textContent = "⚠ Error fetching employee";
+    statusEl.style.color = "red";
+  }
+}
+
+
+
+/*async function fetchEmployee() {
   const empNo = document.getElementById("empno").value.trim();
   if (!empNo) {
     alert("Please enter Employee Number");
@@ -80,7 +124,7 @@ async function fetchEmployee() {
     console.error(err);
     alert("Error fetching employee details");
   }
-}
+}*/
 
 
 
