@@ -56,48 +56,67 @@ function getGPSLocation() {
 /* ===============================
   EMPLOYEE MASTER
 ================================ */
+<script>
 function fetchEmployee() {
   const empNo = document.getElementById("empno").value.trim();
-  const status = document.getElementById("empStatus");
   const btn = document.getElementById("searchEmpBtn");
 
   if (!empNo) return;
 
-  status.textContent = "🔄 Searching...";
-  status.style.color = "#555";
+  // UI state: searching
   btn.disabled = true;
+  btn.textContent = "Searching...";
+  showStatus("Searching employee...", null);
 
   google.script.run
     .withSuccessHandler(data => {
       btn.disabled = false;
-
-      if (!data) {
-        status.textContent = "❌ Employee not found";
-        status.style.color = "red";
-        clearEmployeeFields();
-        return;
-      }
-
-      document.getElementById("name").value = data.name || "";
-      document.getElementById("designation").value = data.designation || "";
-
-      status.textContent = "✅ Employee found";
-      status.style.color = "green";
+      btn.textContent = "Search";
+      fillEmployee(data);
     })
     .withFailureHandler(err => {
-      console.error(err);
+      console.error("Apps Script error:", err);
+
       btn.disabled = false;
-      status.textContent = "⚠ Error fetching employee";
-      status.style.color = "red";
+      btn.textContent = "Search";
+
       clearEmployeeFields();
+      showStatus("⚠ Error fetching employee", false);
     })
     .getEmployeeByEmpNo(empNo);
+}
+
+function fillEmployee(data) {
+  if (!data) {
+    clearEmployeeFields();
+    showStatus("❌ Employee not found", false);
+    return;
+  }
+
+  document.getElementById("name").value = data.name || "";
+  document.getElementById("designation").value = data.designation || "";
+
+  showStatus("✅ Employee found", true);
 }
 
 function clearEmployeeFields() {
   document.getElementById("name").value = "";
   document.getElementById("designation").value = "";
 }
+
+function showStatus(message, success) {
+  const el = document.getElementById("empStatus");
+  el.textContent = message;
+
+  if (success === true) {
+    el.style.color = "green";
+  } else if (success === false) {
+    el.style.color = "red";
+  } else {
+    el.style.color = "#555"; // neutral (searching)
+  }
+}
+</script>
 
 
 /* ===============================
