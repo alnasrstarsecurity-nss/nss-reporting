@@ -15,7 +15,7 @@ body {
 }
 
 .form-header {
-  background: linear-gradient(135deg, #7d5959, #2e2157);
+  background: linear-gradient(135deg, #752828, #2e2157);
   color: #fff;
   padding: 24px 28px;
   border-radius: 12px 12px 0 0;
@@ -156,7 +156,7 @@ button.secondary {
 }
 button.search {
   width: 1in;              /* small width */
-  height: 0.41in;             /* 1 inch height */
+  height: 0.42in;             /* 1 inch height */
   margin-top: 6px;
   padding: 0;              /* keep compact */
   font-size: 15px;
@@ -164,7 +164,7 @@ button.search {
 
   /* SAME color as main button */
   color: white;
-  background: linear-gradient(135deg, #a13030, #5b0f0f);
+  background: linear-gradient(135deg, #7d5959, #2e2157);
 
   border-radius: 8px;
   cursor: pointer;
