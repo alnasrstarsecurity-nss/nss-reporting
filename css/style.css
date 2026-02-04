@@ -379,29 +379,3 @@ canvas {
   font-weight: 400;
 }
 
-/* Status text */
-.status {
-  margin-top: 6px;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-/* Loader spinner */
-.status.loading::before {
-  content: "";
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  margin-right: 6px;
-  border: 2px solid #ccc;
-  border-top-color: #a13030; /* same as button theme */
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-  vertical-align: middle;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-
