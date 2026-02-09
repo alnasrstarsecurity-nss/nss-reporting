@@ -316,7 +316,7 @@ form.addEventListener("submit", async e => {
   location: form.location.value,
   locationRemark: form.LocationRemark.value,
 
-  incidentType: form.IncidentType.value,
+  offencetType: form.OffencetType.value,
   incidentRemark: form.IncidentRemark.value,
 
   Images1: await fileToBase64(form.Images1),
