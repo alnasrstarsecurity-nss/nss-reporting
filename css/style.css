@@ -379,3 +379,20 @@ canvas {
   font-weight: 400;
 }
 
+.yesno2 {
+  display: grid;
+  grid-template-columns: 220px 1fr; /* left label + right options */
+  align-items: start;
+  margin-bottom: 12px;
+}
+
+.yesno2-title {
+  font-weight: bold;
+}
+
+.yesno2-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
