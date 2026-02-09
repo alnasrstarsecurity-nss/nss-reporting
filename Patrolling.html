@@ -146,6 +146,20 @@ if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
      <label>Immediate Supervisor's Comments</label>
  <textarea id="text" id="Comments" name="Comments" data-maxchars="200"> </textarea>
 
+       <label>Employee's Comments</label>
+ <textarea id="text" id="empComments" name="empComments" data-maxchars="200"> </textarea>
+
+     <label>Employee Signature</label>
+  <canvas id="empSignPad" name="empSignPad"></canvas>
+  
+  <button type="button" class="secondary" onclick="clearempSignature()">Clear Signature</button>
+
+
+       </div>
+
+     <div class="section">
+     <h3>Images</h3>
+
     <label>📸Upload Images 1</label><input type="file" input id="Images1" name="Images1" accept="image/*,application/pdf">
     <label>📸Upload Images 2</label><input type="file" input id="Images2" name="Images2" accept="image/*,application/pdf">
   </div>
