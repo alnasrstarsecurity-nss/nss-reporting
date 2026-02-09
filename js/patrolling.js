@@ -285,6 +285,7 @@ function initSignaturePad(canvasId, onSigned, onCleared) {
 
 // Initialize both pads
 const clearWitnessSignature = initSignaturePad("witnessSignPad");
+const clearempSignature = initSignaturePad("empSignPad");
 const clearSupSignature = initSignaturePad(
   "supSignPad",
   () => submitBtn.disabled = false, // on signed
@@ -293,6 +294,7 @@ const clearSupSignature = initSignaturePad(
 
 // Attach clear buttons
 window.clearWitnessSignature = clearWitnessSignature;
+window.clearempSignature = clearempSignature;
 window.clearSupSignature = clearSupSignature;
 
 
@@ -318,6 +320,7 @@ form.addEventListener("submit", async e => {
 
   offencetType: form.OffencetType.value,
   comments: form.Comments.value,
+  empSign: document.getElementById("empSignPad").toDataURL(),
 
   Images1: await fileToBase64(form.Images1),
   Images2: await fileToBase64(form.Images2),
