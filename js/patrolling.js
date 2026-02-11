@@ -385,24 +385,29 @@ form.addEventListener("submit", async e => {
         clearSupSignature();
         setTimeout(() => status.innerText = "", 3000);
          
-         /* Generate PDF in background*/
-    fetch(SCRIPT_URL, {
-      method: "POST",
-      body: JSON.stringify({
-        action: "generatepdf",
-        row: res.row
-      })
-    } 
-      } else {
-        status.innerText = "❌ Submission Failed";
-        status.style.color = "red";
-      }
-    })
-    .catch(() => {
-      status.innerText = "❌ Network Error";
+        /* Generate PDF in background */
+      fetch(SCRIPT_URL, {
+        method: "POST",
+        body: JSON.stringify({
+          action: "generatepdf",
+          row: res.row
+        })
+      }).catch(err => console.log("PDF generation error:", err));
+
+    } else {
+
+      status.innerText = "❌ Submission Failed";
       status.style.color = "red";
-    });
-});
+      submitBtn.disabled = false;
+
+    }
+
+  })
+  .catch(() => {
+    status.innerText = "❌ Network Error";
+    status.style.color = "red";
+    submitBtn.disabled = false;
+  });
 
 
 /* ===============================
