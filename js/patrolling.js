@@ -342,9 +342,12 @@ form.addEventListener("submit", async e => {
   location: form.location.value,
   locationRemark: form.LocationRemark.value,
 
+  foundoffence: radio("foundoffence"),
   offencetType: form.OffencetType.value,
   comments: form.Comments.value,
+  empComments: form.empComments.value,
   empSign: document.getElementById("empSignPad").toDataURL(),
+  empDeclaration: radio("empDeclaration"),
 
   Images1: await fileToBase64(form.Images1),
   Images2: await fileToBase64(form.Images2),
