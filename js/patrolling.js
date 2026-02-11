@@ -408,7 +408,7 @@ form.addEventListener("submit", async e => {
     status.style.color = "red";
     submitBtn.disabled = false;
   });
-
+}); 
 
 /* ===============================
    LOGOUT
