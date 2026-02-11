@@ -384,6 +384,15 @@ form.addEventListener("submit", async e => {
         clearWitnessSignature();
         clearSupSignature();
         setTimeout(() => status.innerText = "", 3000);
+         
+         /* Generate PDF in background*/
+    fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify({
+        action: "generatepdf",
+        row: res.row
+      })
+       
       } else {
         status.innerText = "❌ Submission Failed";
         status.style.color = "red";
