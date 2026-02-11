@@ -392,7 +392,7 @@ form.addEventListener("submit", async e => {
         action: "generatepdf",
         row: res.row
       })
-       
+    } 
       } else {
         status.innerText = "❌ Submission Failed";
         status.style.color = "red";
