@@ -382,6 +382,7 @@ form.addEventListener("submit", async e => {
          document.getElementById("empStatus").textContent = "";
          submitBtn.disabled = false;
         clearWitnessSignature();
+        clearempSignature();
         clearSupSignature();
         setTimeout(() => status.innerText = "", 3000);
          
