@@ -27,6 +27,15 @@ if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
   window.location.replace("index.html");
 }
 </script>
+
+  <script>
+const empInput = document.getElementById("empno");
+const searchBtn = document.getElementById("searchEmpBtn");
+
+empInput.addEventListener("input", () => {
+  searchBtn.disabled = empInput.value.trim().length === 0;
+});
+</script>
   
  
 <div class="form-container">
@@ -55,6 +64,14 @@ if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
 </div>
 <div id="empStatus" style="margin-top:6px;font-size:13px;"></div>
 
+
+    <div id="employeeInfo" class="section"></div>
+
+<div id="offenceSection" class="section">
+  <h3>Offence History</h3>
+  <div id="offenceTable"></div>
+</div>
+    
 
 </form>
   <button type="button" onclick="goBack()">
