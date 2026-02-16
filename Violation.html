@@ -27,15 +27,6 @@ if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
   window.location.replace("index.html");
 }
 </script>
-
-  <script>
-const empInput = document.getElementById("empno");
-const searchBtn = document.getElementById("searchEmpBtn");
-
-empInput.addEventListener("input", () => {
-  searchBtn.disabled = empInput.value.trim().length === 0;
-});
-</script>
   
  
 <div class="form-container">
