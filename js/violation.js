@@ -3,7 +3,7 @@
 /* ===============================
    CONFIG
 ================================ */
-const SCRIPT_URL = "https://scri";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzcA2gmTDHvpTNmydp8YSb56_vdeRIzQ43_T9KssvVIzxUB9Kkt3TrzaGv6Mdi52AFqhQ/exec";
 
 const form = document.getElementById("violation");
 
