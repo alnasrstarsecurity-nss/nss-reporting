@@ -38,6 +38,23 @@ if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
 
 <form id="violation">
 
+  <div class="section">
+  <h3>Employee Details </h3>
+
+  <label>Search Employee Number</label>
+<div class="emp-search-wrapper">
+  <input type="number" id="empno" name="empno" data-maxdigits="4">
+  <button
+    type="button"
+    id="searchEmpBtn"
+    class="search"
+    onclick="fetchEmployee()"
+    disabled>
+    🔍 Search
+  </button>
+</div>
+<div id="empStatus" style="margin-top:6px;font-size:13px;"></div>
+
 
 </form>
   <button type="button" onclick="goBack()">
