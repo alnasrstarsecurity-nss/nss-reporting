@@ -7,6 +7,29 @@ const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzcA2gmTDHvpTNmydp8Y
 
 const form = document.getElementById("violation");
 
+
+/* ===============================
+  search button
+================================ */
+const empInput = document.getElementById("empno");
+const searchBtn = document.getElementById("searchEmpBtn");
+
+if (empInput && searchBtn) {
+  empInput.addEventListener("input", e => {
+    const hasValue = e.target.value.trim().length > 0;
+    searchBtn.disabled = !hasValue;
+
+    /* Clear previous employee info and status
+    document.getElementById("name").value = "";
+    document.getElementById("designation").value = "";
+    document.getElementById("empStatus").textContent = "";*/
+  });
+}
+
+
+
+
+
 async function fetchEmployee() {
   const empNo = document.getElementById("empno").value.trim();
   const status = document.getElementById("empStatus");
