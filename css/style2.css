@@ -430,3 +430,34 @@ canvas {
   display: flex;
   flex-direction: column;
 }
+
+/* ============================
+   MOBILE RESPONSIVE TABLE FIX
+   ============================ */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent table from breaking layout */
+#offenceTable table {
+  width: 100%;
+  min-width: 650px;   /* keeps columns readable */
+  border-collapse: collapse;
+}
+
+/* Improve mobile readability */
+@media (max-width: 768px) {
+  #offenceTable table {
+    font-size: 13px;
+  }
+
+  #offenceTable th,
+  #offenceTable td {
+    padding: 8px 6px;
+    white-space: nowrap;
+  }
+}
+
