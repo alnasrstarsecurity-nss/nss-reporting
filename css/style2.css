@@ -409,3 +409,24 @@ canvas {
   flex-direction: column;
   gap: 8px;
 }
+
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+/* Desktop: 50% / 50% */
+@media (min-width: 992px) {
+  .details-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Keep both sides equal height */
+.employee-left,
+.employee-right {
+  display: flex;
+  flex-direction: column;
+}
