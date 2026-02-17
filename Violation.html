@@ -1,80 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
-  
 <head>
-
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Violation Report</title>
 
   <!-- Font -->
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/style2.css">
-  
-  
+
 </head>
 
-  
 <body>
 
-    <script>
+<script>
 /* 🔒 Block direct access without login */
 if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
   window.location.replace("index.html");
 }
 </script>
-  
- 
+
 <div class="form-container">
-<div class="form-header">
-  <h1>Violation Report</h1>
- </div>
-  
+
+  <!-- HEADER -->
+  <div class="form-header">
+    <h1>Violation Report</h1>
+  </div>
+
   <hr>
 
-<form id="violation">
+  <!-- FORM -->
+  <form id="violation">
 
-  <div class="section">
-  <h3>Employee Details </h3>
+    <!-- =============================
+         EMPLOYEE DETAILS + EXTRA INFO
+         ============================= -->
+    <div class="details-grid">
 
-  <label>Search Employee Number</label>
-<div class="emp-search-wrapper">
-  <input type="number" id="empno" name="empno" data-maxdigits="4">
-  <button
-    type="button"
-    id="searchEmpBtn"
-    class="search"
-    disabled>
-    🔍 Search
-  </button>
-</div>
-<div id="empStatus" style="margin-top:6px;font-size:13px;"></div>
+      <!-- LEFT SIDE : EMPLOYEE DETAILS -->
+      <div class="section employee-left">
 
+        <h3>Employee Details</h3>
 
-    <div id="employeeInfo" class="section"></div>
+        <label>Search Employee Number</label>
+        <div class="emp-search-wrapper">
+          <input type="number" id="empno" name="empno" data-maxdigits="4">
+          <button
+            type="button"
+            id="searchEmpBtn"
+            class="search"
+            disabled>
+            🔍 Search
+          </button>
+        </div>
 
-<div id="offenceSection" class="section">
-  <h3>Offence History</h3>
-  <div id="offenceTable"></div>
-</div>
-    
+        <div id="empStatus" style="margin-top:6px;font-size:13px;"></div>
 
-</form>
+        <!-- THIS IS USED BY JS – DO NOT REMOVE -->
+        <div id="employeeInfo" class="section"></div>
+
+      </div>
+
+      <!-- RIGHT SIDE : ADDITIONAL DETAILS -->
+      <div class="section employee-right">
+
+        <h3>Additional Details</h3>
+
+        <label>Department</label>
+        <input type="text" placeholder="Operations">
+
+        <label>Supervisor</label>
+        <input type="text" placeholder="Name 1">
+
+        <label>Current Status</label>
+        <select>
+          <option value="">Select</option>
+          <option>Active</option>
+          <option>Suspended</option>
+          <option>Terminated</option>
+        </select>
+
+        <label>Remarks</label>
+        <textarea placeholder="Enter remarks..."></textarea>
+
+      </div>
+
+    </div>
+    <!-- END DETAILS GRID -->
+
+    <!-- =============================
+         OFFENCE HISTORY (UNCHANGED)
+         ============================= -->
+    <div id="offenceSection" class="section">
+      <h3>Offence History</h3>
+      <div id="offenceTable"></div>
+    </div>
+
+  </form>
+
+  <!-- FOOTER BUTTON -->
   <button type="button" onclick="goBack()">
-  ⬅ Back to Menu
-</button>
+    ⬅ Back to Menu
+  </button>
+
 </div>
 
-  <script>
+<script>
 function goBack() {
   window.location.replace("menu.html");
 }
 </script>
-  
-  <script src="js/violation.js" defer></script>
+
+<!-- YOUR EXISTING JS -->
+<script src="js/violation.js" defer></script>
+
 </body>
 </html>
