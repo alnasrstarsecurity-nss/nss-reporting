@@ -328,7 +328,7 @@ canvas {
     padding: 16px;
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   label {
     font-size: 14px;
   }
