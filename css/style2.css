@@ -325,7 +325,7 @@ canvas {
 }
 @media (max-width: 768px) {
   .form-container {
-    padding: 26px;
+    padding: 16px;
   }
 }
 @media (max-width: 800px) {
