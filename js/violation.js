@@ -67,12 +67,11 @@ async function fetchEmployee() {
    RENDER EMPLOYEE INFO
 ================================ */
 function renderEmployee(emp) {
-  const container = document.getElementById("employeeInfo");
-  container.innerHTML = `
-    <p><strong>Name:</strong> ${emp.Full_Name || ""}</p>
-    <p><strong>Designation:</strong> ${emp.Designation || ""}</p>
-    <p><strong>Join Date:</strong> ${emp.Join_Date || ""}</p>
-    <p><strong>Gender:</strong> ${emp.Gender || ""}</p>
+  document.getElementById("employeeInfo").innerHTML = `
+    <p><b>Name:</b> ${emp.name}</p>
+    <p><b>Designation:</b> ${emp.designation}</p>
+    <p><b>Join Date:</b> ${emp.joinDate || "-"}</p>
+    <p><b>Gender:</b> ${emp.gender || "-"}</p>
   `;
 }
 
