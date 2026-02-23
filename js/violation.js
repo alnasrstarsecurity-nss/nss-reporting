@@ -55,6 +55,7 @@ async function fetchEmployee() {
 
     renderEmployee(data.employee);
     renderOffences(data.offences || []);
+    renderOffenceImages(data.offences || []); 
 
   } catch (e) {
     console.error(e);
@@ -155,6 +156,58 @@ function closeImgModal() {
   document.getElementById("imgModal").style.display = "none";
 }
 
+
+
+/* ===============================
+   renderOffenceImages
+================================ */
+
+function renderOffenceImages(offences) {
+  const container = document.getElementById("offenceImages");
+  container.innerHTML = "";
+
+  const grouped = {};
+
+  offences.forEach(o => {
+    const report = o["Report No"] || "Unknown";
+    if (!grouped[report]) grouped[report] = [];
+    if (o["IMAGE 1"]) grouped[report].push(o["IMAGE 1"]);
+    if (o["IMAGE 2"]) grouped[report].push(o["IMAGE 2"]);
+  });
+
+  if (!Object.keys(grouped).length) {
+    container.innerHTML = "<p>No images available.</p>";
+    return;
+  }
+
+  Object.entries(grouped).forEach(([report, images]) => {
+    const block = document.createElement("div");
+    block.innerHTML = `<b>Report No: ${report}</b><br>`;
+    
+    images.forEach(url => {
+      const img = document.createElement("img");
+      img.src = url;
+      img.className = "img-thumb";
+      img.onclick = () => openImage(url);
+      block.appendChild(img);
+    });
+
+    container.appendChild(block);
+  });
+}
+
+/* ===============================
+   openImage
+================================ */
+function openImage(url) {
+  const modal = document.getElementById("imgModal");
+  document.getElementById("imgModalContent").src = url;
+  modal.style.display = "flex";
+}
+
+function closeImage() {
+  document.getElementById("imgModal").style.display = "none";
+}
 
 /* ===============================
    LOGOUT
