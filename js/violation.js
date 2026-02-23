@@ -125,11 +125,14 @@ function renderOffences(offences) {
 ================================ */
 function driveToDirect(url) {
   if (!url) return "";
+
   const match = url.match(/[-\w]{25,}/);
-  return match
-    ? `https://drive.google.com/uc?export=view&id=${match[0]}`
-    : url;
+  if (!match) return "";
+
+  // ✅ This ALWAYS works in <img>
+  return `https://drive.google.com/thumbnail?id=${match[0]}&sz=w2000`;
 }
+
 /* ===============================
    renderImageThumb
 ================================ */
@@ -215,14 +218,15 @@ function renderOffenceImages(offences) {
 ================================ */
 function openImage(url) {
   const modal = document.getElementById("imgModal");
-  document.getElementById("imgModalContent").src = url;
+  const img = document.getElementById("imgModalContent");
+
+  img.src = url;
   modal.style.display = "flex";
 }
 
 function closeImage() {
   document.getElementById("imgModal").style.display = "none";
 }
-
 /* ===============================
    LOGOUT
 ================================ */
