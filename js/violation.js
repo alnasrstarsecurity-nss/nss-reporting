@@ -107,7 +107,6 @@ function renderOffences(offences) {
       <th>Offence Type</th>
       <th>Sup Name</th>
       <th>Ops Action</th>
-      <th>Images</th>
     </tr>`;
 
   offences.forEach(o => {
@@ -119,10 +118,7 @@ function renderOffences(offences) {
       <td>${o["Offence Type"] || ""}</td>
       <td>${o["Sup Name"] || ""}</td>
       <td>${o["Ops Action"] || ""}</td>
-        <td>
-        ${renderImageThumb(o["IMAGE 1"])}
-        ${renderImageThumb(o["IMAGE 2"])}
-        </td>
+       
     </tr>`;
   });
 
