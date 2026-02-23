@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("employeeInfo").innerHTML = "";
     document.getElementById("offenceTable").innerHTML = "";
     document.getElementById("offenceImages").innerHTML = "";
+    document.getElementById("offenceCount").innerHTML = "";
     status.textContent = "";
   });
 
