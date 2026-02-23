@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Clear previous employee info and offences
     document.getElementById("employeeInfo").innerHTML = "";
     document.getElementById("offenceTable").innerHTML = "";
+    document.getElementById("offenceTable").innerHTML = "";
     status.textContent = "";
   });
 
