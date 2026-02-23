@@ -79,11 +79,22 @@ function renderEmployee(emp) {
 /* ===============================
    RENDER OFFENCES TABLE
 ================================ */
-function renderOffences(offences) {
+/*function renderOffences(offences) {
   const container = document.getElementById("offenceTable");
 
   if (!offences.length) {
     container.innerHTML = "<p>No offences found for this employee.</p>";
+    return;
+  }*/
+function renderOffences(offences) {
+  const table = document.getElementById("offenceTable");
+  const images = document.getElementById("offenceImages");
+
+  table.innerHTML = "";
+  images.innerHTML = "";
+
+  if (!offences.length) {
+    table.innerHTML = "<p>No offences found for this employee.</p>";
     return;
   }
 
