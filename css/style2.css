@@ -462,8 +462,9 @@ canvas {
 }
 
 .img-thumb {
-  width: 70px;
+  width: 90px;
   height: auto;
+  margin: 6px;
   cursor: pointer;
   border-radius: 6px;
   border: 1px solid #ccc;
@@ -472,15 +473,15 @@ canvas {
 .img-modal {
   display: none;
   position: fixed;
-  z-index: 9999;
   inset: 0;
-  background: rgba(0,0,0,0.85);
-  align-items: center;
+  background: rgba(0,0,0,.85);
   justify-content: center;
+  align-items: center;
+  z-index: 9999;
 }
 
 .img-modal img {
   max-width: 90%;
   max-height: 90%;
-  border-radius: 8px;
 }
+
