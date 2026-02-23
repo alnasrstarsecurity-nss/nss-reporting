@@ -496,4 +496,28 @@ canvas {
   cursor: pointer;
 }
 
+.offence-image-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.offence-report {
+  font-weight: 600;
+  font-size: 14px;
+  min-width: 120px;
+}
+
+.offence-thumb img {
+  width: 90px;        /* thumbnail size */
+  height: auto;
+  cursor: pointer;
+  border-radius: 6px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.2);
+}
+
+
 
