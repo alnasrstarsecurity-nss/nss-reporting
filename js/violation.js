@@ -82,6 +82,7 @@ function renderEmployee(emp) {
 ================================ */
 function renderOffences(offences) {
   const container = document.getElementById("offenceTable");
+  const countBox = document.getElementById("offenceCount");
 
      // ✅ SHOW TOTAL COUNT
   countBox.textContent = `Total Offences: ${offences.length}`;
