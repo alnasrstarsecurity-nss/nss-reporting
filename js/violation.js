@@ -95,6 +95,7 @@ function renderOffences(offences) {
       <th>Offence Type</th>
       <th>Sup Name</th>
       <th>Ops Action</th>
+      <th>Images</th>
     </tr>`;
 
   offences.forEach(o => {
@@ -106,12 +107,54 @@ function renderOffences(offences) {
       <td>${o["Offence Type"] || ""}</td>
       <td>${o["Sup Name"] || ""}</td>
       <td>${o["Ops Action"] || ""}</td>
+        <td>
+        ${renderImageThumb(o["IMAGE 1"])}
+        ${renderImageThumb(o["IMAGE 2"])}
+        </td>
     </tr>`;
   });
 
   html += "</table>";
   container.innerHTML = html;
 }
+
+/* ===============================
+   renderImageThumb
+================================ */
+
+function renderImageThumb(url) {
+  if (!url) return "";
+
+  const imgUrl = convertDriveUrl(url);
+
+  return `
+    <img src="${imgUrl}"
+         class="img-thumb"
+         onclick="openImgModal('${imgUrl}')">
+  `;
+}
+
+function convertDriveUrl(url) {
+  if (url.includes("drive.google.com")) {
+    const id = url.match(/[-\w]{25,}/);
+    if (id) {
+      return `https://drive.google.com/uc?id=${id[0]}`;
+    }
+  }
+  return url;
+}
+
+function openImgModal(src) {
+  const modal = document.getElementById("imgModal");
+  const img = document.getElementById("imgModalContent");
+  img.src = src;
+  modal.style.display = "flex";
+}
+
+function closeImgModal() {
+  document.getElementById("imgModal").style.display = "none";
+}
+
 
 /* ===============================
    LOGOUT
