@@ -119,6 +119,17 @@ function renderOffences(offences) {
   container.innerHTML = html;
 }
 
+
+/* ===============================
+   driveToDirect
+================================ */
+function driveToDirect(url) {
+  if (!url) return "";
+  const match = url.match(/[-\w]{25,}/);
+  return match
+    ? `https://drive.google.com/uc?export=view&id=${match[0]}`
+    : url;
+}
 /* ===============================
    renderImageThumb
 ================================ */
@@ -171,8 +182,9 @@ function renderOffenceImages(offences) {
   offences.forEach(o => {
     const report = o["Report No"] || "Unknown";
     if (!grouped[report]) grouped[report] = [];
-    if (o["IMAGE 1"]) grouped[report].push(o["IMAGE 1"]);
-    if (o["IMAGE 2"]) grouped[report].push(o["IMAGE 2"]);
+
+    if (o["IMAGE 1"]) grouped[report].push(driveToDirect(o["IMAGE 1"]));
+    if (o["IMAGE 2"]) grouped[report].push(driveToDirect(o["IMAGE 2"]));
   });
 
   if (!Object.keys(grouped).length) {
@@ -182,8 +194,9 @@ function renderOffenceImages(offences) {
 
   Object.entries(grouped).forEach(([report, images]) => {
     const block = document.createElement("div");
+    block.style.marginBottom = "12px";
     block.innerHTML = `<b>Report No: ${report}</b><br>`;
-    
+
     images.forEach(url => {
       const img = document.createElement("img");
       img.src = url;
@@ -195,6 +208,7 @@ function renderOffenceImages(offences) {
     container.appendChild(block);
   });
 }
+
 
 /* ===============================
    openImage
