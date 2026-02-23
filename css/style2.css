@@ -462,7 +462,7 @@ canvas {
 }
 
 .img-thumb {
-  width: 90px;        /* thumbnail size */
+  width: 60px;        /* thumbnail size */
   height: auto;
   margin: 6px;
   cursor: pointer;
@@ -512,7 +512,7 @@ canvas {
 }
 
 .offence-thumb img {
-  width: 90px;        /* thumbnail size */
+  width: 60px;        /* thumbnail size */
   height: auto;
   cursor: pointer;
   border-radius: 6px;
