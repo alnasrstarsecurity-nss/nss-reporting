@@ -79,23 +79,11 @@ function renderEmployee(emp) {
 /* ===============================
    RENDER OFFENCES TABLE
 ================================ */
-/*function renderOffences(offences) {
+function renderOffences(offences) {
   const container = document.getElementById("offenceTable");
 
   if (!offences.length) {
     container.innerHTML = "<p>No offences found for this employee.</p>";
-    return;
-  }*//*working*/
-
-/*function renderOffences(offences) {
-  const table = document.getElementById("offenceTable");
-  const images = document.getElementById("offenceImages");
-
-  table.innerHTML = "";
-  images.innerHTML = "";
-
-  if (!offences.length) {
-    table.innerHTML = "<p>No offences found for this employee.</p>";
     return;
   }
 
@@ -125,58 +113,7 @@ function renderEmployee(emp) {
 
   html += "</table>";
   container.innerHTML = html;
-}*/
-
-
-function renderOffences(offences) {
-  const container = document.getElementById("offenceImages");
-
-  if (!container) return; // 🛑 prevents crash
-  container.innerHTML = "";
-
-  if (!Array.isArray(offences) || offences.length === 0) {
-    container.innerHTML = "<p>No offence images found.</p>";
-    return;
-  }
-
-  offences.forEach(o => {
-    const reportNo = o["Report No"] || "-";
-
-    ["IMAGE 1", "IMAGE 2"].forEach(key => {
-      if (!o[key]) return;
-
-      const imgUrl = driveToDirect(o[key]);
-      if (!imgUrl) return;
-
-      const row = document.createElement("div");
-      row.style.display = "flex";
-      row.style.alignItems = "center";
-      row.style.gap = "15px";
-      row.style.marginBottom = "12px";
-
-      // Report number (LEFT)
-      const label = document.createElement("div");
-      label.innerHTML = `<b>Report No:</b> ${reportNo}`;
-      label.style.minWidth = "120px";
-
-      // Thumbnail (RIGHT)
-      const img = document.createElement("img");
-      img.src = imgUrl;
-      img.style.width = "90px";
-      img.style.height = "auto";
-      img.style.cursor = "pointer";
-      img.style.border = "1px solid #ccc";
-      img.style.borderRadius = "6px";
-
-      img.onclick = () => openImagePopup(imgUrl);
-
-      row.appendChild(label);
-      row.appendChild(img);
-      container.appendChild(row);
-    });
-  });
 }
-
 
 
 /* ===============================
