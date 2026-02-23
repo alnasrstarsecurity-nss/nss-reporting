@@ -14,7 +14,7 @@
 
 </head>
 <!-- Image Preview Modal -->
-<div id="imgModal" class="img-modal" onclick="closeImgModal()">
+<div id="imgModal" class="img-modal" onclick="closeImage()">
   <img id="imgModalContent">
 </div>
 <body>
@@ -70,9 +70,8 @@ if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
       <!-- RIGHT SIDE : ADDITIONAL DETAILS -->
       <div class="section employee-right">
 
-        <h3>Additional Details</h3>
-
-        
+        <h3>Offence Images</h3>
+         <div id="offenceImages"></div>
 
       </div>
 
