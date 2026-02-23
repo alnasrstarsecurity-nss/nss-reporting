@@ -102,8 +102,10 @@ if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
        <label class="radio-box">Yes <input type="radio" name="foundoffence" value="Yes"></label>
        <label class="radio-box">No <input type="radio" name="foundoffence" value="No"></label>
        </div>
+     </div>
 
      <div id="offenceSection" style="display:none;"> 
+       <div class="section">
      <label>Offence Type</label>
   <select id="OffencetType" name="OffencetType" >
   <option value="">-- Offencet Type --</option>  
@@ -169,12 +171,9 @@ if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
     <label class="radio-box">
       <input type="radio" name="empDeclaration" value="I Refuse to Sign"> I Refuse to Sign
     </label>
-  </div>
+ 
 
 
-       </div>
-
-  <div class="section">
      <h3>Witness Details</h3>
 
     <label>Name of Witness (if applicable)</label>
