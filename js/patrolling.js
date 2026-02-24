@@ -24,7 +24,43 @@ if (empInput && searchBtn) {
   });
 }
 
+/* ===============================
+  hide offence section
+================================ */
+document.addEventListener("DOMContentLoaded", () => {
+  const offenceRadios = document.getElementsByName("foundoffence");
+  const offenceSection = document.getElementById("offenceSection");
+  const offenceType = document.getElementById("OffencetType");
+  const supComments = document.getElementById("Comments");
 
+  function toggleOffenceFields() {
+    const selected = Array.from(offenceRadios).find(r => r.checked)?.value || "No";
+
+    if (selected === "Yes") {
+      offenceSection.style.display = "block";
+
+      // Make mandatory
+      offenceType.setAttribute("required", "required");
+      supComments.setAttribute("required", "required");
+    } else {
+      offenceSection.style.display = "none";
+
+      // Remove mandatory
+      offenceType.removeAttribute("required");
+      supComments.removeAttribute("required");
+
+      // Clear values if needed
+      offenceType.value = "";
+      supComments.value = "";
+    }
+  }
+
+  // Initial check on page load
+  toggleOffenceFields();
+
+  // Attach change listener to radios
+  offenceRadios.forEach(r => r.addEventListener("change", toggleOffenceFields));
+});
 
 
 //signature validation
