@@ -34,36 +34,35 @@ document.addEventListener("DOMContentLoaded", () => {
   const supComments = document.getElementById("Comments");
 
   function toggleOffenceFields() {
-    const selected = Array.from(offenceRadios).find(r => r.checked)?.value || "No";
+    const selected = document.querySelector('input[name="foundoffence"]:checked');
 
-    if (selected === "Yes") {
+    if (selected && selected.value === "Yes") {
       offenceSection.style.display = "block";
 
-      // Make mandatory
-      offenceType.setAttribute("required", "required");
-      supComments.setAttribute("required", "required");
+      offenceType.required = true;
+      supComments.required = true;
+
     } else {
       offenceSection.style.display = "none";
 
-      // Remove mandatory
-      offenceType.removeAttribute("required");
-      supComments.removeAttribute("required");
+      offenceType.required = false;
+      supComments.required = false;
 
-      // Clear values if needed
       offenceType.value = "";
       supComments.value = "";
     }
   }
 
-  // Initial check on page load
   toggleOffenceFields();
 
-  // Attach change listener to radios
-  offenceRadios.forEach(r => r.addEventListener("change", toggleOffenceFields));
+  offenceRadios.forEach(r =>
+    r.addEventListener("change", toggleOffenceFields)
+  );
 });
 
-
-//signature validation
+/* ===============================
+  //signature validation
+================================ */
 const submitBtn = document.getElementById("submitBtn");
 submitBtn.disabled = true;
 //signature validation
