@@ -28,36 +28,38 @@ if (empInput && searchBtn) {
   hide offence section
 ================================ */
 document.addEventListener("DOMContentLoaded", () => {
-  const offenceRadios = document.getElementsByName("foundoffence");
+
   const offenceSection = document.getElementById("offenceSection");
-  const offenceType = document.getElementById("OffencetType");
-  const supComments = document.getElementById("Comments");
 
   function toggleOffenceFields() {
+
     const selected = document.querySelector('input[name="foundoffence"]:checked');
 
+    const offenceType = document.getElementById("OffencetType");
+    const supComments = document.getElementById("Comments");
+
+    if (!offenceSection) return;
+
     if (selected && selected.value === "Yes") {
+
       offenceSection.style.display = "block";
 
-      offenceType.required = true;
-      supComments.required = true;
+      if (offenceType) offenceType.required = true;
+      if (supComments) supComments.required = true;
 
     } else {
+
       offenceSection.style.display = "none";
 
-      offenceType.required = false;
-      supComments.required = false;
-
-      offenceType.value = "";
-      supComments.value = "";
+      if (offenceType) offenceType.required = false;
+      if (supComments) supComments.required = false;
     }
   }
 
-  toggleOffenceFields();
+  document.querySelectorAll('input[name="foundoffence"]')
+    .forEach(r => r.addEventListener("change", toggleOffenceFields));
 
-  offenceRadios.forEach(r =>
-    r.addEventListener("change", toggleOffenceFields)
-  );
+  toggleOffenceFields();
 });
 
 /* ===============================
