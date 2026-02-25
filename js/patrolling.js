@@ -364,11 +364,13 @@ window.clearSupSignature = clearSupSignature;
 ================================ */
 form.addEventListener("submit", async e => {
   e.preventDefault();
-   const gpsLocation = await getGPSLocation();
+   
    submitBtn.disabled = true;
 
   status.innerText = "Submitting...";
   status.style.color = "blue";
+
+  const gpsLocation = await getGPSLocation();
 
   const payload = {
   action: "submitpatrolling",
