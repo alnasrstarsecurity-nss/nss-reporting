@@ -35,8 +35,13 @@ function resizeSignatureCanvas(canvasId) {
   const rect = canvas.getBoundingClientRect();
   canvas.width = rect.width;
   canvas.height = rect.height;
-}
 
+  // Re-apply drawing styles after resize
+  const ctx = canvas.getContext("2d");
+  ctx.lineWidth = 2.5;
+  ctx.lineCap = "round";
+  ctx.strokeStyle = "#000000";
+}
 /* ===============================
   hide offence section
 ================================ */
