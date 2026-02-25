@@ -28,38 +28,38 @@ if (empInput && searchBtn) {
   hide offence section
 ================================ */
 document.addEventListener("DOMContentLoaded", () => {
-
+  const offenceRadios = document.getElementsByName("foundoffence");
   const offenceSection = document.getElementById("offenceSection");
+  const offenceType = document.getElementById("OffencetType");
+  const supComments = document.getElementById("Comments");
 
   function toggleOffenceFields() {
+    const selected = Array.from(offenceRadios).find(r => r.checked)?.value || "No";
 
-    const selected = document.querySelector('input[name="foundoffence"]:checked');
-
-    const offenceType = document.getElementById("OffencetType");
-    const supComments = document.getElementById("Comments");
-
-    if (!offenceSection) return;
-
-    if (selected && selected.value === "Yes") {
-
+    if (selected === "Yes") {
       offenceSection.style.display = "block";
 
-      if (offenceType) offenceType.required = true;
-      if (supComments) supComments.required = true;
-
+      // Make mandatory
+      offenceType.setAttribute("required", "required");
+      supComments.setAttribute("required", "required");
     } else {
-
       offenceSection.style.display = "none";
 
-      if (offenceType) offenceType.required = false;
-      if (supComments) supComments.required = false;
+      // Remove mandatory
+      offenceType.removeAttribute("required");
+      supComments.removeAttribute("required");
+
+      // Clear values if needed
+      offenceType.value = "";
+      supComments.value = "";
     }
   }
 
-  document.querySelectorAll('input[name="foundoffence"]')
-    .forEach(r => r.addEventListener("change", toggleOffenceFields));
-
+  // Initial check on page load
   toggleOffenceFields();
+
+  // Attach change listener to radios
+  offenceRadios.forEach(r => r.addEventListener("change", toggleOffenceFields));
 });
 
 /* ===============================
