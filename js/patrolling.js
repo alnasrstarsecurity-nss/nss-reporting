@@ -24,6 +24,19 @@ if (empInput && searchBtn) {
   });
 }
 
+
+/* ===============================
+  signature resize
+================================ */
+function resizeSignatureCanvas(canvasId) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas) return;
+
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width;
+  canvas.height = rect.height;
+}
+
 /* ===============================
   hide offence section
 ================================ */
@@ -38,6 +51,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (selected === "Yes") {
       offenceSection.style.display = "block";
+
+       // resize canvases after showing
+       setTimeout(() => {
+       resizeSignatureCanvas("empSignPad");
+       resizeSignatureCanvas("witnessSignPad");
+       }, 50);
 
       // Make mandatory
       offenceType.setAttribute("required", "required");
