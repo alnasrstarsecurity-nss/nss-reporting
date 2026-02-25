@@ -449,14 +449,14 @@ form.addEventListener("submit", async e => {
         clearSupSignature();
         setTimeout(() => status.innerText = "", 3000);
          
-        /* Generate PDF in background */
+        /* Generate PDF in background 
       fetch(SCRIPT_URL, {
         method: "POST",
         body: JSON.stringify({
           action: "generatepdf",
           row: res.row
         })
-      }).catch(err => console.log("PDF generation error:", err));
+      }).catch(err => console.log("PDF generation error:", err));*/
 
     } else {
 
