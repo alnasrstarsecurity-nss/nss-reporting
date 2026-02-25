@@ -28,14 +28,14 @@ if (empInput && searchBtn) {
 /* ===============================
   signature resize
 ================================ */
-/*function resizeSignatureCanvas(canvasId) {
+function resizeSignatureCanvas(canvasId) {
   const canvas = document.getElementById(canvasId);
   if (!canvas) return;
 
   const rect = canvas.getBoundingClientRect();
   canvas.width = rect.width;
   canvas.height = rect.height;
-}*/
+}
 
 /* ===============================
   hide offence section
@@ -293,18 +293,6 @@ function blurActiveInputSafely() {
 function initSignaturePad(canvasId, onSigned, onCleared) {
   const canvas = document.getElementById(canvasId);
   const ctx = canvas.getContext("2d");
-
-/*signature resize hidden*/
-    function resizeCanvas() {
-    const rect = canvas.getBoundingClientRect();
-    canvas.width = rect.width;
-    canvas.height = rect.height;
-  }
-
-  resizeCanvas();
-  window.addEventListener("resize", resizeCanvas);
-
-   /*signature resize hidden*/
 
   const rect = canvas.getBoundingClientRect();
   canvas.width = rect.width;
