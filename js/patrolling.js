@@ -404,6 +404,7 @@ form.addEventListener("submit", async e => {
   designation: form.designation.value,
   location: form.location.value,
   locationRemark: form.LocationRemark.value,
+  observation: form.Observation.value,
 
   foundoffence: radio("foundoffence"),
   offencetType: form.OffencetType.value,
