@@ -71,7 +71,7 @@ function resizeSignatureCanvas(canvasId) {
 document.addEventListener("DOMContentLoaded", () => {
   const offenceRadios = document.getElementsByName("foundoffence");
   const offenceSection = document.getElementById("offenceSection");
-  const offenceType = document.getElementById("OffencetType");
+  const offenceType = document.getElementById("OffenceType");
   const supComments = document.getElementById("Comments");
 
   function toggleOffenceFields() {
