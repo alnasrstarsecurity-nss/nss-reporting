@@ -446,6 +446,7 @@ form.addEventListener("submit", async e => {
          document.getElementById("Supdesignation").value = logindesi;
          document.getElementById("empStatus").textContent = "";
          submitBtn.disabled = false;
+         offenceSection.style.display = "none";
         clearWitnessSignature();
         clearempSignature();
         clearSupSignature();
