@@ -27,7 +27,7 @@ if (empInput && searchBtn) {
 
 
 /* ===============================
-   Cause → Offence mandatory logic
+   other Offence mandatory logic
 ================================ */
 
 const OffenceSelect = document.getElementById("OffencetType");
