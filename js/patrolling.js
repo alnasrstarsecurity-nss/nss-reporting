@@ -30,7 +30,7 @@ if (empInput && searchBtn) {
    other Offence mandatory logic
 ================================ */
 
-const OffenceSelect = document.getElementById("OffencetType");
+const OffenceSelect = document.getElementById("OffenceType");
 const otherOffence = document.getElementById("OtherOffence");
 
 // Ensure hidden on load
@@ -430,7 +430,7 @@ form.addEventListener("submit", async e => {
   observation: form.Observation.value,
 
   foundoffence: radio("foundoffence"),
-  offencetType: form.OffencetType.value,
+  offenceType: form.OffenceType.value,
   otheroffence: form.OtherOffence.value,
   comments: form.Comments.value,
   empComments: form.empComments.value,
