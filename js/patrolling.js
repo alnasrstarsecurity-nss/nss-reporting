@@ -408,6 +408,7 @@ form.addEventListener("submit", async e => {
 
   foundoffence: radio("foundoffence"),
   offencetType: form.OffencetType.value,
+  otheroffence: form.OtherOffence.value,
   comments: form.Comments.value,
   empComments: form.empComments.value,
   empSign: document.getElementById("empSignPad").toDataURL(),
