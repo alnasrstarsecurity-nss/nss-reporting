@@ -25,6 +25,29 @@ if (empInput && searchBtn) {
 }
 
 
+
+/* ===============================
+   Cause → Offence mandatory logic
+================================ */
+
+const OffenceSelect = document.getElementById("OffencetType");
+const otherOffence = document.getElementById("OtherOffence");
+
+// Ensure hidden on load
+otherOffence.style.display = "none";
+otherOffence.required = false;
+
+OffenceSelect.addEventListener("change", () => {
+  if (OffenceSelect.value === "Any other offence detrimental to the image of the company or State of Qatar") {
+    otherOffence.style.display = "block";
+    otherOffence.required = true;
+  } else {
+    otherOffence.style.display = "none";
+    otherOffence.required = false;
+    otherOffence.value = ""; // clear when not needed
+  }
+});
+
 /* ===============================
   signature resize
 ================================ */
