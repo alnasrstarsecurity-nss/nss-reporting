@@ -3,7 +3,7 @@
 /* ===============================
    CONFIG
 ================================ */
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwvQOB63Q5IcPOv10GhME2TXetwQ3wWgFw_cyO4O-AcvCNSvaF4pbQpGRkgUMY3BM38/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxsR9k4GRmtLZyM3qtk8scP8UTYG769KpvcPt9W3STCfc1jjcn2ZHV5deNzxCpheNxJ/exec";
 
 
 document.addEventListener("DOMContentLoaded", () => {
