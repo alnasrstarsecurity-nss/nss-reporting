@@ -476,14 +476,14 @@ form.addEventListener("submit", async e => {
         setTimeout(() => status.innerText = "", 3000);
          
        //  Generate PDF in background 
-      fetch(SCRIPT_URL, {
-        method: "POST",
-        body: JSON.stringify({
-          action: "generatepdf",
-          row: res.row
-          offenceRow: res.offenceRow
-        })
-      }).catch(err => console.log("PDF generation error:", err));
+     fetch(SCRIPT_URL, {
+  method: "POST",
+  body: JSON.stringify({
+    action: "generatepdf",
+    row: res.row,
+    offenceRow: res.offenceRow || ""
+       })
+        }).catch(err => console.log("PDF generation error:", err));
 
     } else {
 
