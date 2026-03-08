@@ -65,39 +65,7 @@ function addOffence(btn) {
 /* ===============================
    other Offence mandatory logic
 ================================ */
-
-const otherOffence = document.getElementById("OtherOffence");
-
-otherOffence.style.display = "none";
-otherOffence.required = false;
-
-document.addEventListener("change", function(e){
-
-  if (e.target.classList.contains("offenceSelect")) {
-
-    if (e.target.value === "Any other offence detrimental to the image of the company or State of Qatar") {
-      otherOffence.style.display = "block";
-      otherOffence.required = true;
-    } 
-    else {
-
-      // check if any dropdown still has that value
-      const exists = Array.from(document.querySelectorAll(".offenceSelect"))
-        .some(el => el.value === "Any other offence detrimental to the image of the company or State of Qatar");
-
-      if (!exists) {
-        otherOffence.style.display = "none";
-        otherOffence.required = false;
-        otherOffence.value = "";
-      }
-
-    }
-
-  }
-
-});
-
-/*const OffenceSelect = document.getElementById("OffenceType");
+const OffenceSelect = document.getElementById("OffenceType");
 const otherOffence = document.getElementById("OtherOffence");
 
 // Ensure hidden on load
@@ -113,7 +81,7 @@ OffenceSelect.addEventListener("change", () => {
     otherOffence.required = false;
     otherOffence.value = ""; // clear when not needed
   }
-});*/
+});
 
 /* ===============================
   signature resize
@@ -138,7 +106,7 @@ function resizeSignatureCanvas(canvasId) {
 document.addEventListener("DOMContentLoaded", () => {
   const offenceRadios = document.getElementsByName("foundoffence");
   const offenceSection = document.getElementById("offenceSection");
-// const offenceType = document.getElementById("OffenceType");
+  const offenceType = document.getElementById("OffenceType");
   const supComments = document.getElementById("Comments");
 
   function toggleOffenceFields() {
@@ -154,26 +122,17 @@ document.addEventListener("DOMContentLoaded", () => {
        }, 50);
 
       // Make mandatory
-      //offenceType.setAttribute("required", "required");
-         /************************************/
-       document.querySelector(".offenceSelect").setAttribute("required", "required");
-         /************************************/
+      offenceType.setAttribute("required", "required");
       supComments.setAttribute("required", "required");
     } else {
       offenceSection.style.display = "none";
 
       // Remove mandatory
-      //offenceType.removeAttribute("required");
-         /************************************/
-       document.querySelectorAll(".offenceSelect").forEach(el=>{
-       el.removeAttribute("required");
-       el.value="";
-       });
-       /************************************/
+      offenceType.removeAttribute("required");
       supComments.removeAttribute("required");
 
       // Clear values if needed
-     // offenceType.value = "";
+      offenceType.value = "";
       supComments.value = "";
     }
   }
@@ -495,15 +454,6 @@ form.addEventListener("submit", async e => {
 
   const gpsLocation = await getGPSLocation();
 
-    /* COLLECT OFFENCES */
-  const offences = [];
-
-  document.querySelectorAll(".offenceSelect").forEach(el => {
-    if (el.value) offences.push(el.value);
-  });
-
-  const offenceType = offences.join(", ");
-/* COLLECT OFFENCES */
    
   const payload = {
   action: "submitpatrolling",
@@ -516,7 +466,7 @@ form.addEventListener("submit", async e => {
   observation: form.Observation.value,
 
   foundoffence: radio("foundoffence"),
-  offenceType: offenceType,
+  offenceType: form.OffenceType.value,
   otheroffence: form.OtherOffence.value,
   comments: form.Comments.value,
   empComments: form.empComments.value,
