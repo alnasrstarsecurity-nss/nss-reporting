@@ -25,6 +25,42 @@ if (empInput && searchBtn) {
 }
 
 
+/* ===============================
+  multiple offence
+================================ */
+let maxOffence = 10;
+
+function toggleAddButton(select) {
+  const row = select.parentElement;
+  const addBtn = row.querySelector(".addBtn");
+
+  if (select.value !== "") {
+    addBtn.style.display = "inline-block";
+  } else {
+    addBtn.style.display = "none";
+  }
+}
+
+function addOffence(btn) {
+
+  const container = document.getElementById("offenceContainer");
+  const rows = container.querySelectorAll(".offenceRow");
+
+  if (rows.length >= maxOffence) {
+    alert("Maximum 10 offences allowed");
+    return;
+  }
+
+  const newRow = rows[0].cloneNode(true);
+
+  const select = newRow.querySelector("select");
+  select.value = "";
+
+  const addBtn = newRow.querySelector(".addBtn");
+  addBtn.style.display = "none";
+
+  container.appendChild(newRow);
+}
 
 /* ===============================
    other Offence mandatory logic
@@ -419,6 +455,16 @@ form.addEventListener("submit", async e => {
 
   const gpsLocation = await getGPSLocation();
 
+    /* COLLECT OFFENCES */
+  const offences = [];
+
+  document.querySelectorAll(".offenceSelect").forEach(el => {
+    if (el.value) offences.push(el.value);
+  });
+
+  const offenceType = offences.join(", ");
+/* COLLECT OFFENCES */
+   
   const payload = {
   action: "submitpatrolling",
 
@@ -430,7 +476,7 @@ form.addEventListener("submit", async e => {
   observation: form.Observation.value,
 
   foundoffence: radio("foundoffence"),
-  offenceType: form.OffenceType.value,
+  offenceType: offenceType,
   otheroffence: form.OtherOffence.value,
   comments: form.Comments.value,
   empComments: form.empComments.value,
