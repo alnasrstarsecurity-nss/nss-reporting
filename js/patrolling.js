@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Make supervisor comments mandatory
       supComments.setAttribute("required", "required");
 
-      // Attach "Other Offence" logic
+      // Other Offence logic
       if (firstSelect) {
         firstSelect.addEventListener("change", () => {
           if (firstSelect.value === "Any other offence detrimental to the image of the company or State of Qatar") {
@@ -141,6 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
           } else {
             otherOffence.style.display = "none";
             otherOffence.required = false;
+            otherOffence.value = "";
           }
         });
       }
@@ -164,6 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const allSelects = offenceContainer.querySelectorAll(".offenceSelect");
       allSelects.forEach(s => s.value = "");
       supComments.value = "";
+      otherOffence.value = "";
     }
   }
 
