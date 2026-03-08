@@ -122,20 +122,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const selected = Array.from(offenceRadios).find(r => r.checked)?.value || "No";
 
     if (selected === "Yes") {
+      // Show offence section and container
       offenceSection.style.display = "block";
       offenceContainer.style.display = "block";
 
-      // Make first offence dropdown required
-      const firstSelect = offenceContainer.querySelector(".offenceSelect");
-      if (firstSelect) firstSelect.setAttribute("required", "required");
+      // Make all existing selects required
+      offenceContainer.querySelectorAll(".offenceSelect").forEach(select => {
+        select.setAttribute("required", "required");
 
-      // Make supervisor comments mandatory
-      supComments.setAttribute("required", "required");
-
-      // Other Offence logic
-      if (firstSelect) {
-        firstSelect.addEventListener("change", () => {
-          if (firstSelect.value === "Any other offence detrimental to the image of the company or State of Qatar") {
+        // Other Offence logic
+        select.addEventListener("change", () => {
+          if (select.value === "Any other offence detrimental to the image of the company or State of Qatar") {
             otherOffence.style.display = "block";
             otherOffence.required = true;
           } else {
@@ -144,27 +141,32 @@ document.addEventListener("DOMContentLoaded", () => {
             otherOffence.value = "";
           }
         });
-      }
+      });
 
-      // Resize canvases after showing
+      // Supervisor comments mandatory
+      supComments.setAttribute("required", "required");
+
+      // Resize signature canvases
       setTimeout(() => {
         resizeSignatureCanvas("empSignPad");
         resizeSignatureCanvas("witnessSignPad");
       }, 50);
 
     } else {
+      // Hide everything if No
       offenceSection.style.display = "none";
       offenceContainer.style.display = "none";
 
       // Remove mandatory
+      offenceContainer.querySelectorAll(".offenceSelect").forEach(select => {
+        select.removeAttribute("required");
+        select.value = "";
+      });
       supComments.removeAttribute("required");
+      supComments.value = "";
+
       otherOffence.style.display = "none";
       otherOffence.required = false;
-
-      // Clear values
-      const allSelects = offenceContainer.querySelectorAll(".offenceSelect");
-      allSelects.forEach(s => s.value = "");
-      supComments.value = "";
       otherOffence.value = "";
     }
   }
