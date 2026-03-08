@@ -28,9 +28,14 @@ if (empInput && searchBtn) {
 /* ===============================
   multiple offence
 ================================ */
+/* ===============================
+  multiple offence
+================================ */
+
 let maxOffence = 10;
 
 function toggleAddButton(select) {
+
   const row = select.parentElement;
   const addBtn = row.querySelector(".addBtn");
 
@@ -39,6 +44,7 @@ function toggleAddButton(select) {
   } else {
     addBtn.style.display = "none";
   }
+
 }
 
 function addOffence(btn) {
@@ -60,6 +66,7 @@ function addOffence(btn) {
   addBtn.style.display = "none";
 
   container.appendChild(newRow);
+
 }
 
 /* ===============================
@@ -466,7 +473,13 @@ form.addEventListener("submit", async e => {
   observation: form.Observation.value,
 
   foundoffence: radio("foundoffence"),
-  offenceType: form.OffenceType.value,
+  //offenceType: form.OffenceType.value,
+     
+   offenceType: Array.from(document.querySelectorAll(".offenceSelect"))
+  .map(s => s.value)
+  .filter(v => v !== "")
+  .join(", "),
+     
   otheroffence: form.OtherOffence.value,
   comments: form.Comments.value,
   empComments: form.empComments.value,
