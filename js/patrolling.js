@@ -112,25 +112,41 @@ function resizeSignatureCanvas(canvasId) {
 ================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
+
+  // Radio buttons to check if offence found
   const offenceRadios = document.getElementsByName("foundoffence");
   const offenceSection = document.getElementById("offenceSection");
   const offenceContainer = document.getElementById("offenceContainer");
   const supComments = document.getElementById("Comments");
   const otherOffence = document.getElementById("OtherOffence");
 
+  // Supervisor fields
+  const SupervisorName = document.getElementById("SupervisorName");
+  const SupEmpNumber = document.getElementById("SupEmpNumber");
+  const Supdesignation = document.getElementById("Supdesignation");
+
+  // Fill supervisor info from session storage
+  const loginName = sessionStorage.getItem("LOGIN_NAME") || "";
+  const loginempnumber = sessionStorage.getItem("EMP_NO") || "";
+  const logindesi = sessionStorage.getItem("DESI") || "";
+
+  SupervisorName.value = loginName;
+  SupEmpNumber.value = loginempnumber;
+  Supdesignation.value = logindesi;
+
+  // Function to show/hide offence section
   function toggleOffenceFields() {
     const selected = Array.from(offenceRadios).find(r => r.checked)?.value || "No";
 
     if (selected === "Yes") {
-      // Show offence section and container
       offenceSection.style.display = "block";
       offenceContainer.style.display = "block";
 
-      // Make all existing selects required
+      // Make all offence dropdowns required
       offenceContainer.querySelectorAll(".offenceSelect").forEach(select => {
         select.setAttribute("required", "required");
 
-        // Other Offence logic
+        // Other Offence logic for dynamic rows
         select.addEventListener("change", () => {
           if (select.value === "Any other offence detrimental to the image of the company or State of Qatar") {
             otherOffence.style.display = "block";
@@ -143,7 +159,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
 
-      // Supervisor comments mandatory
       supComments.setAttribute("required", "required");
 
       // Resize signature canvases
@@ -153,15 +168,15 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 50);
 
     } else {
-      // Hide everything if No
       offenceSection.style.display = "none";
       offenceContainer.style.display = "none";
 
-      // Remove mandatory
+      // Remove required and clear values
       offenceContainer.querySelectorAll(".offenceSelect").forEach(select => {
         select.removeAttribute("required");
         select.value = "";
       });
+
       supComments.removeAttribute("required");
       supComments.value = "";
 
@@ -171,10 +186,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Initial check on page load
+  // Run on page load
   toggleOffenceFields();
 
-  // Attach change listener to radios
+  // Run when radio changes
   offenceRadios.forEach(r => r.addEventListener("change", toggleOffenceFields));
 });
 
