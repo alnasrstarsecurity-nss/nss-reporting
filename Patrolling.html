@@ -111,9 +111,12 @@ if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
       <div id="offenceSection" style="display:none;">
        <div class="section">
      <label>Offence Type</label>
-  <select id="OffenceType" name="OffenceType" >
-  <option value="">-- Offencet Type --</option>  
-    
+         
+  <div id="offenceContainer">
+  <div class="offenceRow">
+    <select name="offenceType[]" class="offenceSelect" onchange="toggleAddButton(this)">
+      
+  <option value="">-- Offencet Type --</option>    
   <option value="Absent from Duty">Absent from Duty </option>
 <option value="Late for Duty">Late for Duty</option>
 <option value="Sleeping on Duty">Sleeping on Duty</option>
@@ -148,6 +151,11 @@ if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
 <option value="Any other offence detrimental to the image of the company or State of Qatar">Any other offence detrimental to the image of the company or State of Qatar</option>
  
   </select>
+
+      <button type="button" class="addBtn" onclick="addOffence(this)" style="display:none;">➕</button>
+    </div>
+
+   </div>
 
          
  <textarea id="OtherOffence" name="OtherOffence" placeholder="Describe Offence" style="display:none;" data-maxchars="200"></textarea>
