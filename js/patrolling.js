@@ -122,6 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
   otherOffence.style.display = "none";
   otherOffence.required = false;
 
+  // Function to show/hide OtherOffence
   function handleOtherOffence(select) {
     if (select.value === "Any other offence detrimental to the image of the company or State of Qatar") {
       otherOffence.style.display = "block";
@@ -133,18 +134,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Toggle offence section based on radio
   function toggleOffenceFields() {
     const selected = Array.from(offenceRadios).find(r => r.checked)?.value || "No";
 
     if (selected === "Yes") {
       offenceSection.style.display = "block";
-
       offenceContainer.style.display = "block";
 
       offenceContainer.querySelectorAll(".offenceSelect").forEach(select => {
         select.setAttribute("required", "required");
-        handleOtherOffence(select); // check on load
-        select.addEventListener("change", () => handleOtherOffence(select));
+        handleOtherOffence(select);
+        // Add listener if not already added
+        if (!select.dataset.listenerAdded) {
+          select.addEventListener("change", () => handleOtherOffence(select));
+          select.dataset.listenerAdded = "true";
+        }
       });
 
       supComments.setAttribute("required", "required");
@@ -166,19 +171,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Initial toggle
   toggleOffenceFields();
-
   offenceRadios.forEach(r => r.addEventListener("change", toggleOffenceFields));
 
-  // Make sure dynamically added rows also trigger OtherOffence logic
+  // Override addOffence to attach listener to new row
   const originalAddOffence = window.addOffence;
   window.addOffence = function(btn) {
     originalAddOffence(btn);
-    // attach event listener for new select
-    const newRow = btn.parentElement.parentElement.lastElementChild;
+
+    const container = document.getElementById("offenceContainer");
+    const rows = container.querySelectorAll(".offenceRow");
+    const newRow = rows[rows.length - 1];
     const select = newRow.querySelector(".offenceSelect");
     select.addEventListener("change", () => handleOtherOffence(select));
+    select.dataset.listenerAdded = "true";
   };
 });
 /*document.addEventListener("DOMContentLoaded", () => {
