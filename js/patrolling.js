@@ -112,49 +112,39 @@ function resizeSignatureCanvas(canvasId) {
 ================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
-  // ====== Offence section ======
   const offenceRadios = document.getElementsByName("foundoffence");
   const offenceSection = document.getElementById("offenceSection");
   const offenceContainer = document.getElementById("offenceContainer");
   const otherOffence = document.getElementById("OtherOffence");
   const supComments = document.getElementById("Comments");
 
-  // ====== Supervisor auto-fill ======
-  const SupervisorName = document.getElementById("SupervisorName");
-  const SupEmpNumber = document.getElementById("SupEmpNumber");
-  const Supdesignation = document.getElementById("Supdesignation");
+  // Hide OtherOffence initially
+  otherOffence.style.display = "none";
+  otherOffence.required = false;
 
-  const loginName = sessionStorage.getItem("LOGIN_NAME") || "";
-  const loginempnumber = sessionStorage.getItem("EMP_NO") || "";
-  const logindesi = sessionStorage.getItem("DESI") || "";
+  function handleOtherOffence(select) {
+    if (select.value === "Any other offence detrimental to the image of the company or State of Qatar") {
+      otherOffence.style.display = "block";
+      otherOffence.required = true;
+    } else {
+      otherOffence.style.display = "none";
+      otherOffence.required = false;
+      otherOffence.value = "";
+    }
+  }
 
-  SupervisorName.value = loginName;
-  SupEmpNumber.value = loginempnumber;
-  Supdesignation.value = logindesi;
-
-  // ====== Toggle offence section ======
   function toggleOffenceFields() {
     const selected = Array.from(offenceRadios).find(r => r.checked)?.value || "No";
 
     if (selected === "Yes") {
       offenceSection.style.display = "block";
+
       offenceContainer.style.display = "block";
 
-      // Make all offence selects required
       offenceContainer.querySelectorAll(".offenceSelect").forEach(select => {
         select.setAttribute("required", "required");
-
-        // OtherOffence logic for dynamic rows
-        select.addEventListener("change", () => {
-          if (select.value === "Any other offence detrimental to the image of the company or State of Qatar") {
-            otherOffence.style.display = "block";
-            otherOffence.required = true;
-          } else {
-            otherOffence.style.display = "none";
-            otherOffence.required = false;
-            otherOffence.value = "";
-          }
-        });
+        handleOtherOffence(select); // check on load
+        select.addEventListener("change", () => handleOtherOffence(select));
       });
 
       supComments.setAttribute("required", "required");
@@ -176,11 +166,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Initial check
+  // Initial toggle
   toggleOffenceFields();
 
-  // Listen to Yes/No radio change
   offenceRadios.forEach(r => r.addEventListener("change", toggleOffenceFields));
+
+  // Make sure dynamically added rows also trigger OtherOffence logic
+  const originalAddOffence = window.addOffence;
+  window.addOffence = function(btn) {
+    originalAddOffence(btn);
+    // attach event listener for new select
+    const newRow = btn.parentElement.parentElement.lastElementChild;
+    const select = newRow.querySelector(".offenceSelect");
+    select.addEventListener("change", () => handleOtherOffence(select));
+  };
 });
 /*document.addEventListener("DOMContentLoaded", () => {
   const offenceRadios = document.getElementsByName("foundoffence");
