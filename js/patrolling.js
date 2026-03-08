@@ -111,24 +111,30 @@ function resizeSignatureCanvas(canvasId) {
   hide offence section
 ================================ */
 document.addEventListener("DOMContentLoaded", () => {
-  const offenceRadios = document.getElementsByName("foundoffence");
   const offenceSection = document.getElementById("offenceSection");
+  const offenceRadios = document.getElementsByName("foundoffence");
   const offenceContainer = document.getElementById("offenceContainer");
   const otherOffence = document.getElementById("OtherOffence");
   const supComments = document.getElementById("Comments");
 
-  // Hide OtherOffence initially
-  otherOffence.style.display = "none";
-  otherOffence.required = false;
+  // Function to toggle the offence section
+  function toggleOffenceSection() {
+    const selected = Array.from(offenceRadios).find(r => r.checked)?.value || "No";
 
-  function handleOtherOffence(select) {
-    if (select.value === "Any other offence detrimental to the image of the company or State of Qatar") {
-      otherOffence.style.display = "block";
-      otherOffence.required = true;
+    if (selected === "Yes") {
+      offenceSection.style.display = "block";
+      offenceContainer.style.display = "block";
+      supComments.setAttribute("required", "required");
     } else {
+      offenceSection.style.display = "none";
+      offenceContainer.style.display = "none";
+      supComments.removeAttribute("required");
+
+      // Reset all dropdowns and other offence
+      offenceContainer.querySelectorAll(".offenceSelect").forEach(s => s.value = "");
       otherOffence.style.display = "none";
-      otherOffence.required = false;
       otherOffence.value = "";
+      otherOffence.required = false;
     }
   }
 
