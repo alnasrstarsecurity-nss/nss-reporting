@@ -112,14 +112,14 @@ function resizeSignatureCanvas(canvasId) {
 ================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
-
+  // ====== Offence section ======
   const offenceRadios = document.getElementsByName("foundoffence");
   const offenceSection = document.getElementById("offenceSection");
   const offenceContainer = document.getElementById("offenceContainer");
-  const supComments = document.getElementById("Comments");
   const otherOffence = document.getElementById("OtherOffence");
+  const supComments = document.getElementById("Comments");
 
-  // Supervisor fields
+  // ====== Supervisor auto-fill ======
   const SupervisorName = document.getElementById("SupervisorName");
   const SupEmpNumber = document.getElementById("SupEmpNumber");
   const Supdesignation = document.getElementById("Supdesignation");
@@ -132,6 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
   SupEmpNumber.value = loginempnumber;
   Supdesignation.value = logindesi;
 
+  // ====== Toggle offence section ======
   function toggleOffenceFields() {
     const selected = Array.from(offenceRadios).find(r => r.checked)?.value || "No";
 
@@ -139,10 +140,11 @@ document.addEventListener("DOMContentLoaded", () => {
       offenceSection.style.display = "block";
       offenceContainer.style.display = "block";
 
+      // Make all offence selects required
       offenceContainer.querySelectorAll(".offenceSelect").forEach(select => {
         select.setAttribute("required", "required");
 
-        // Show OtherOffence if selected
+        // OtherOffence logic for dynamic rows
         select.addEventListener("change", () => {
           if (select.value === "Any other offence detrimental to the image of the company or State of Qatar") {
             otherOffence.style.display = "block";
@@ -159,25 +161,27 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       offenceSection.style.display = "none";
       offenceContainer.style.display = "none";
-      offenceContainer.querySelectorAll(".offenceSelect").forEach(s => {
-        s.removeAttribute("required");
-        s.value = "";
+
+      offenceContainer.querySelectorAll(".offenceSelect").forEach(select => {
+        select.removeAttribute("required");
+        select.value = "";
       });
+
       supComments.removeAttribute("required");
       supComments.value = "";
+
       otherOffence.style.display = "none";
       otherOffence.required = false;
       otherOffence.value = "";
     }
   }
 
-  // Run on page load
+  // Initial check
   toggleOffenceFields();
 
-  // Attach listener to radios
+  // Listen to Yes/No radio change
   offenceRadios.forEach(r => r.addEventListener("change", toggleOffenceFields));
 });
-
 /*document.addEventListener("DOMContentLoaded", () => {
   const offenceRadios = document.getElementsByName("foundoffence");
   const offenceSection = document.getElementById("offenceSection");
