@@ -117,26 +117,38 @@ document.addEventListener("DOMContentLoaded", () => {
   const otherOffence = document.getElementById("OtherOffence");
   const supComments = document.getElementById("Comments");
 
-  // Function to toggle the offence section
-  function toggleOffenceSection() {
+  // Make offence section hidden by default
+  offenceSection.style.display = "none";
+  offenceContainer.style.display = "none";
+  otherOffence.style.display = "none";
+
+  function showOffenceSection() {
+    offenceSection.style.display = "block";
+    offenceContainer.style.display = "block";
+    supComments.setAttribute("required", "required");
+  }
+
+  function hideOffenceSection() {
+    offenceSection.style.display = "none";
+    offenceContainer.style.display = "none";
+    supComments.removeAttribute("required");
+
+    // Reset all offence dropdowns and otherOffence
+    offenceContainer.querySelectorAll(".offenceSelect").forEach(s => s.value = "");
+    otherOffence.style.display = "none";
+    otherOffence.value = "";
+    otherOffence.required = false;
+  }
+
+  function toggleOffence() {
     const selected = Array.from(offenceRadios).find(r => r.checked)?.value || "No";
-
     if (selected === "Yes") {
-      offenceSection.style.display = "block";
-      offenceContainer.style.display = "block";
-      supComments.setAttribute("required", "required");
+      showOffenceSection();
     } else {
-      offenceSection.style.display = "none";
-      offenceContainer.style.display = "none";
-      supComments.removeAttribute("required");
-
-      // Reset all dropdowns and other offence
-      offenceContainer.querySelectorAll(".offenceSelect").forEach(s => s.value = "");
-      otherOffence.style.display = "none";
-      otherOffence.value = "";
-      otherOffence.required = false;
+      hideOffenceSection();
     }
   }
+
 
   function toggleOffenceFields() {
     const selected = Array.from(offenceRadios).find(r => r.checked)?.value || "No";
