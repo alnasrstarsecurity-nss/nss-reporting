@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
       supComments.removeAttribute("required");
 
       // Clear values if needed
-      offenceType.value = "";
+     // offenceType.value = "";
       supComments.value = "";
     }
   }
