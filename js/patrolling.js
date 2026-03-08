@@ -110,7 +110,71 @@ function resizeSignatureCanvas(canvasId) {
 /* ===============================
   hide offence section
 ================================ */
+
 document.addEventListener("DOMContentLoaded", () => {
+  const offenceRadios = document.getElementsByName("foundoffence");
+  const offenceSection = document.getElementById("offenceSection");
+  const offenceContainer = document.getElementById("offenceContainer");
+  const supComments = document.getElementById("Comments");
+  const otherOffence = document.getElementById("OtherOffence");
+
+  function toggleOffenceFields() {
+    const selected = Array.from(offenceRadios).find(r => r.checked)?.value || "No";
+
+    if (selected === "Yes") {
+      offenceSection.style.display = "block";
+      offenceContainer.style.display = "block";
+
+      // Make first offence dropdown required
+      const firstSelect = offenceContainer.querySelector(".offenceSelect");
+      if (firstSelect) firstSelect.setAttribute("required", "required");
+
+      // Make supervisor comments mandatory
+      supComments.setAttribute("required", "required");
+
+      // Attach "Other Offence" logic
+      if (firstSelect) {
+        firstSelect.addEventListener("change", () => {
+          if (firstSelect.value === "Any other offence detrimental to the image of the company or State of Qatar") {
+            otherOffence.style.display = "block";
+            otherOffence.required = true;
+          } else {
+            otherOffence.style.display = "none";
+            otherOffence.required = false;
+          }
+        });
+      }
+
+      // Resize canvases after showing
+      setTimeout(() => {
+        resizeSignatureCanvas("empSignPad");
+        resizeSignatureCanvas("witnessSignPad");
+      }, 50);
+
+    } else {
+      offenceSection.style.display = "none";
+      offenceContainer.style.display = "none";
+
+      // Remove mandatory
+      supComments.removeAttribute("required");
+      otherOffence.style.display = "none";
+      otherOffence.required = false;
+
+      // Clear values
+      const allSelects = offenceContainer.querySelectorAll(".offenceSelect");
+      allSelects.forEach(s => s.value = "");
+      supComments.value = "";
+    }
+  }
+
+  // Initial check on page load
+  toggleOffenceFields();
+
+  // Attach change listener to radios
+  offenceRadios.forEach(r => r.addEventListener("change", toggleOffenceFields));
+});
+
+/*document.addEventListener("DOMContentLoaded", () => {
   const offenceRadios = document.getElementsByName("foundoffence");
   const offenceSection = document.getElementById("offenceSection");
   const offenceType = document.getElementById("OffenceType");
@@ -149,7 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Attach change listener to radios
   offenceRadios.forEach(r => r.addEventListener("change", toggleOffenceFields));
-});
+});*/
 
 /* ===============================
   //signature validation
