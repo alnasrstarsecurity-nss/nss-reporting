@@ -66,7 +66,38 @@ function addOffence(btn) {
    other Offence mandatory logic
 ================================ */
 
-const OffenceSelect = document.getElementById("OffenceType");
+const otherOffence = document.getElementById("OtherOffence");
+
+otherOffence.style.display = "none";
+otherOffence.required = false;
+
+document.addEventListener("change", function(e){
+
+  if (e.target.classList.contains("offenceSelect")) {
+
+    if (e.target.value === "Any other offence detrimental to the image of the company or State of Qatar") {
+      otherOffence.style.display = "block";
+      otherOffence.required = true;
+    } 
+    else {
+
+      // check if any dropdown still has that value
+      const exists = Array.from(document.querySelectorAll(".offenceSelect"))
+        .some(el => el.value === "Any other offence detrimental to the image of the company or State of Qatar");
+
+      if (!exists) {
+        otherOffence.style.display = "none";
+        otherOffence.required = false;
+        otherOffence.value = "";
+      }
+
+    }
+
+  }
+
+});
+
+/*const OffenceSelect = document.getElementById("OffenceType");
 const otherOffence = document.getElementById("OtherOffence");
 
 // Ensure hidden on load
@@ -82,7 +113,7 @@ OffenceSelect.addEventListener("change", () => {
     otherOffence.required = false;
     otherOffence.value = ""; // clear when not needed
   }
-});
+});*/
 
 /* ===============================
   signature resize
