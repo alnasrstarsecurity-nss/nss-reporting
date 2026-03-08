@@ -110,7 +110,6 @@ function resizeSignatureCanvas(canvasId) {
 /* ===============================
   hide offence section
 ================================ */
-
 document.addEventListener("DOMContentLoaded", () => {
   const offenceRadios = document.getElementsByName("foundoffence");
   const offenceSection = document.getElementById("offenceSection");
@@ -122,7 +121,6 @@ document.addEventListener("DOMContentLoaded", () => {
   otherOffence.style.display = "none";
   otherOffence.required = false;
 
-  // Function to show/hide OtherOffence
   function handleOtherOffence(select) {
     if (select.value === "Any other offence detrimental to the image of the company or State of Qatar") {
       otherOffence.style.display = "block";
@@ -134,23 +132,50 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Toggle offence section based on radio
   function toggleOffenceFields() {
     const selected = Array.from(offenceRadios).find(r => r.checked)?.value || "No";
 
     if (selected === "Yes") {
       offenceSection.style.display = "block";
-      offenceContainer.style.display = "block";
 
       offenceContainer.querySelectorAll(".offenceSelect").forEach(select => {
         select.setAttribute("required", "required");
-        handleOtherOffence(select);
-        // Add listener if not already added
         if (!select.dataset.listenerAdded) {
           select.addEventListener("change", () => handleOtherOffence(select));
           select.dataset.listenerAdded = "true";
         }
       });
+
+      supComments.setAttribute("required", "required");
+    } else {
+      offenceSection.style.display = "none";
+      offenceContainer.querySelectorAll(".offenceSelect").forEach(select => {
+        select.removeAttribute("required");
+        select.value = "";
+      });
+      supComments.removeAttribute("required");
+      supComments.value = "";
+      otherOffence.style.display = "none";
+      otherOffence.required = false;
+      otherOffence.value = "";
+    }
+  }
+
+  toggleOffenceFields();
+  offenceRadios.forEach(r => r.addEventListener("change", toggleOffenceFields));
+
+  // Patch addOffence to attach listener
+  const originalAddOffence = window.addOffence;
+  window.addOffence = function(btn) {
+    originalAddOffence(btn);
+    const container = document.getElementById("offenceContainer");
+    const rows = container.querySelectorAll(".offenceRow");
+    const newRow = rows[rows.length - 1];
+    const select = newRow.querySelector(".offenceSelect");
+    select.addEventListener("change", () => handleOtherOffence(select));
+    select.dataset.listenerAdded = "true";
+  };
+});
 
       supComments.setAttribute("required", "required");
     } else {
