@@ -138,7 +138,7 @@ function resizeSignatureCanvas(canvasId) {
 document.addEventListener("DOMContentLoaded", () => {
   const offenceRadios = document.getElementsByName("foundoffence");
   const offenceSection = document.getElementById("offenceSection");
-  const offenceType = document.getElementById("OffenceType");
+// const offenceType = document.getElementById("OffenceType");
   const supComments = document.getElementById("Comments");
 
   function toggleOffenceFields() {
@@ -154,13 +154,22 @@ document.addEventListener("DOMContentLoaded", () => {
        }, 50);
 
       // Make mandatory
-      offenceType.setAttribute("required", "required");
+      //offenceType.setAttribute("required", "required");
+         /************************************/
+       document.querySelector(".offenceSelect").setAttribute("required", "required");
+         /************************************/
       supComments.setAttribute("required", "required");
     } else {
       offenceSection.style.display = "none";
 
       // Remove mandatory
-      offenceType.removeAttribute("required");
+      //offenceType.removeAttribute("required");
+         /************************************/
+       document.querySelectorAll(".offenceSelect").forEach(el=>{
+       el.removeAttribute("required");
+       el.value="";
+       });
+       /************************************/
       supComments.removeAttribute("required");
 
       // Clear values if needed
