@@ -127,46 +127,29 @@ function resizeSignatureCanvas(canvasId) {
 /* ===============================
   hide offence section
 ================================ */
-document.addEventListener("DOMContentLoaded", () => {
-  const offenceRadios = document.getElementsByName("foundoffence");
-  const offenceSection = document.getElementById("offenceSection");
-  const offenceType = document.getElementById("OffenceType");
-  const supComments = document.getElementById("Comments");
+function showOffenceSection(){
 
-  function toggleOffenceFields() {
-    const selected = Array.from(offenceRadios).find(r => r.checked)?.value || "No";
+document.getElementById("offenceSection").style.display="block";
 
-    if (selected === "Yes") {
-      offenceSection.style.display = "block";
+setTimeout(() => {
+resizeSignatureCanvas("empSignPad");
+resizeSignatureCanvas("witnessSignPad");
+},50);
 
-       // resize canvases after showing
-       setTimeout(() => {
-       resizeSignatureCanvas("empSignPad");
-       resizeSignatureCanvas("witnessSignPad");
-       }, 50);
+document.querySelector(".OffenceType").setAttribute("required","required");
+document.getElementById("Comments").setAttribute("required","required");
 
-      // Make mandatory
-      offenceType.setAttribute("required", "required");
-      supComments.setAttribute("required", "required");
-    } else {
-      offenceSection.style.display = "none";
+}
 
-      // Remove mandatory
-      offenceType.removeAttribute("required");
-      supComments.removeAttribute("required");
+function hideOffenceSection(){
 
-      // Clear values if needed
-      offenceType.value = "";
-      supComments.value = "";
-    }
-  }
+document.getElementById("offenceSection").style.display="none";
 
-  // Initial check on page load
-  toggleOffenceFields();
+document.querySelectorAll(".OffenceType").forEach(o=>o.removeAttribute("required"));
 
-  // Attach change listener to radios
-  offenceRadios.forEach(r => r.addEventListener("change", toggleOffenceFields));
-});
+document.getElementById("Comments").removeAttribute("required");
+
+}
 
 /* ===============================
   //signature validation
