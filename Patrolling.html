@@ -117,15 +117,18 @@ No
          </div>
      
 
-      <div id="offenceSection" style="display:none;">
-       <div class="section">
-     <label>Offence Type</label>
-         
-     <div id="offenceContainer">
-     <div class="offenceRow">
-     <select class="OffenceType" name="OffenceType[]" onchange="toggleAddButton(this)">
+     <div id="offenceSection" style="display:none;">
+
+<div class="section">
+<label>Offence Type</label>
+
+<div id="offenceContainer">
+
+<div class="offenceRow">
+
+<select class="OffenceType" name="OffenceType[]">
        
-  <option value="">-- Offence Type --</option>
+  
   <option value="">-- Offencet Type --</option>   
   <option value="Absent from Duty ">Absent from Duty </option>
 <option value="Late for Duty">Late for Duty</option>
@@ -262,6 +265,18 @@ No
 function goBack() {
   window.history.back();
 }
+</script>
+
+  <script>
+
+function showOffenceSection(){
+document.getElementById("offenceSection").style.display="block";
+}
+
+function hideOffenceSection(){
+document.getElementById("offenceSection").style.display="none";
+}
+
 </script>
 
 <script src="js/patrolling.js"></script>
