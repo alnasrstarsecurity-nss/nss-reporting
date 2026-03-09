@@ -1,7 +1,7 @@
 /* ===============================
    CONFIG
 ================================ */
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbylWEA5eculhpRT5qwPSj0AVUNuSOnQJPCBOShRbFUdm0EIrwS6YfFGYJqJVBW2aocj/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw1t5LNesmER_FwCvuWP8CQETqcoh3k_qYstQ6Q3OLRdQTVACIbbCezMId8Sj0LN3y_/exec";
 
 const form = document.getElementById("patrollingform");
 const status = document.getElementById("status");
@@ -25,53 +25,11 @@ if (empInput && searchBtn) {
 }
 
 
-/* ===============================
-  multiple offence
-================================ */
-/* ===============================
-  multiple offence
-================================ */
-
-let maxOffence = 10;
-
-function toggleAddButton(select) {
-
-  const row = select.parentElement;
-  const addBtn = row.querySelector(".addBtn");
-
-  if (select.value !== "") {
-    addBtn.style.display = "inline-block";
-  } else {
-    addBtn.style.display = "none";
-  }
-
-}
-
-function addOffence(btn) {
-
-  const container = document.getElementById("offenceContainer");
-  const rows = container.querySelectorAll(".offenceRow");
-
-  if (rows.length >= maxOffence) {
-    alert("Maximum 10 offences allowed");
-    return;
-  }
-
-  const newRow = rows[0].cloneNode(true);
-
-  const select = newRow.querySelector("select");
-  select.value = "";
-
-  const addBtn = newRow.querySelector(".addBtn");
-  addBtn.style.display = "none";
-
-  container.appendChild(newRow);
-
-}
 
 /* ===============================
    other Offence mandatory logic
 ================================ */
+
 const OffenceSelect = document.getElementById("OffenceType");
 const otherOffence = document.getElementById("OtherOffence");
 
@@ -111,126 +69,6 @@ function resizeSignatureCanvas(canvasId) {
   hide offence section
 ================================ */
 document.addEventListener("DOMContentLoaded", () => {
-  const offenceSection = document.getElementById("offenceSection");
-  const offenceRadios = document.getElementsByName("foundoffence");
-  const offenceContainer = document.getElementById("offenceContainer");
-  const otherOffence = document.getElementById("OtherOffence");
-  const supComments = document.getElementById("Comments");
-
-  // Make offence section hidden by default
-  offenceSection.style.display = "none";
-  offenceContainer.style.display = "none";
-  otherOffence.style.display = "none";
-
-  function showOffenceSection() {
-    offenceSection.style.display = "block";
-    offenceContainer.style.display = "block";
-    supComments.setAttribute("required", "required");
-  }
-
-  function hideOffenceSection() {
-    offenceSection.style.display = "none";
-    offenceContainer.style.display = "none";
-    supComments.removeAttribute("required");
-
-    // Reset all offence dropdowns and otherOffence
-    offenceContainer.querySelectorAll(".offenceSelect").forEach(s => s.value = "");
-    otherOffence.style.display = "none";
-    otherOffence.value = "";
-    otherOffence.required = false;
-  }
-
-  function toggleOffence() {
-    const selected = Array.from(offenceRadios).find(r => r.checked)?.value || "No";
-    if (selected === "Yes") {
-      showOffenceSection();
-    } else {
-      hideOffenceSection();
-    }
-  }
-
-
-  function toggleOffenceFields() {
-    const selected = Array.from(offenceRadios).find(r => r.checked)?.value || "No";
-
-    if (selected === "Yes") {
-      offenceSection.style.display = "block";
-
-      offenceContainer.querySelectorAll(".offenceSelect").forEach(select => {
-        select.setAttribute("required", "required");
-        if (!select.dataset.listenerAdded) {
-          select.addEventListener("change", () => handleOtherOffence(select));
-          select.dataset.listenerAdded = "true";
-        }
-      });
-
-      supComments.setAttribute("required", "required");
-    } else {
-      offenceSection.style.display = "none";
-      offenceContainer.querySelectorAll(".offenceSelect").forEach(select => {
-        select.removeAttribute("required");
-        select.value = "";
-      });
-      supComments.removeAttribute("required");
-      supComments.value = "";
-      otherOffence.style.display = "none";
-      otherOffence.required = false;
-      otherOffence.value = "";
-    }
-  }
-
-  toggleOffenceFields();
-  offenceRadios.forEach(r => r.addEventListener("change", toggleOffenceFields));
-
-  // Patch addOffence to attach listener
-  const originalAddOffence = window.addOffence;
-  window.addOffence = function(btn) {
-    originalAddOffence(btn);
-    const container = document.getElementById("offenceContainer");
-    const rows = container.querySelectorAll(".offenceRow");
-    const newRow = rows[rows.length - 1];
-    const select = newRow.querySelector(".offenceSelect");
-    select.addEventListener("change", () => handleOtherOffence(select));
-    select.dataset.listenerAdded = "true";
-  };
-});
-
-      supComments.setAttribute("required", "required");
-    } else {
-      offenceSection.style.display = "none";
-      offenceContainer.style.display = "none";
-
-      offenceContainer.querySelectorAll(".offenceSelect").forEach(select => {
-        select.removeAttribute("required");
-        select.value = "";
-      });
-
-      supComments.removeAttribute("required");
-      supComments.value = "";
-
-      otherOffence.style.display = "none";
-      otherOffence.required = false;
-      otherOffence.value = "";
-    }
-  }
-
-  toggleOffenceFields();
-  offenceRadios.forEach(r => r.addEventListener("change", toggleOffenceFields));
-
-  // Override addOffence to attach listener to new row
-  const originalAddOffence = window.addOffence;
-  window.addOffence = function(btn) {
-    originalAddOffence(btn);
-
-    const container = document.getElementById("offenceContainer");
-    const rows = container.querySelectorAll(".offenceRow");
-    const newRow = rows[rows.length - 1];
-    const select = newRow.querySelector(".offenceSelect");
-    select.addEventListener("change", () => handleOtherOffence(select));
-    select.dataset.listenerAdded = "true";
-  };
-});
-/*document.addEventListener("DOMContentLoaded", () => {
   const offenceRadios = document.getElementsByName("foundoffence");
   const offenceSection = document.getElementById("offenceSection");
   const offenceType = document.getElementById("OffenceType");
@@ -269,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Attach change listener to radios
   offenceRadios.forEach(r => r.addEventListener("change", toggleOffenceFields));
-});*/
+});
 
 /* ===============================
   //signature validation
@@ -581,7 +419,6 @@ form.addEventListener("submit", async e => {
 
   const gpsLocation = await getGPSLocation();
 
-   
   const payload = {
   action: "submitpatrolling",
 
@@ -593,13 +430,7 @@ form.addEventListener("submit", async e => {
   observation: form.Observation.value,
 
   foundoffence: radio("foundoffence"),
-  //offenceType: form.OffenceType.value,
-     
-   offenceType: Array.from(document.querySelectorAll(".offenceSelect"))
-  .map(s => s.value)
-  .filter(v => v !== "")
-  .join(", "),
-     
+  offenceType: form.OffenceType.value,
   otheroffence: form.OtherOffence.value,
   comments: form.Comments.value,
   empComments: form.empComments.value,
@@ -645,14 +476,13 @@ form.addEventListener("submit", async e => {
         setTimeout(() => status.innerText = "", 3000);
          
        //  Generate PDF in background 
-     fetch(SCRIPT_URL, {
-  method: "POST",
-  body: JSON.stringify({
-    action: "generatepdf",
-    row: res.row,
-    offenceRow: res.offenceRow || ""
-       })
-        }).catch(err => console.log("PDF generation error:", err));
+      fetch(SCRIPT_URL, {
+        method: "POST",
+        body: JSON.stringify({
+          action: "generatepdf",
+          row: res.row
+        })
+      }).catch(err => console.log("PDF generation error:", err));
 
     } else {
 
