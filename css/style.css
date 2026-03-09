@@ -407,7 +407,20 @@ canvas {
 }
 
 /* Plus & Minus buttons */
-.addBtn,
+.addBtn
+{
+  width:0.5in;
+  height:0.5in;
+  min-width:36px;
+  min-height:36px;
+  font-size:16px;
+  padding:0;
+  text-align:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+}
 .removeBtn{
   width:0.5in;
   height:0.5in;
