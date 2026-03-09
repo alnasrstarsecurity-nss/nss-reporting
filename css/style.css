@@ -397,14 +397,33 @@ canvas {
 }
 
 .offenceRow{
-display:flex;
-gap:6px;
-align-items:center;
-margin-bottom:6px;
+  display:flex;
+  align-items:center;
+  gap:6px;
 }
 
 .offenceRow select{
-flex:1;
+  flex:1;
+}
+
+/* Plus & Minus buttons */
+.addBtn,
+.removeBtn{
+  width:0.5in;
+  height:0.5in;
+  min-width:36px;
+  min-height:36px;
+  font-size:16px;
+  padding:0;
+  text-align:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* push buttons to the right */
+.addBtn{
+  margin-left:auto;
 }
 
 
