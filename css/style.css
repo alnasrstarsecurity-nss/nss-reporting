@@ -438,8 +438,8 @@ canvas {
 .addBtn:hover { background: #218838; }
 
 .removeBtn {
-  background: #8f5b60; /* red */
-  ccolor: #000000; 
+  background: #800000; /* red */
+  color: #000000; 
 }
 
 .removeBtn:hover { background: #c82333; }
