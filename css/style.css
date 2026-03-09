@@ -425,5 +425,12 @@ canvas {
 .addBtn{
   margin-left:auto;
 }
+/* hover effect */
+.addBtn:hover{
+  background:#218838;
+}
 
+.removeBtn:hover{
+  background:#c82333;
+}
 
