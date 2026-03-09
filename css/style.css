@@ -420,7 +420,7 @@ canvas {
   font-size: 38px;
   cursor: pointer;
    position: relative;
-   top: -2px; 
+   top: -3px; 
  
    display: flex;           /* flex container */
   align-items: center;     /* vertical center */
@@ -439,7 +439,7 @@ canvas {
 
 .removeBtn {
   background: #800000; /* red */
-  color: #000000; 
+  color: #ffffff; 
 }
 
 .removeBtn:hover { background: #c82333; }
