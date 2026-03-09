@@ -422,7 +422,10 @@ canvas {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: #ffffff; 
+
+  color: white !important; /* force white color */
+  background-clip: padding-box; /* ensure background doesn’t interfere */
+  line-height: 1; /* better vertical alignment */
 }
 
 .addBtn {
