@@ -396,59 +396,6 @@ canvas {
   gap: 8px;
 }
 
-/* 
-.offenceRow {
-  display: flex;
-  align-items: center;     
-  gap: 8px;
-}
-
-
-.offenceRow select {
-  flex: 1;
-  height: 0.5in;            
-  padding: 2px 4px;
-  font-size: 14px;
-  box-sizing: border-box;
-}
-
-
-.addBtn {
-  width: 0.5in;
-  height: 0.5in;
-  background: #28a745; 
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  font-size: 18px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: auto;    
-}
-
-
-.removeBtn {
-  width: 0.5in;
-  height: 0.5in;
-  background: #dc3545; 
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  font-size: 18px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-
-.addBtn:hover { background: #218838; }
-.removeBtn:hover { background: #c82333; }
-
-*/
-
 
 .offenceRow {
   display: flex;
@@ -466,8 +413,8 @@ canvas {
 }
 
 .addBtn, .removeBtn {
-  width: 0.45in;
-  height: 0.45in;
+  width: 0.55in;
+  height: 0.55in;
   border: none;
   border-radius: 6px;
   font-size: 18px;
@@ -479,14 +426,14 @@ canvas {
 }
 
 .addBtn {
-  background: #28a745; /* green */
-  ccolor: #ffffff; 
+  background: #748a79; /* green */
+  color: #ffffff; 
 }
 
 .addBtn:hover { background: #218838; }
 
 .removeBtn {
-  background: #dc3545; /* red */
+  background: #8f5b60; /* red */
   ccolor: #ffffff; 
 }
 
