@@ -30,24 +30,83 @@ if (empInput && searchBtn) {
    other Offence mandatory logic
 ================================ */
 
-const OffenceSelect = document.getElementById("OffenceType");
+document.addEventListener("change", function(e){
+
+if(e.target.classList.contains("OffenceType")){
+
 const otherOffence = document.getElementById("OtherOffence");
 
-// Ensure hidden on load
+if(e.target.value === "Any other offence detrimental to the image of the company or State of Qatar"){
+
+otherOffence.style.display = "block";
+otherOffence.required = true;
+
+}else{
+
 otherOffence.style.display = "none";
 otherOffence.required = false;
+otherOffence.value = "";
 
-OffenceSelect.addEventListener("change", () => {
-  if (OffenceSelect.value === "Any other offence detrimental to the image of the company or State of Qatar") {
-    otherOffence.style.display = "block";
-    otherOffence.required = true;
-  } else {
-    otherOffence.style.display = "none";
-    otherOffence.required = false;
-    otherOffence.value = ""; // clear when not needed
-  }
+}
+}
 });
 
+
+
+/* ===============================
+   Add Multiple Offence 
+================================ */
+let maxOffence = 10;
+
+function toggleAddButton(select){
+
+const row = select.parentElement;
+const addBtn = row.querySelector(".addBtn");
+const removeBtn = row.querySelector(".removeBtn");
+
+if(select.value !== ""){
+addBtn.style.display = "inline-block";
+removeBtn.style.display = "inline-block";
+}else{
+addBtn.style.display = "none";
+}
+
+}
+
+function addOffence(btn){
+
+const container = document.getElementById("offenceContainer");
+const rows = container.querySelectorAll(".offenceRow");
+
+if(rows.length >= maxOffence){
+alert("Maximum 10 offences allowed");
+return;
+}
+
+const newRow = rows[0].cloneNode(true);
+
+const select = newRow.querySelector("select");
+select.value="";
+
+newRow.querySelector(".addBtn").style.display="none";
+newRow.querySelector(".removeBtn").style.display="inline-block";
+
+container.appendChild(newRow);
+
+}
+
+function removeOffence(btn){
+
+const row = btn.parentElement;
+const container = document.getElementById("offenceContainer");
+
+if(container.querySelectorAll(".offenceRow").length > 1){
+
+row.remove();
+
+}
+
+}
 /* ===============================
   signature resize
 ================================ */
@@ -430,7 +489,12 @@ form.addEventListener("submit", async e => {
   observation: form.Observation.value,
 
   foundoffence: radio("foundoffence"),
-  offenceType: form.OffenceType.value,
+  //offenceType: form.OffenceType.value,
+
+    offenceType: Array.from(document.querySelectorAll(".OffenceType"))
+    .map(o => o.value)
+    .filter(v => v !== "")
+    .join(", "),
   otheroffence: form.OtherOffence.value,
   comments: form.Comments.value,
   empComments: form.empComments.value,
