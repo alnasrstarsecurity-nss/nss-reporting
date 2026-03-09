@@ -417,12 +417,12 @@ canvas {
   height: 0.5in;
   border: none;
   border-radius: 6px;
-  font-size: 18px;
+  font-size: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  margin-top: -1px;
+  margin-top: -0.5px;
   color: white !important; /* force white color */
   background-clip: padding-box; /* ensure background doesn’t interfere */
   line-height: 1; /* better vertical alignment */
