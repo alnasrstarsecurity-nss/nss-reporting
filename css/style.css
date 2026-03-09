@@ -418,14 +418,15 @@ canvas {
   border: none;
   border-radius: 6px;
   font-size: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
-  margin-top: -0.1px;
+  margin-top: 0px;
  
-  background-clip: padding-box; /* ensure background doesn’t interfere */
-  line-height: 1; /* better vertical alignment */
+   display: flex;           /* flex container */
+  align-items: center;     /* vertical center */
+  justify-content: center; /* horizontal center */
+
+  padding: 0;              /* remove extra space */
+  line-height: 1;          /* prevent text baseline shifting */
 }
 
 .addBtn {
