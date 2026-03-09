@@ -419,7 +419,8 @@ canvas {
   border-radius: 6px;
   font-size: 38px;
   cursor: pointer;
-  margin-top: 0px;
+   position: relative;
+   top: -2px; 
  
    display: flex;           /* flex container */
   align-items: center;     /* vertical center */
