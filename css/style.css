@@ -420,7 +420,7 @@ canvas {
   font-size: 38px;
   cursor: pointer;
    position: relative;
-   top: -3px; 
+   top: -4px; 
  
    display: flex;           /* flex container */
   align-items: center;     /* vertical center */
