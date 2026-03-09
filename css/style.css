@@ -396,3 +396,15 @@ canvas {
   gap: 8px;
 }
 
+.offenceRow{
+display:flex;
+gap:6px;
+align-items:center;
+margin-bottom:6px;
+}
+
+.offenceRow select{
+flex:1;
+}
+
+
