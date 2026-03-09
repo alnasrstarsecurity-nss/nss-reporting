@@ -101,10 +101,11 @@ if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
      <h3>Offence Details</h3>
 
       <div class="yesno">
-       <label style="font-weight: bold;">found any Offence in the Location? : </label> 
-       <label class="radio-box">Yes <input type="radio" name="foundoffence" value="Yes" required></label>
-       <label class="radio-box">No <input type="radio" name="foundoffence" value="No"></label>
-       </div>
+       <label style="font-weight: bold;">Found any Offence in the Location?</label>
+
+          <label class="radio-box">Yes<input type="radio" name="foundoffence" value="Yes" onclick="showOffenceSection()"></label>
+          <label class="radio-box">No<input type="radio" name="foundoffence" value="No" onclick="hideOffenceSection()" checked></label>
+         </div>
          </div>
      
 
