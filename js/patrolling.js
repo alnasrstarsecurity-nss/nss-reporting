@@ -56,26 +56,7 @@ otherOffence.value = "";
 /* ===============================
    Add Multiple Offence 
 ================================ */
-
 let maxOffence = 10;
-
-function addOffence() {
-  const container = document.getElementById("offenceContainer");
-  const rows = container.querySelectorAll(".offenceRow");
-  if (rows.length >= maxOffence) return alert("Maximum 10 offences allowed");
-
-  const newRow = rows[0].cloneNode(true);
-  newRow.querySelector("select").value = "";
-  container.appendChild(newRow);
-}
-
-function removeOffence(btn) {
-  const container = document.getElementById("offenceContainer");
-  const rows = container.querySelectorAll(".offenceRow");
-  if (rows.length <= 1) return; // keep at least 1 row
-  btn.parentElement.remove();
-}
-/*let maxOffence = 10;
 
 function toggleAddButton(select){
 
@@ -125,7 +106,7 @@ row.remove();
 
 }
 
-} */
+} 
 /* ===============================
   signature resize
 ================================ */
