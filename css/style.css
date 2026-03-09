@@ -395,81 +395,28 @@ canvas {
   flex-direction: column;
   gap: 8px;
 }
-/*
-.offenceRow{
-  display:flex;
-  align-items:center;
-  gap:6px;
-}
 
-.offenceRow select{
-  flex:1;
-}
-
-
-.addBtn
-{
-  width:0.5in;
-  height:0.5in;
-  min-width:36px;
-  min-height:36px;
-  font-size:16px;
-  padding:0;
-  text-align:center;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-}
-.removeBtn{
-  width:0.5in;
-  height:0.5in;
-  min-width:36px;
-  min-height:36px;
-  font-size:16px;
-  padding:0;
-  text-align:center;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
-}
-
-
-.addBtn{
-  margin-left:auto;
-}
-
-.addBtn:hover{
-  background:#218838;
-}
-
-.removeBtn:hover{
-  background:#c82333;
-}
-*/
-
-/* Offence row layout */
+/* 
 .offenceRow {
   display: flex;
-  align-items: center;      /* vertically center everything */
+  align-items: center;     
   gap: 8px;
 }
 
-/* Make dropdown same height as buttons */
+
 .offenceRow select {
   flex: 1;
-  height: 0.5in;            /* match button height */
+  height: 0.5in;            
   padding: 2px 4px;
   font-size: 14px;
   box-sizing: border-box;
 }
 
-/* Plus button */
+
 .addBtn {
   width: 0.5in;
   height: 0.5in;
-  background: #28a745; /* green */
+  background: #28a745; 
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -478,14 +425,14 @@ canvas {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: auto;      /* push to right */
+  margin-left: auto;    
 }
 
-/* Minus button */
+
 .removeBtn {
   width: 0.5in;
   height: 0.5in;
-  background: #dc3545; /* red */
+  background: #dc3545; 
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -496,6 +443,50 @@ canvas {
   justify-content: center;
 }
 
-/* Hover effects */
+
 .addBtn:hover { background: #218838; }
+.removeBtn:hover { background: #c82333; }
+
+*/
+
+
+.offenceRow {
+  display: flex;
+  align-items: center;      /* vertical center */
+  gap: 8px;                 /* space between elements */
+  margin-bottom: 6px;
+}
+
+.offenceRow select {
+  flex: 1;                  /* fill remaining width */
+  height: 0.5in;
+  padding: 2px 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.addBtn, .removeBtn {
+  width: 0.5in;
+  height: 0.5in;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.addBtn {
+  background: #28a745; /* green */
+  color: #fff;
+}
+
+.addBtn:hover { background: #218838; }
+
+.removeBtn {
+  background: #dc3545; /* red */
+  color: #fff;
+}
+
 .removeBtn:hover { background: #c82333; }
