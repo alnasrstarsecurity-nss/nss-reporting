@@ -165,7 +165,7 @@ button.search {
   /* SAME color as main button */
   color: white;
   background: linear-gradient(135deg, #a13030, #a13030);
- /* background: linear-gradient(135deg, #703737, #4c4469);*/
+ 
   
   border-radius: 8px;
   cursor: pointer;
@@ -419,6 +419,8 @@ canvas {
   display:flex;
   align-items:center;
   justify-content:center;
+  border-radius:70%;
+  background: linear-gradient(135deg, #a13030, #a13030);
 }
 
 /* push buttons to the right */
