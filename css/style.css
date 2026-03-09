@@ -423,7 +423,7 @@ canvas {
   justify-content: center;
   cursor: pointer;
   /*margin-top: -0.5px;*/
-  color: white !important; /* force white color */
+ 
   background-clip: padding-box; /* ensure background doesn’t interfere */
   line-height: 1; /* better vertical alignment */
 }
@@ -437,7 +437,7 @@ canvas {
 
 .removeBtn {
   background: #8f5b60; /* red */
-  ccolor: #ffffff; 
+  ccolor: #000000; 
 }
 
 .removeBtn:hover { background: #c82333; }
