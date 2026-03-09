@@ -466,8 +466,8 @@ canvas {
 }
 
 .addBtn, .removeBtn {
-  width: 0.5in;
-  height: 0.5in;
+  width: 0.45in;
+  height: 0.45in;
   border: none;
   border-radius: 6px;
   font-size: 18px;
