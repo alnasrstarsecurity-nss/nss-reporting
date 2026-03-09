@@ -475,18 +475,19 @@ canvas {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  color: #ffffff; 
 }
 
 .addBtn {
   background: #28a745; /* green */
-  color: #fff;
+  ccolor: #ffffff; 
 }
 
 .addBtn:hover { background: #218838; }
 
 .removeBtn {
   background: #dc3545; /* red */
-  color: #fff;
+  ccolor: #ffffff; 
 }
 
 .removeBtn:hover { background: #c82333; }
