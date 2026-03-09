@@ -401,7 +401,7 @@ canvas {
   display: flex;
   align-items: center;      /* vertical center */
   gap: 8px;                 /* space between elements */
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 
 .offenceRow select {
@@ -413,8 +413,8 @@ canvas {
 }
 
 .addBtn, .removeBtn {
-  width: 0.55in;
-  height: 0.55in;
+  width: 0.5in;
+  height: 0.5in;
   border: none;
   border-radius: 6px;
   font-size: 18px;
