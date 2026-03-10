@@ -108,6 +108,25 @@ row.remove();
 
 } 
 /* ===============================
+  resetOffenceRows
+================================ */
+
+function resetOffenceRows() {
+  const container = document.getElementById("offenceContainer");
+  const rows = container.querySelectorAll(".offenceRow");
+
+  rows.forEach((row, index) => {
+    if (index === 0) {
+      // keep first row but clear value
+      const select = row.querySelector("select");
+      if (select) select.value = "";
+    } else {
+      // remove extra rows
+      row.remove();
+    }
+  });
+}
+/* ===============================
   signature resize
 ================================ */
 function resizeSignatureCanvas(canvasId) {
@@ -517,6 +536,7 @@ form.addEventListener("submit", async e => {
          document.getElementById("empStatus").textContent = "";
          submitBtn.disabled = false;
          offenceSection.style.display = "none";
+         resetOffenceRows();
         clearWitnessSignature();
         clearempSignature();
         clearSupSignature();
