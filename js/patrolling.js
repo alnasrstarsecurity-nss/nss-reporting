@@ -36,7 +36,7 @@ if(e.target.classList.contains("OffenceType")){
 
 const otherOffence = document.getElementById("OtherOffence");
 
-if(e.target.value === "other offence detrimental to the image of the company or State of Qatar"){
+if(e.target.value === "Other offence detrimental to the image of the company or State of Qatar"){
 
 otherOffence.style.display = "block";
 otherOffence.required = true;
