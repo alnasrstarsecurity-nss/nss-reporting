@@ -67,46 +67,6 @@ document.querySelectorAll("button").forEach(btn => {
 
     <button class="logout-btn" onclick="logout()">Logout</button>
 
-<script>
-function logout() {
-  sessionStorage.clear();
-  window.location.replace("index.html");
-}
-
-  const role = sessionStorage.getItem("ROLE");
-
-const patrolBtn = document.getElementById("patrolBtn");
-const deviationBtn = document.getElementById("deviationBtn");
-const offenceBtn = document.getElementById("offenceBtn");
-
-/* ROLE PERMISSIONS */
-
-if (role === "Supervisor") {
-
-  offenceBtn.style.display = "none";
-
-}
-
-else if (role === "Controller") {
-
-  deviationBtn.style.display = "none";
-
-}
-
-else if (role === "Manager") {
-
-  // Manager sees all
-
-}
-
-else if (role === "Admin") {
-
-  // Admin sees everything
-
-}
-</script>
-
-
     
   </div>
   
