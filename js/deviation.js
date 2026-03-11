@@ -63,6 +63,18 @@ document.addEventListener("input", function (e) {
 });
 
 
+
+/* ===============================
+   blurActiveInputSafely
+================================ */
+function blurActiveInputSafely() {
+  const el = document.activeElement;
+  if (!el) return;
+
+  if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+    setTimeout(() => el.blur(), 0);
+  }
+}
 /* ===============================
    SIGNATURE PAD (MOUSE + TOUCH)
 ================================ */
