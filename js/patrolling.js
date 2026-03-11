@@ -280,6 +280,7 @@ async function fetchEmployee() {
 const loginName = sessionStorage.getItem("LOGIN_NAME");
 const loginempnumber = sessionStorage.getItem("EMP_NO");
 const logindesi = sessionStorage.getItem("DESI");
+const loginphone = sessionStorage.getItem("PHONE");
 
 if (!loginName) {
   alert("Session expired. Please login again.");
@@ -290,6 +291,8 @@ if (!loginName) {
 document.getElementById("SupervisorName").value = loginName;
 document.getElementById("SupEmpNumber").value = loginempnumber;
 document.getElementById("Supdesignation").value = logindesi;
+document.getElementById("Phone").value = loginphone;
+
 
 
 /* ===============================
@@ -533,6 +536,7 @@ form.addEventListener("submit", async e => {
          document.getElementById("SupervisorName").value = loginName;
          document.getElementById("SupEmpNumber").value = loginempnumber;
          document.getElementById("Supdesignation").value = logindesi;
+         document.getElementById("Phone").value = loginphone;
          document.getElementById("empStatus").textContent = "";
          submitBtn.disabled = false;
          offenceSection.style.display = "none";
@@ -552,13 +556,6 @@ form.addEventListener("submit", async e => {
          })
          }).catch(err => console.log("PDF generation error:", err));
          
-    /*  fetch(SCRIPT_URL, {
-        method: "POST",
-        body: JSON.stringify({
-          action: "generatepdf",
-          row: res.row
-        })
-      }).catch(err => console.log("PDF generation error:", err));*/
 
     } else {
 
