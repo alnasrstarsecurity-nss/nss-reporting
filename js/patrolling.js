@@ -6,6 +6,14 @@ const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyFQU8CrBrbchYyqiF0k
 const form = document.getElementById("patrollingform");
 const status = document.getElementById("status");
 
+
+/* ===============================
+ Role
+================================ */
+if (role !== "Admin") {
+  throw new Error("Unauthorized");
+}
+
 /* ===============================
   search button
 ================================ */
