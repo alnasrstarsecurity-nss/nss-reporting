@@ -29,15 +29,19 @@
 }
 })();
 
+ document.addEventListener("DOMContentLoaded", function () {
+
   const role = sessionStorage.getItem("ROLE");
 
-document.querySelectorAll("button").forEach(btn => {
+  document.querySelectorAll("button").forEach(btn => {
 
-  const roles = btn.dataset.role;
+    const roles = btn.dataset.role;
 
-  if (roles !== "all" && !roles.includes(role)) {
-    btn.style.display = "none";
-  }
+    if (roles && roles !== "all" && !roles.includes(role)) {
+      btn.style.display = "none";
+    }
+
+  });
 
 });
 </script> 
