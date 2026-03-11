@@ -1,7 +1,7 @@
 /* ===============================
    CONFIG
 ================================ */
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx0Y2aw7QQcPdPJT4bdKGpnvK8cmtwauHpK43iIIIb3sUsFP2wdVXrHDRkSTHaHRmNi/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzJpzEDRNGGoft31z0niJdsurQ1-0yYSYRGfwi3Ieb82z0XjFAkbpQqA7uNuzXWnmmn/exec";
 
 const form = document.getElementById("patrollingform");
 const status = document.getElementById("status");
@@ -516,6 +516,7 @@ form.addEventListener("submit", async e => {
   supervisorName: form.SupervisorName.value,
   supEmpNumber: form.SupEmpNumber.value,
   supdesignation: form.Supdesignation.value,
+  phone: form.Phone.value,
      
   supSign: document.getElementById("supSignPad").toDataURL(),
 
