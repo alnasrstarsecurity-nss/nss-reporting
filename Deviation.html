@@ -26,14 +26,12 @@ if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
 }
 </script>
 
-
-
 <div class="form-container">
 <div class="form-header">
   <h1>Schedule Deviation Report</h1>
  </div>
   
-  <hr>
+ <hr>
 
 <form id="deviationform">
 
@@ -87,25 +85,19 @@ if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
   
 <button type="button" class="secondary" onclick="clearSupSignature()">Clear Signature</button>
    
-
 <button type="submit" id="submitBtn" disabled>Submit</button>
 <div id="status"></div>
-
-
 
 </form>
 <button type="button" onclick="goBack()">
   ⬅ Back to Menu
 </button>
-
+  
 <script>
 function goBack() {
   window.history.back();
 }
 </script>
-
-
-
 <script src="js/deviation.js"></script>
 </body>
 </html>
