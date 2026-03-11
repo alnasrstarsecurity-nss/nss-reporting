@@ -41,17 +41,17 @@ if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
   <h3>Deviation Details  </h3>
 
    <label>From Which Place</label>
-  <input type="text" id="fromplace" name="fromplace" data-maxchars="200">
+  <input type="text" id="fromplace" name="fromplace" data-maxchars="200" required>
 
   <label>To Which Place</label>
-  <input type="text" id="toplace" name="toplace" data-maxchars="200">
+  <input type="text" id="toplace" name="toplace" data-maxchars="200" required>
 
    <label>Purpose</label>
-  <input type="text" id="purpose" name="purpose" data-maxchars="200">
+  <input type="text" id="purpose" name="purpose" data-maxchars="200" required>
  
 
     <label>Instructed By</label>
-  <select id="instructed" name="instructed" >
+  <select id="instructed" name="instructed" required>
   <option value="">-- Select here --</option>  
   <option value="Control Room">Control Room</option>
   <option value="Operation Inspector">Operation Inspector</option>
