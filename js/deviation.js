@@ -190,7 +190,7 @@ form.addEventListener("submit", async e => {
 
   fromplace: form.fromplace.value,
   toplace: form.toplace.value,
-  purpos: form.purpos.value,
+  purpose: form.purpose.value,
   instructed: form.instructed.value,
   remark: form.remark.value,
   supervisorName: form.SupervisorName.value,
