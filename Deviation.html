@@ -1,1 +1,120 @@
 
+
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deviation</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  <script>
+/* 🔒 Block direct access without login */
+if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
+  window.location.replace("index.html");
+}
+</script>
+
+
+
+<div class="form-container">
+<div class="form-header">
+  <h1>Schedule Deviation Report</h1>
+ </div>
+  
+  <hr>
+
+<form id="deviationform">
+
+<!-- REPORTER -->
+  
+<div class="section">
+  <h3>Deviation Details  </h3>
+
+   <label>From Which Place</label>
+  <input type="text" id="from" name="from" data-maxchars="200">
+
+  <label>To Which Place</label>
+  <input type="text" id="to" name="to" data-maxchars="200">
+
+   <label>To Which Place</label>
+  <input type="text" id="purpose" name="purpose" data-maxchars="200">
+ 
+
+    <label>Instructed By</label>
+  <select id="instructed" name="instructed" >
+  <option value="">-- Select here --</option>  
+  <option value="Control Room">Control Room</option>
+  <option value="Operation Inspector">Operation Inspector</option>
+    <option value="Operation Coordinator">Operation Coordinator</option>
+    <option value="Operation Manager">Operation Manager</option>
+  </select>
+
+  
+   <label>Remark</label>
+  <input type="text" id="remark" name="remark" data-maxchars="200">
+
+  
+   <label>Observation</label>
+  <input type="text" id="Observation" name="Observation" data-maxchars="200">
+  </div>
+    
+  
+  <div class="section">
+     <h3>Supervisor Details</h3>
+
+      <label>Supervisor Name</label>
+  <input type="text" id="SupervisorName" name="SupervisorName" data-maxchars="100" readonly>
+
+   <label>Employee Number</label>
+  <input type="number" id="SupEmpNumber" name="SupEmpNumber" data-maxdigits="5" readonly>
+
+     <label>Designation</label>
+  <input type="text" id="Supdesignation" name="Supdesignation" readonly>
+
+   </div>
+
+ <!-- SIGNATURE -->
+
+  <label>Signature</label>
+  <canvas id="supSignPad" name="supSignPad"></canvas>
+  
+<button type="button" class="secondary" onclick="clearSupSignature()">Clear Signature</button>
+   
+
+<button type="submit" id="submitBtn" disabled>Submit</button>
+<div id="status"></div>
+
+
+
+</form>
+<button type="button" onclick="goBack()">
+  ⬅ Back to Menu
+</button>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+
+
+
+<script src="js/deviation.js"></script>
+</body>
+</html>
+   
+ 
+    
+  
