@@ -8,13 +8,6 @@ const status = document.getElementById("status");
 
 
 /* ===============================
- Role
-================================ */
-if (role !== "Admin") {
-  throw new Error("Unauthorized");
-}
-
-/* ===============================
   search button
 ================================ */
 const empInput = document.getElementById("empno");
