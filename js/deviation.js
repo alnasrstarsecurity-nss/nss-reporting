@@ -190,7 +190,6 @@ form.addEventListener("submit", async e => {
          document.getElementById("SupEmpNumber").value = loginempnumber;
          document.getElementById("Supdesignation").value = logindesi;
          
-         document.getElementById("empStatus").textContent = "";
          submitBtn.disabled = false;
         
         clearSupSignature();
