@@ -2,7 +2,7 @@
 /* ===============================
    CONFIG
 ================================ */
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyFQU8CrBrbchYyqiF0kpk5Rbby3TCMtRs3vExI18p4IczZvCzTIyi5qPImj9O4T60b/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxgYMK7yRKS69tqoy9UckIjLVLcr6H9kiay0p1NQxC86byEV6I_iA93IfTwSvVOfdYTmw/exec";
 
 const form = document.getElementById("deviationform");
 const status = document.getElementById("status");
