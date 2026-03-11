@@ -21,13 +21,44 @@
   <script src="js/auth.js"></script>
 </head>
 <body>
-<script>
+<!--<script>
 /* 🔒 Block direct access without login */
 (function () {
   if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
   window.location.replace("index.html");
 }
 })();
+</script> -->
+
+  
+  <script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
+    window.location.replace("index.html");
+  }
+
+  const role = sessionStorage.getItem("ROLE");
+
+  const patrolBtn = document.getElementById("patrolBtn");
+  const deviationBtn = document.getElementById("deviationBtn");
+  const offenceBtn = document.getElementById("offenceBtn");
+
+  if (role === "Supervisor") {
+
+    if(offenceBtn) offenceBtn.style.display = "none";
+
+  }
+
+  else if (role === "Controller") {
+
+    if(deviationBtn) deviationBtn.style.display = "none";
+
+  }
+
+});
+
 </script>
 
   
