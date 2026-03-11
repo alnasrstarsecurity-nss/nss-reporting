@@ -4,10 +4,9 @@
   
 <head>
 
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Patrolling Report</title>
+  <title>Deviation</title>
 
   <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
@@ -30,204 +29,46 @@ if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
 
 <div class="form-container">
 <div class="form-header">
-  <h1>Patrolling Supervisors Daily Report</h1>
+  <h1>Schedule Deviation Report</h1>
  </div>
   
   <hr>
 
-<form id="patrollingform">
+<form id="deviationform">
 
 <!-- REPORTER -->
   
 <div class="section">
-  <h3>Employee Details </h3>
+  <h3>Deviation Details  </h3>
 
-  <label>Employee Number</label>
-<div class="emp-search-wrapper">
-  <input type="number" id="empno" name="empno" data-maxdigits="4">
-  <button
-    type="button"
-    id="searchEmpBtn"
-    class="search"
-    onclick="fetchEmployee()"
-    disabled>
-    🔍 Search
-  </button>
-</div>
-<div id="empStatus" style="margin-top:6px;font-size:13px;"></div>
-  
+   <label>From Which Place</label>
+  <input type="text" id="from" name="from" data-maxchars="200">
 
+  <label>To Which Place</label>
+  <input type="text" id="to" name="to" data-maxchars="200">
 
-
-<label>Name</label>
-<input type="text" id="name" name="name" readonly>
-
-<label>Designation</label>
-<input type="text" id="designation" name="designation" readonly>
-
-
+   <label>To Which Place</label>
+  <input type="text" id="purpose" name="purpose" data-maxchars="200">
  
 
-    <label>Location/Project</label>
-  <select id="location" name="location" >
-  <option value="">-- Designation --</option>  
-  <option value="Baladiya">Baladiya</option>
-  <option value="Civil Aviation">Civil Aviation</option>
-    <option value="Q-Mall">Q-Mall</option>
-    <option value="QMA">QMA</option>
-    <option value="VIP Tower">VIP Tower</option>
-    <option value="Katara">Katara</option>
-    <option value="Cyber Security">Cyber Security</option>
-    <option value="HBK PORR">HBK PORR</option>
-    <option value="Aspire">Aspire</option>
-    <option value="MOF">MOF</option>
-    <option value="Lusail Midmac">Lusail Midmac</option>
-    <option value="CCC">CCC</option>
-    <option value="Qatar Rail">Qatar Rail</option>
+    <label>Instructed By</label>
+  <select id="instructed" name="instructed" >
+  <option value="">-- Select here --</option>  
+  <option value="Control Room">Control Room</option>
+  <option value="Operation Inspector">Operation Inspector</option>
+    <option value="Operation Coordinator">Operation Coordinator</option>
+    <option value="Operation Manager">Operation Manager</option>
   </select>
 
   
-   <label>Location Remark</label>
-  <input type="text" id="LocationRemark" name="LocationRemark" data-maxchars="200">
+   <label>Remark</label>
+  <input type="text" id="remark" name="remark" data-maxchars="200">
 
   
    <label>Observation</label>
   <input type="text" id="Observation" name="Observation" data-maxchars="200">
   </div>
     
-
-
-   <div class="section">
-     <h3>Offence Details</h3>
-
-      <div class="yesno">
-       <label style="font-weight: bold;">Found any Offence in the Location?</label>
-     
-
-<label class="radio-box">
-Yes
-<input type="radio" name="foundoffence" value="Yes" onclick="showOffenceSection()" required>
-</label>
-
-<label class="radio-box">
-No
-<input type="radio" name="foundoffence" value="No" onclick="hideOffenceSection()">
-</label>
-         </div>
-         </div>
-     
-
-     <div id="offenceSection" style="display:none;">
-
-<div class="section">
-<label>Offence Type</label>
-
-<div id="offenceContainer">
-
-<div class="offenceRow">
-
-<select class="OffenceType" name="OffenceType[]" onchange="toggleAddButton(this)">
-       
-  <option value="">-- Offencet Type --</option>   
-  <option value="Absent from Duty ">Absent from Duty </option>
-<option value="Late for Duty">Late for Duty</option>
-<option value="Sleeping on Duty">Sleeping on Duty</option>
-<option value="found with stolen items">found with stolen items</option>
-<option value="Leaving your post without being relieved">Leaving your post without being relieved</option>
-<option value="Improper Handing/Taking Over of Duties">Improper Handing/Taking Over of Duties</option>
-<option value="Insulting the company's reputation in front of the customer">Insulting the company's reputation in front of the customer</option>
-<option value="Gross Negligence">Gross Negligence</option>
-<option value="Not following site instructions ">Not following site instructions </option>
-<option value="Missing from site when on duty for unjustified reason ">Missing from site when on duty for unjustified reason </option>
-<option value="Unshaven / Un-groomed / improper Haircut">Unshaven / Un-groomed / improper Haircut</option>
-<option value="Abusing position in own interest">Abusing position in own interest</option>
-<option value="Late Arrival from leave">Late Arrival from leave</option>
-<option value="Not following safety instructions">Not following safety instructions</option>
-<option value="Refusal of duties / Transfer">Refusal of duties / Transfer</option>
-<option value="Alcohol / Drug Abuse">Alcohol / Drug Abuse</option>
-<option value="Incomplete & Dirty Uniform">Incomplete & Dirty Uniform</option>
-<option value="Disobedience">Disobedience</option>
-<option value="Not informing the company of incident at site">Not informing the company of incident at site</option>
-<option value="Misuse of customer / NSS property ">Misuse of customer / NSS property </option>
-<option value="Use of mobile phone on duty">Use of mobile phone on duty</option>
-<option value="Listening to music on site">Listening to music on site</option>
-<option value="Un-Authorizes acceptance of gifts ">Un-Authorizes acceptance of gifts </option>
-<option value="Late Reporting for Transport">Late Reporting for Transport</option>
-<option value="Wearing Expired Security Licence">Wearing Expired Security Licence</option>
-<option value="Not wearing NSS ID Card on Duty ">Not wearing NSS ID Card on Duty </option>
-<option value="Doing a job other than the job assigned to him / her ">Doing a job other than the job assigned to him / her </option>
-<option value="Divulging sensitive company or customer information to unauthorized individuals">Divulging sensitive company or customer information to unauthorized individuals</option>
-<option value="Failure to keep company vehicle clean & in good condition at all time">Failure to keep company vehicle clean & in good condition at all time</option>
-<option value="Not Maintaining ISO Documents ISO">Not Maintaining ISO Documents ISO</option>
-<option value="Verbal / Physical abuse towards others">Verbal / Physical abuse towards others</option>
-<option value="Other offence detrimental to the image of the company or State of Qatar">Any other offence detrimental to the image of the company or State of Qatar</option>
- 
-  </select>
-
-         <button type="button" class="addBtn" onclick="addOffence(this)" style="display:none">+</button>
-         <button type="button" class="removeBtn" onclick="removeOffence(this)" style="display:none">-</button>
-         </div>
-         </div>
-
-         
- <textarea id="OtherOffence" name="OtherOffence" placeholder="Describe Offence" style="display:none;" data-maxchars="200"></textarea>
-
-         
-     <label>Immediate Supervisor's Comments</label>
- <textarea id="Comments" name="Comments" data-maxchars="200"> </textarea>
-
-       <label>Employee's Comments</label>
- <textarea id="empComments" name="empComments" data-maxchars="200"> </textarea>
-
-     <label>Employee Signature</label>
-  <canvas id="empSignPad" name="empSignPad"></canvas>
-  
-  <button type="button" class="secondary" onclick="clearempSignature()">Clear Signature</button>
-
-
-  <label><br><br>Employee Declaration</label>
-   <div class="yesno">
-    <label class="radio-box">
-      <input type="radio" name="empDeclaration" value="I Accept"> I Accept
-    </label>
-
-    <label class="radio-box">
-      <input type="radio" name="empDeclaration" value="I Deny"> I Deny
-    </label>
-
-    <label class="radio-box">
-      <input type="radio" name="empDeclaration" value="I Refuse to Sign"> I Refuse to Sign
-    </label>
-    </div>
-     </div>
-         
-
-      <div class="section">
-     <br><h3>Witness Details</h3>
-
-    <label>Name of Witness (if applicable)</label>
-  <input id="witnessName" name="witnessName" data-maxchars="60">
-
-   <label>Witness Employee Number</label>
-  <input type="number" id="WitnessEmployeeNo" name="WitnessEmployeeNo" data-maxdigits="4">
-
-  <label>Witness Signature</label>
-  <canvas id="witnessSignPad" name="witnessSignPad"></canvas>
-  
-  <button type="button" class="secondary" onclick="clearWitnessSignature()">Clear Signature</button>
-   </div>
-  </div>
-        
-     
-
-
-      <div class="section">
-     <h3>Images</h3>
-
-    <label>📸Upload Images 1</label><input type="file" id="Images1" name="Images1" accept="image/*,application/pdf">
-    <label>📸Upload Images 2</label><input type="file" id="Images2" name="Images2" accept="image/*,application/pdf">
-  </div>
-
   
   <div class="section">
      <h3>Supervisor Details</h3>
@@ -241,8 +82,6 @@ No
      <label>Designation</label>
   <input type="text" id="Supdesignation" name="Supdesignation" readonly>
 
-      <label>Phone</label>
-  <input type="text" id="Phone" name="Phone" readonly>
    </div>
 
  <!-- SIGNATURE -->
@@ -269,19 +108,9 @@ function goBack() {
 }
 </script>
 
-  <script>
 
-function showOffenceSection(){
-document.getElementById("offenceSection").style.display="block";
-}
 
-function hideOffenceSection(){
-document.getElementById("offenceSection").style.display="none";
-}
-
-</script>
-
-<script src="js/patrolling.js"></script>
+<script src="js/deviation.js"></script>
 </body>
 </html>
    
