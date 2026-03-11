@@ -188,8 +188,8 @@ form.addEventListener("submit", async e => {
   const payload = {
   action: "submitdeviation",
 
-  from: form.from.value,
-  to: form.to.value,
+  fromplace: form.fromplace.value,
+  toplace: form.toplace.value,
   purpos: form.purpos.value,
   instructed: form.instructed.value,
   remark: form.remark.value,
