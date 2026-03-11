@@ -88,34 +88,6 @@ document.addEventListener("input", function (e) {
 
 
 /* ===============================
-   date format
-================================ */
-function toDDMMYYYY(dateValue) {
-  if (!dateValue) return "";
-
-  // normalize separator ( / or - )
-  const parts = dateValue.includes("/")
-    ? dateValue.split("/")
-    : dateValue.split("-");
-
-  // parts = [yyyy, mm, dd]
-  const y = parts[0];
-  const m = parts[1];
-  const d = parts[2];
-
-  return `${d}/${m}/${y}`;
-}
-
-function blurActiveInputSafely() {
-  const el = document.activeElement;
-  if (!el) return;
-
-  if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
-    setTimeout(() => el.blur(), 0);
-  }
-}
-
-/* ===============================
    SIGNATURE PAD (MOUSE + TOUCH)
 ================================ */
 function initSignaturePad(canvasId, onSigned, onCleared) {
@@ -246,17 +218,7 @@ form.addEventListener("submit", async e => {
          submitBtn.disabled = false;
         
         clearSupSignature();
-        setTimeout(() => status.innerText = "", 3000);
-         
-       //  Generate PDF in background 
-         fetch(SCRIPT_URL, {
-         method: "POST",
-         body: JSON.stringify({
-         action: "generatepdf",
-         row: res.row,
-         offenceRow: res.offenceRow
-         })
-         }).catch(err => console.log("PDF generation error:", err));
+        setTimeout(() => status.innerText = "", 3000)
          
 
     } else {
