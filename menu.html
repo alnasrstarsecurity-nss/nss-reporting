@@ -21,46 +21,28 @@
   <script src="js/auth.js"></script>
 </head>
 <body>
-<!--<script>
+<script>
 /* 🔒 Block direct access without login */
 (function () {
   if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
   window.location.replace("index.html");
 }
 })();
-</script> -->
-
-  
-  <script>
-
-document.addEventListener("DOMContentLoaded", function(){
-
-  if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
-    window.location.replace("index.html");
-  }
 
   const role = sessionStorage.getItem("ROLE");
 
-  const patrolBtn = document.getElementById("patrolBtn");
-  const deviationBtn = document.getElementById("deviationBtn");
-  const offenceBtn = document.getElementById("offenceBtn");
+document.querySelectorAll("button").forEach(btn => {
 
-  if (role === "Supervisor") {
+  const roles = btn.dataset.role;
 
-    if(offenceBtn) offenceBtn.style.display = "none";
-
-  }
-
-  else if (role === "Controller") {
-
-    if(deviationBtn) deviationBtn.style.display = "none";
-
+  if (roles !== "all" && !roles.includes(role)) {
+    btn.style.display = "none";
   }
 
 });
+</script> 
 
-</script>
-
+  
   
 
   <div class="form-container">
@@ -68,10 +50,16 @@ document.addEventListener("DOMContentLoaded", function(){
     <h2 style="text-align:center;">Main Menu</h2>
 
 
-    <!-- menu -->
+    <!-- menu 
     <button onclick="location.href='Patrolling.html'">Submit Patrolling</button>
     <button onclick="location.href='Deviation.html'">Schedule Deviation</button>
-    <button onclick="location.href='Violation.html'">Offence Report</button>
+    <button onclick="location.href='Violation.html'">Offence Report</button> -->
+
+    <button data-role="all" onclick="location.href='Patrolling.html'">Submit Patrolling</button>
+
+    <button data-role="Supervisor,Manager,Admin" onclick="location.href='Deviation.html'">Schedule Deviation</button>
+
+    <button data-role="Controller,Manager,Admin" onclick="location.href='Violation.html'">Offence Report</button>
     
    
 
