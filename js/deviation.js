@@ -19,30 +19,6 @@ submitBtn.disabled = true;
 //signature validation
 
 
-/* ===============================
-   RADIO HELPER
-================================ */
-function radio(name) {
-  const r = document.querySelector(`input[name="${name}"]:checked`);
-  return r ? r.value : "";
-}
-
-function resizeCanvasToDisplaySize(canvas) {
-  const rect = canvas.getBoundingClientRect();
-  canvas.width = rect.width;
-  canvas.height = rect.height;
-}
-
-function blurActiveInputSafely() {
-  const el = document.activeElement;
-  if (!el) return;
-
-  if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
-    setTimeout(() => el.blur(), 0);
-  }
-}
-
-
 
 /* ===============================
    user full name
