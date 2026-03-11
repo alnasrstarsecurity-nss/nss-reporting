@@ -25,6 +25,11 @@
 if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
   window.location.replace("index.html");
 }
+
+  const role = sessionStorage.getItem("ROLE");
+if (!["Controller","Manager","Admin"].includes(role)) {
+  window.location.replace("menu.html");
+}
 </script>
 
 <div class="form-container">
