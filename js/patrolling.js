@@ -157,6 +157,7 @@ resizeSignatureCanvas("witnessSignPad");
 
 document.querySelector(".OffenceType").setAttribute("required","required");
 document.getElementById("Comments").setAttribute("required","required");
+document.getElementById("empDeclaration").setAttribute("required","required");
 
 }
 
@@ -167,6 +168,7 @@ document.getElementById("offenceSection").style.display="none";
 document.querySelectorAll(".OffenceType").forEach(o=>o.removeAttribute("required"));
 
 document.getElementById("Comments").removeAttribute("required");
+document.getElementById("empDeclaration").removeAttribute("required");
 
 }
 
