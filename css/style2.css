@@ -518,6 +518,10 @@ canvas {
   border-radius: 6px;
   box-shadow: 0 0 4px rgba(0,0,0,0.2);
 }
-
+#offenceTable table th{
+  background-color:#004080;
+  color:white;
+  font-weight:bold;
+}
 
 
