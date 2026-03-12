@@ -1,4 +1,4 @@
-const SCRIPT_URL = "YOUR_WEB_APP_URL"; // replace with your deployed URL
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby6p8AnhhmDYGloZ8ISh9xqgFR3ysKx9tY-Cz_yZtJTaLXe1ak3hR319iTlg2viPrch/exec";
 
 const form = document.getElementById("opscomment");
 const status = document.getElementById("status");
