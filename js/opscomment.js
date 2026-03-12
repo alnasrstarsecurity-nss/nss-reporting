@@ -9,6 +9,7 @@ const offNoInput = document.getElementById("offenceno");
 const searchBtn = document.getElementById("searchOffBtn");
 const offStatus = document.getElementById("offstatus");
 const opsCommentInput = document.getElementById("LocationRemark");
+const offenceDetailsDiv = document.getElementById("offenceDetails");
 
 // Enable search button when user types something
 offNoInput.addEventListener("input", e => {
@@ -38,11 +39,27 @@ searchBtn.addEventListener("click", async () => {
       offStatus.style.color = "green";
       opsCommentInput.value = data.data["Ops Action"] || "";
       submitBtn.disabled = false;
+
+      /*offence table */
+        offenceDetailsDiv.innerHTML = `
+    <strong>Report Number:</strong> ${data.data["Report No"] || ""}<br>
+    <strong>Date:</strong> ${data.data["Date"] || ""}<br>
+    <strong>Time:</strong> ${data.data["Time"] || ""}<br>
+    <strong>Employee Number:</strong> ${data.data["Emp Number"] || ""}<br>
+    <strong>Name:</strong> ${data.data["Employee Name"] || ""}<br>
+    <strong>Designation:</strong> ${data.data["Emp Designation"] || ""}<br>
+    <strong>Location:</strong> ${data.data["Location/Project"] || ""}<br>
+    <strong>Supervisor Name:</strong> ${data.data["Sup Name"] || ""}<br>
+    <strong>Offence:</strong> ${data.data["Offence Type"] || ""}<br>
+    <strong>Other Offence:</strong> ${data.data["Other Offence"] || ""}<br>
+    <strong>Ops Comment:</strong> ${data.data["Ops Action"] || ""};
+          /*offence table */ 
     } else {
       offStatus.textContent = "❌ " + data.message;
       offStatus.style.color = "red";
       opsCommentInput.value = "";
       submitBtn.disabled = true;
+      offenceDetailsDiv.innerHTML = "";
     }
   } catch (err) {
     offStatus.textContent = "❌ Network Error";
