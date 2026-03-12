@@ -41,7 +41,7 @@ searchBtn.addEventListener("click", async () => {
       submitBtn.disabled = false;
 
       /*offence table */
-        offenceDetailsDiv.innerHTML = `
+       offenceDetailsDiv.innerHTML = `
     <strong>Report Number:</strong> ${data.data["Report No"] || ""}<br>
     <strong>Date:</strong> ${data.data["Date"] || ""}<br>
     <strong>Time:</strong> ${data.data["Time"] || ""}<br>
@@ -52,7 +52,8 @@ searchBtn.addEventListener("click", async () => {
     <strong>Supervisor Name:</strong> ${data.data["Sup Name"] || ""}<br>
     <strong>Offence:</strong> ${data.data["Offence Type"] || ""}<br>
     <strong>Other Offence:</strong> ${data.data["Other Offence"] || ""}<br>
-    <strong>Ops Comment:</strong> ${data.data["Ops Action"] || ""};
+    <strong>Ops Comment:</strong> ${data.data["Ops Action"] || ""}
+`;
           /*offence table */ 
     } else {
       offStatus.textContent = "❌ " + data.message;
