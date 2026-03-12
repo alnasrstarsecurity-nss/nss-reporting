@@ -53,6 +53,12 @@ body {
   min-height: 80vh;
 }
 
+@media (min-width: 1200px) {
+  .form-container {
+    max-width: 1600px; /* increase width for large desktops */
+  }
+}
+
 
 hr {
   border: none;
