@@ -44,18 +44,18 @@ searchBtn.addEventListener("click", async () => {
       submitBtn.disabled = false;
 
       /*offence table */
-       offenceDetailsDiv.innerHTML = `
-    <strong>Report Number  :</strong> ${data.data["Report No"] || ""}<br>
-    <strong>Date       sds    :</strong> ${data.data["Date"] || ""}<br>
-    <strong>Time           :</strong> ${data.data["Time"] || ""}<br>
-    <strong>Employee Number:</strong> ${data.data["Emp Number"] || ""}<br>
-    <strong>Name           :</strong> ${data.data["Employee Name"] || ""}<br>
-    <strong>Designation    :</strong> ${data.data["Emp Designation"] || ""}<br>
-    <strong>Location       :</strong> ${data.data["Location/Project"] || ""}<br>
-    <strong>Supervisor Name:</strong> ${data.data["Sup Name"] || ""}<br>
-    <strong>Offence        :</strong> ${data.data["Offence Type"] || ""}<br>
-    <strong>Other Offence  :</strong> ${data.data["Other Offence"] || ""}<br>
-    <strong>Ops Comment    :</strong> ${data.data["Ops Action"] || ""}
+     offenceDetailsDiv.innerHTML = `
+  <div><span style="display:inline-block; width:150px;"><strong>Report Number</strong>:</span> ${data.data["Report No"] || ""}</div>
+  <div><span style="display:inline-block; width:150px;"><strong>Date</strong>:</span> ${data.data["Date"] || ""}</div>
+  <div><span style="display:inline-block; width:150px;"><strong>Time</strong>:</span> ${data.data["Time"] || ""}</div>
+  <div><span style="display:inline-block; width:150px;"><strong>Employee Number</strong>:</span> ${data.data["Emp Number"] || ""}</div>
+  <div><span style="display:inline-block; width:150px;"><strong>Name</strong>:</span> ${data.data["Employee Name"] || ""}</div>
+  <div><span style="display:inline-block; width:150px;"><strong>Designation</strong>:</span> ${data.data["Emp Designation"] || ""}</div>
+  <div><span style="display:inline-block; width:150px;"><strong>Location</strong>:</span> ${data.data["Location/Project"] || ""}</div>
+  <div><span style="display:inline-block; width:150px;"><strong>Supervisor Name</strong>:</span> ${data.data["Sup Name"] || ""}</div>
+  <div><span style="display:inline-block; width:150px;"><strong>Offence</strong>:</span> ${data.data["Offence Type"] || ""}</div>
+  <div><span style="display:inline-block; width:150px;"><strong>Other Offence</strong>:</span> ${data.data["Other Offence"] || ""}</div>
+  <div><span style="display:inline-block; width:150px;"><strong>Ops Comment</strong>:</span> ${data.data["Ops Action"] || ""}</div>
 `;
           /*offence table */ 
     } else {
