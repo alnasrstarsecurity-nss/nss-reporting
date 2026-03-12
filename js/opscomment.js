@@ -12,11 +12,14 @@ const opsCommentInput = document.getElementById("LocationRemark");
 const offenceDetailsDiv = document.getElementById("offenceDetails");
 
 // Enable search button when user types something
+// Enable search button only if input has value
 offNoInput.addEventListener("input", e => {
-  searchBtn.disabled = e.target.value.trim() === "";
-  submitBtn.disabled = true; // disable submit until search is done
-  opsCommentInput.value = ""; // clear previous comment
-  offStatus.textContent = "";
+  const hasValue = e.target.value.trim() !== "";
+  searchBtn.disabled = !hasValue;       // enable/disable search button
+  submitBtn.disabled = true;            // disable submit until search is done
+  opsCommentInput.value = "";           // clear previous comment
+  offStatus.textContent = "";           // clear status
+  offenceDetailsDiv.innerHTML = "";     // clear offence details
 });
 
 // Search button click
