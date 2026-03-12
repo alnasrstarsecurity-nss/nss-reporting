@@ -1,1 +1,101 @@
 
+
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patrolling Report</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  <script>
+/* 🔒 Block direct access without login */
+if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
+  window.location.replace("index.html");
+}
+   const role = sessionStorage.getItem("ROLE");
+if (!["Supervisor","Manager","Admin"].includes(role)) {
+  window.location.replace("menu.html");
+   }
+</script>
+
+
+
+<div class="form-container">
+<div class="form-header">
+  <h1>Patrolling Supervisors Daily Report</h1>
+ </div>
+  
+  <hr>
+
+<form id="patrollingform">
+
+<!-- REPORTER -->
+  
+<div class="section">
+  <h3>Employee Details </h3>
+
+  <label>Employee Number</label>
+<div class="emp-search-wrapper">
+  <input type="number" id="empno" name="empno" data-maxdigits="4">
+  <button
+    type="button"
+    id="searchEmpBtn"
+    class="search"
+    onclick="fetchEmployee()"
+    disabled>
+    🔍 Search
+  </button>
+</div>
+<div id="empStatus" style="margin-top:6px;font-size:13px;"></div>
+  
+
+
+
+<label>Name</label>
+<input type="text" id="name" name="name" readonly>
+
+<label>Designation</label>
+<input type="text" id="designation" name="designation" readonly>
+
+
+  <label>Ops Comment</label>
+  <input type="text" id="LocationRemark" name="LocationRemark" data-maxchars="200">
+
+  
+
+<button type="submit" id="submitBtn" disabled>Submit</button>
+<div id="status"></div>
+
+
+
+</form>
+<button type="button" onclick="goBack()">
+  ⬅ Back to Menu
+</button>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+
+<script src="js/patrolling.js"></script>
+</body>
+</html>
+   
+ 
+    
+  
