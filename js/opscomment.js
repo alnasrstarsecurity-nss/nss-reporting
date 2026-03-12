@@ -1,78 +1,68 @@
-
-/* ===============================
-   CONFIG
-================================ */
-const SCRIPT_URL = "";
+const SCRIPT_URL = "YOUR_WEB_APP_URL"; // replace with your deployed URL
 
 const form = document.getElementById("opscomment");
 const status = document.getElementById("status");
-
-/* ===============================
-  search button
-================================ */
-const empInput = document.getElementById("offenceno");
+const submitBtn = document.getElementById("submitBtn");
+const offNoInput = document.getElementById("offenceno");
 const searchBtn = document.getElementById("searchOffBtn");
+const offStatus = document.getElementById("offstatus");
+const opsCommentInput = document.getElementById("LocationRemark");
 
-if (empInput && searchBtn) {
-  empInput.addEventListener("input", e => {
-    const hasValue = e.target.value.trim().length > 0;
-    searchBtn.disabled = !hasValue;
-  });
-}
+searchBtn.addEventListener("click", async () => {
+  const reportNo = offNoInput.value.trim();
+  if (!reportNo) return;
 
+  offStatus.textContent = "Searching...";
+  try {
+    const res = await fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify({ action: "fetchOffence", reportNo }),
+    });
+    const data = await res.json();
+    if (data.status === "success") {
+      offStatus.textContent = "✅ Offence Found";
+      opsCommentInput.value = data.data["Ops Action"] || "";
+      submitBtn.disabled = false;
+    } else {
+      offStatus.textContent = "❌ " + data.message;
+      submitBtn.disabled = true;
+      opsCommentInput.value = "";
+    }
+  } catch {
+    offStatus.textContent = "❌ Network Error";
+  }
+});
 
-   FORM SUBMISSION
-================================ */
+// Submit Ops Comment
 form.addEventListener("submit", async e => {
   e.preventDefault();
-   
-   submitBtn.disabled = true;
-
-  status.innerText = "Submitting...";
+  submitBtn.disabled = true;
+  status.textContent = "Submitting...";
   status.style.color = "blue";
 
-  const payload = {
-  action: "submitopscomment",
-
-  opscomment: form.opscomment.value,
-  
-};
-
-
-  fetch(SCRIPT_URL, {
-    method: "POST",
-    body: JSON.stringify(payload)
-  })
-    .then(r => r.json())
-    .then(res => {
-      if (res.status === "success") {
-        status.innerText = "✅ Submitted Successfully";
-        status.style.color = "green";
-        form.reset();
-         document.getElementById("offstatus").textContent = "";
-         submitBtn.disabled = false;
-        setTimeout(() => status.innerText = "", 3000);
-
+  try {
+    const payload = {
+      action: "submitopscomment",
+      reportNo: offNoInput.value.trim(),
+      opscomment: opsCommentInput.value.trim()
+    };
+    const res = await fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    if (data.status === "success") {
+      status.textContent = "✅ Submitted Successfully";
+      status.style.color = "green";
+      submitBtn.disabled = false;
     } else {
-
-      status.innerText = "❌ Submission Failed";
+      status.textContent = "❌ " + data.message;
       status.style.color = "red";
       submitBtn.disabled = false;
-
     }
-
-  })
-  .catch(() => {
-    status.innerText = "❌ Network Error";
+  } catch {
+    status.textContent = "❌ Network Error";
     status.style.color = "red";
     submitBtn.disabled = false;
-  });
-}); 
-
-/* ===============================
-   LOGOUT
-================================ */
-function logout() {
-  localStorage.clear();
-  location.href = "index.html";
-}
+  }
+});
