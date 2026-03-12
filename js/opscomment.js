@@ -44,18 +44,18 @@ searchBtn.addEventListener("click", async () => {
       submitBtn.disabled = false;
 
       /*offence table */
-     offenceDetailsDiv.innerHTML = `
-  <div><span style="display:inline-block; width:150px;"><strong>Report Number</strong>:</span> ${data.data["Report No"] || ""}</div>
-  <div><span style="display:inline-block; width:150px;"><strong>Date</strong>:</span> ${data.data["Date"] || ""}</div>
-  <div><span style="display:inline-block; width:150px;"><strong>Time</strong>:</span> ${data.data["Time"] || ""}</div>
-  <div><span style="display:inline-block; width:150px;"><strong>Employee Number</strong>:</span> ${data.data["Emp Number"] || ""}</div>
-  <div><span style="display:inline-block; width:150px;"><strong>Name</strong>:</span> ${data.data["Employee Name"] || ""}</div>
-  <div><span style="display:inline-block; width:150px;"><strong>Designation</strong>:</span> ${data.data["Emp Designation"] || ""}</div>
-  <div><span style="display:inline-block; width:150px;"><strong>Location</strong>:</span> ${data.data["Location/Project"] || ""}</div>
-  <div><span style="display:inline-block; width:150px;"><strong>Supervisor Name</strong>:</span> ${data.data["Sup Name"] || ""}</div>
-  <div><span style="display:inline-block; width:150px;"><strong>Offence</strong>:</span> ${data.data["Offence Type"] || ""}</div>
-  <div><span style="display:inline-block; width:150px;"><strong>Other Offence</strong>:</span> ${data.data["Other Offence"] || ""}</div>
-  <div><span style="display:inline-block; width:150px;"><strong>Ops Comment</strong>:</span> ${data.data["Ops Action"] || ""}</div>
+    offenceDetailsDiv.innerHTML = `
+  <div style="display:flex; justify-content:flex-start; gap:10px;"><span style="width:150px;"><strong>Report Number</strong></span><span>:</span><span>${data.data["Report No"] || ""}</span></div>
+  <div style="display:flex; justify-content:flex-start; gap:10px;"><span style="width:150px;"><strong>Date</strong></span><span>:</span><span>${data.data["Date"] || ""}</span></div>
+  <div style="display:flex; justify-content:flex-start; gap:10px;"><span style="width:150px;"><strong>Time</strong></span><span>:</span><span>${data.data["Time"] || ""}</span></div>
+  <div style="display:flex; justify-content:flex-start; gap:10px;"><span style="width:150px;"><strong>Employee Number</strong></span><span>:</span><span>${data.data["Emp Number"] || ""}</span></div>
+  <div style="display:flex; justify-content:flex-start; gap:10px;"><span style="width:150px;"><strong>Name</strong></span><span>:</span><span>${data.data["Employee Name"] || ""}</span></div>
+  <div style="display:flex; justify-content:flex-start; gap:10px;"><span style="width:150px;"><strong>Designation</strong></span><span>:</span><span>${data.data["Emp Designation"] || ""}</span></div>
+  <div style="display:flex; justify-content:flex-start; gap:10px;"><span style="width:150px;"><strong>Location</strong></span><span>:</span><span>${data.data["Location/Project"] || ""}</span></div>
+  <div style="display:flex; justify-content:flex-start; gap:10px;"><span style="width:150px;"><strong>Supervisor Name</strong></span><span>:</span><span>${data.data["Sup Name"] || ""}</span></div>
+  <div style="display:flex; justify-content:flex-start; gap:10px;"><span style="width:150px;"><strong>Offence</strong></span><span>:</span><span>${data.data["Offence Type"] || ""}</span></div>
+  <div style="display:flex; justify-content:flex-start; gap:10px;"><span style="width:150px;"><strong>Other Offence</strong></span><span>:</span><span>${data.data["Other Offence"] || ""}</span></div>
+  <div style="display:flex; justify-content:flex-start; gap:10px;"><span style="width:150px;"><strong>Ops Comment</strong></span><span>:</span><span>${data.data["Ops Action"] || ""}</span></div>
 `;
           /*offence table */ 
     } else {
