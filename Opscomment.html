@@ -35,26 +35,26 @@ if (!["Supervisor","Manager","Admin"].includes(role)) {
 
 <div class="form-container">
 <div class="form-header">
-  <h1>Patrolling Supervisors Daily Report</h1>
+  <h1>OPS Comment</h1>
  </div>
   
   <hr>
 
-<form id="patrollingform">
+<form id="opscomment">
 
 <!-- REPORTER -->
   
 <div class="section">
   <h3>Employee Details </h3>
 
-  <label>Employee Number</label>
+  <label>Offence Number</label>
 <div class="emp-search-wrapper">
-  <input type="number" id="empno" name="empno" data-maxdigits="4">
+  <input type="number" id="offenceno" name="offenceno" data-maxdigits="4">
   <button
     type="button"
-    id="searchEmpBtn"
+    id="searchOffBtn"
     class="search"
-    onclick="fetchEmployee()"
+    onclick="fetchOffence()"
     disabled>
     🔍 Search
   </button>
