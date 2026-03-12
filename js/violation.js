@@ -183,47 +183,6 @@ function closeImgModal() {
 }
 
 
-
-/* ===============================
-   renderOffenceImages
-================================ */
-
-/*function renderOffenceImages(offences) {
-  const container = document.getElementById("offenceImages");
-  container.innerHTML = "";
-
-  const grouped = {};
-
-  offences.forEach(o => {
-    const report = o["Report No"] || "Unknown";
-    if (!grouped[report]) grouped[report] = [];
-
-    if (o["IMAGE 1"]) grouped[report].push(driveToDirect(o["IMAGE 1"]));
-    if (o["IMAGE 2"]) grouped[report].push(driveToDirect(o["IMAGE 2"]));
-  });
-
-  if (!Object.keys(grouped).length) {
-    container.innerHTML = "<p>No images available.</p>";
-    return;
-  }
-
-  Object.entries(grouped).forEach(([report, images]) => {
-    const block = document.createElement("div");
-    block.style.marginBottom = "12px";
-    block.innerHTML = `<b>Report No: ${report}</b><br>`;
-
-    images.forEach(url => {
-      const img = document.createElement("img");
-      img.src = url;
-      img.className = "img-thumb";
-      img.onclick = () => openImage(url);
-      block.appendChild(img);
-    });
-
-    container.appendChild(block);
-  });
-}*/
-
 function renderOffenceImages(offences) {
   const container = document.getElementById("offenceImages");
   container.innerHTML = "";
