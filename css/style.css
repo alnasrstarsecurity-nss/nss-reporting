@@ -446,8 +446,8 @@ canvas {
 
 
 input[readonly] {
-  background-color: #f2f2f2;
-  color: #555;
-  border: 1px solid #ccc;
+  background-color:#fcfafa;
+  color: #000000;
+  border: 1px solid #000000;
   cursor: not-allowed;
 }
