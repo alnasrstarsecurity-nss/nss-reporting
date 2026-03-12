@@ -64,7 +64,7 @@ if (!["Supervisor","Manager","Admin"].includes(role)) {
 
 
 <label>Name</label>
-<input type="text" id="name" name="name" readonly>
+<input type="text" id="name" name="name" readonly required>
 
 <label>Designation</label>
 <input type="text" id="designation" name="designation" readonly>
@@ -73,7 +73,7 @@ if (!["Supervisor","Manager","Admin"].includes(role)) {
  
 
     <label>Location/Project</label>
-  <select id="location" name="location" >
+  <select id="location" name="location" required>
   <option value="">-- Designation --</option>  
   <option value="Baladiya">Baladiya</option>
   <option value="Civil Aviation">Civil Aviation</option>
@@ -178,7 +178,7 @@ No
 
          
      <label>Immediate Supervisor's Comments</label>
- <textarea id="Comments" name="Comments" data-maxchars="200"> </textarea>
+ <textarea id="Comments" name="Comments" data-maxchars="200" required> </textarea>
 
        <label>Employee's Comments</label>
  <textarea id="empComments" name="empComments" data-maxchars="200"> </textarea>
@@ -192,7 +192,7 @@ No
   <label><br><br>Employee Declaration</label>
    <div class="yesno">
     <label class="radio-box">
-      <input type="radio" name="empDeclaration" value="I Accept"> I Accept
+      <input type="radio" name="empDeclaration" value="I Accept" required> I Accept
     </label>
 
     <label class="radio-box">
@@ -223,7 +223,6 @@ No
   </div>
         
      
-
 
       <div class="section">
      <h3>Images</h3>
