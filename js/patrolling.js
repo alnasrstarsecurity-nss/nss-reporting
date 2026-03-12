@@ -157,18 +157,15 @@ resizeSignatureCanvas("witnessSignPad");
 
 document.querySelector(".OffenceType").setAttribute("required","required");
 document.getElementById("Comments").setAttribute("required","required");
-
+document.querySelectorAll('input[name="empDeclaration"]').forEach(r => r.required = true);  
 }
 
 function hideOffenceSection(){
 
 document.getElementById("offenceSection").style.display="none";
-
 document.querySelectorAll(".OffenceType").forEach(o=>o.removeAttribute("required"));
-
 document.getElementById("Comments").removeAttribute("required");
-
-
+document.querySelectorAll('input[name="empDeclaration"]').forEach(r => r.required = false);
 }
 
 /* ===============================
