@@ -46,8 +46,8 @@ searchBtn.addEventListener("click", async () => {
       /*offence table */
        offenceDetailsDiv.innerHTML = `
     <strong>Report Number:</strong> ${data.data["Report No"] || ""}<br>
-    <strong>Date:</strong> ${data.data["Date"] || ""}<br>
-    <strong>Time:</strong> ${data.data["Time"] || ""}<br>
+    <strong>Date         :</strong> ${data.data["Date"] || ""}<br>
+    <strong>Time         :</strong> ${data.data["Time"] || ""}<br>
     <strong>Employee Number:</strong> ${data.data["Emp Number"] || ""}<br>
     <strong>Name:</strong> ${data.data["Employee Name"] || ""}<br>
     <strong>Designation:</strong> ${data.data["Emp Designation"] || ""}<br>
