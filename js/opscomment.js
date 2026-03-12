@@ -76,14 +76,14 @@ searchBtn.addEventListener("click", async () => {
 form.addEventListener("submit", async e => {
   e.preventDefault();
   submitBtn.disabled = true;
-  status.textContent = "Submitting...";
+  status.textContent = "Please Wait...";
   status.style.color = "blue";
 
   const reportNo = offNoInput.value.trim();
   const opscomment = opsCommentInput.value.trim();
 
   if (!reportNo || !opscomment) {
-    status.textContent = "❌ Please fill in all fields";
+    status.textContent = "❌ Please fill Ops Comment";
     status.style.color = "red";
     submitBtn.disabled = false;
     return;
@@ -100,7 +100,7 @@ form.addEventListener("submit", async e => {
     });
     const data = await res.json();
     if (data.status === "success") {
-      status.textContent = "✅ Submitted Successfully";
+      status.textContent = "✅ Saved Successfully";
       status.style.color = "green";
       submitBtn.disabled = false;
       opsCommentInput.value = "";
