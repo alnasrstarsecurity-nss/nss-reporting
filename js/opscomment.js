@@ -1,6 +1,6 @@
 // opscomment.js
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwT5T_0mAEAztbwyRr0qBmDiDOdaF3sj9vMmZwa-6mgvI_MdxAgfPBuG5HoSR61ij0T/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzgVBwGx3RmFUcBYUOrs1dTlfZwL4nPsDgDi6SeV-W7hfEAscacFY6a-jVDljg_a6yB/exec";
 
 const form = document.getElementById("opscomment");
 const status = document.getElementById("status");
