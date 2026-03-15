@@ -2,7 +2,7 @@
 /* ===============================
    CONFIG
 ================================ */
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzj4YSy1eRhoamnaGU2tRC2W9Jwpv5EnTlwXoeBoDmCs9iPV_s1vC2JxpTFVzBzac80/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzsw9T4OYgQuJcRm2aUz7rbL_MFh1B7UOGbk6Sfrrdfw3aBQAjeaiqyerdCgVLEB44b/exec";
 
 const form = document.getElementById("submitoffence");
 const status = document.getElementById("status");
