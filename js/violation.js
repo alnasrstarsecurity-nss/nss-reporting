@@ -3,10 +3,7 @@
 /* ===============================
    CONFIG
 ================================ */
-/*const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxsR9k4GRmtLZyM3qtk8scP8UTYG769KpvcPt9W3STCfc1jjcn2ZHV5deNzxCpheNxJ/exec";*/
-
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzsw9T4OYgQuJcRm2aUz7rbL_MFh1B7UOGbk6Sfrrdfw3aBQAjeaiqyerdCgVLEB44b/exec";
-
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxsR9k4GRmtLZyM3qtk8scP8UTYG769KpvcPt9W3STCfc1jjcn2ZHV5deNzxCpheNxJ/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
   const empInput = document.getElementById("empno");
