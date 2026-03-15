@@ -492,7 +492,7 @@ form.addEventListener("submit", async e => {
          body: JSON.stringify({
          action: "generatepdf",
          row: res.row,
-         offenceRow: res.offenceRow
+         //offenceRow: res.offenceRow
          })
          }).catch(err => console.log("PDF generation error:", err));
          
