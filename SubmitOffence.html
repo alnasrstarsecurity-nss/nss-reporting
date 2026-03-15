@@ -122,7 +122,7 @@ if (!["Supervisor","Manager","Admin"].includes(role)) {
 
 <div class="offenceRow">
 
-<select class="OffenceType" name="OffenceType[]" onchange="toggleAddButton(this)">
+<select class="OffenceType" name="OffenceType[]" onchange="toggleAddButton(this)" required>
        
   <option value="">-- Offencet Type --</option>   
   <option value="Absent from Duty">Absent from Duty</option>
@@ -170,7 +170,7 @@ if (!["Supervisor","Manager","Admin"].includes(role)) {
 
          
      <label>Immediate Supervisor's Comments</label>
- <textarea id="Comments" name="Comments" data-maxchars="200" ></textarea>
+ <textarea id="Comments" name="Comments" data-maxchars="200" required></textarea>
 
        <label>Employee's Comments</label>
  <textarea id="empComments" name="empComments" data-maxchars="200"></textarea>
