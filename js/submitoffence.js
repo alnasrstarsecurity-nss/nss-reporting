@@ -460,6 +460,7 @@ form.addEventListener("submit", async e => {
 
   supEmpNumber: form.SupEmpNumber.value,
   phone: form.Phone.value,
+  empcamp: form.empcamp.value,
      
 };
 
