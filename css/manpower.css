@@ -412,6 +412,14 @@ canvas {
   box-sizing: border-box;
 }
 
+.projectRow .projectCount {
+  width: 1.5in;          /* fixed width */
+  min-width: 2in;
+  height: 0.5in;
+  padding: 2px 6px;
+  font-size: 14px;
+}
+
 .addBtn, .removeBtn {
   width: 0.48in;
   height: 0.47in;
