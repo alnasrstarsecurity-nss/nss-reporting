@@ -51,6 +51,8 @@ newRow.querySelector(".removeBtn").style.display="inline-block";
 
 container.appendChild(newRow);
 
+calculateTotal();
+
 }
 
 function removeProject(btn){
@@ -112,6 +114,44 @@ submitBtn.disabled = true;
 //signature validation
 
 
+/* ===============================
+   AUTO TOTAL COUNT
+================================ */
+
+function calculateTotal() {
+
+let projectTotal = 0;
+
+document.querySelectorAll(".projectCount").forEach(input => {
+const value = parseInt(input.value) || 0;
+projectTotal += value;
+});
+
+const joiners = parseInt(document.getElementById("joinerscount").value) || 0;
+const standby = parseInt(document.getElementById("standbycount").value) || 0;
+
+const total = projectTotal + joiners + standby;
+
+document.getElementById("totalcount").value = total;
+
+}
+
+
+/* ===============================
+   AUTO TOTAL TRIGGERS
+================================ */
+
+document.addEventListener("input", function(e){
+
+if(
+e.target.classList.contains("projectCount") ||
+e.target.id === "joinerscount" ||
+e.target.id === "standbycount"
+){
+calculateTotal();
+}
+
+});
 /* ===============================
    RADIO HELPER
 ================================ */
