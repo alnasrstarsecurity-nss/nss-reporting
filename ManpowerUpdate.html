@@ -75,11 +75,11 @@ if (!["Supervisor","Manager","Admin"].includes(role)) {
      <h3>Man Power Project Wise</h3>
 <label>Project</label>
 
-<div id="offenceContainer">
+<div id="projectContainer">
 
 <div class="offenceRow">
 
-<select class="OffenceType" name="OffenceType[]" onchange="toggleAddButton(this)" required>
+<select class="project" name="ProjectType[]" onchange="toggleAddButton(this)" required>
        
   <option value="">-- Select --</option>   
   <option value="Baladiya">Baladiya</option>
@@ -98,8 +98,8 @@ if (!["Supervisor","Manager","Admin"].includes(role)) {
  
   </select>
 
-         <button type="button" class="addBtn" onclick="addOffence(this)" style="display:none">+</button>
-         <button type="button" class="removeBtn" onclick="removeOffence(this)" style="display:none">-</button>
+         <button type="button" class="addBtn" onclick="addProject(this)" style="display:none">+</button>
+         <button type="button" class="removeBtn" onclick="removeProject(this)" style="display:none">-</button>
          </div>
          </div>
 
