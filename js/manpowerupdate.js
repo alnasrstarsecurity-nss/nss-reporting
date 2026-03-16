@@ -32,7 +32,7 @@ addBtn.style.display = "none";
 function addProject(btn){
 
 const container = document.getElementById("projectContainer");
-const rows = container.querySelectorAll(".offenceRow");
+const rows = container.querySelectorAll(".projectRow");
 
 if(rows.length >= maxProject){
 alert("Maximum 14 Project allowed");
@@ -353,7 +353,6 @@ form.addEventListener("submit", async e => {
          document.getElementById("SupEmpNumber").value = loginempnumber;
          document.getElementById("Supdesignation").value = logindesi;
          
-         document.getElementById("empStatus").textContent = "";
          submitBtn.disabled = false;
          resetProjectRows();
         clearSupSignature();
