@@ -43,6 +43,8 @@ const newRow = rows[0].cloneNode(true);
 
 const select = newRow.querySelector("select");
 select.value="";
+const count = newRow.querySelector(".projectCount");
+count.value="";
 
 newRow.querySelector(".addBtn").style.display="none";
 newRow.querySelector(".removeBtn").style.display="inline-block";
@@ -75,7 +77,9 @@ function resetProjectRows() {
     if (index === 0) {
       // keep first row but clear value
       const select = row.querySelector("select");
+      const count = row.querySelector(".projectCount");
       if (select) select.value = "";
+      if (count) count.value = "";
     } else {
       // remove extra rows
       row.remove();
@@ -320,10 +324,16 @@ form.addEventListener("submit", async e => {
   action: "submitmanpower",
 
   accomodation: form.accomodation.value,
-   ProjectType: Array.from(document.querySelectorAll(".ProjectType"))
-    .map(o => o.value)
-    .filter(v => v !== "")
-    .join(", "),
+  ProjectType: Array.from(document.querySelectorAll(".projectRow"))
+    .map(row => {
+    const project = row.querySelector(".ProjectType").value;
+    const count = row.querySelector(".projectCount").value;
+    if (project && count) {
+      return `${project} : ${count}`;
+      }
+    })
+   .filter(v => v)
+   .join(", "),
   joinerscount: form.joinerscount.value,
   joinersdetails: form.joinersdetails.value,
   standbycount: form.standbycount.value,
