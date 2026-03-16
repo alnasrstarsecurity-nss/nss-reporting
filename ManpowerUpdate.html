@@ -72,7 +72,7 @@ if (!["Supervisor","Manager","Admin"].includes(role)) {
 
 
    <div class="section">
-     <h3>Man Power Project Wise</h3>
+     <h3>Man Power Count Project Wise</h3>
 <label>Project</label>
 
 <div id="projectContainer">
@@ -103,15 +103,21 @@ if (!["Supervisor","Manager","Admin"].includes(role)) {
          </div>
          </div>
 
-         
- <textarea id="OtherOffence" name="OtherOffence" placeholder="Describe Offence" style="display:none;" data-maxchars="200"></textarea>
 
-         
-     <label>Immediate Supervisor's Comments</label>
- <textarea id="Comments" name="Comments" data-maxchars="200" required></textarea>
+   <label>New Joiners Count</label>
+  <input type="number" id="joinerscount" name="joinerscount" data-maxdigits="4" required>
+     
+     <label>New Joiners Details (Employee Number and Name)</label>
+ <textarea id="joinersdetails" name="joinersdetails" data-maxchars="200" required></textarea>
 
-       <label>Employee's Comments</label>
- <textarea id="empComments" name="empComments" data-maxchars="200"></textarea>
+     <label>Standby count</label>
+  <input type="number" id="standbycount" name="standbycount" data-maxdigits="4" required>
+     
+     <label>Standby Details (Employee Number and Name)</label>
+ <textarea id="standbydetails" name="standbydetails" data-maxchars="200" required></textarea>
+
+
+     
 
      <label>Employee Signature</label>
   <canvas id="empSignPad" name="empSignPad"></canvas>
