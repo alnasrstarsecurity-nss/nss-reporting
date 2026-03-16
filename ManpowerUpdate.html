@@ -79,7 +79,7 @@ if (!["Supervisor","Manager","Admin"].includes(role)) {
 
 <div class="projectRow">
 
-<select class="ProjectType" name="ProjectType[]" onchange="toggleAddButton(this)" required>
+<select class="projectType" name="projectType[]" onchange="toggleAddButton(this)" required>
        
   <option value="">-- Select --</option>   
   <option value="Baladiya">Baladiya</option>
@@ -135,13 +135,13 @@ if (!["Supervisor","Manager","Admin"].includes(role)) {
      <h3>Reporter Details</h3>
 
       <label>Reporter Name</label>
-  <input type="text" id="SupervisorName" name="SupervisorName" data-maxchars="100" readonly>
+  <input type="text" id="supervisorName" name="supervisorName" data-maxchars="100" readonly>
 
    <label>Employee Number</label>
-  <input type="number" id="SupEmpNumber" name="SupEmpNumber" data-maxdigits="5" readonly>
+  <input type="number" id="supEmpNumber" name="supEmpNumber" data-maxdigits="5" readonly>
 
      <label>Designation</label>
-  <input type="text" id="Supdesignation" name="Supdesignation" readonly>
+  <input type="text" id="supdesignation" name="supdesignation" readonly>
 
  
    </div>
