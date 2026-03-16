@@ -320,7 +320,7 @@ form.addEventListener("submit", async e => {
   action: "submitmanpower",
 
   accomodation: form.accomodation.value,
-   project: Array.from(document.querySelectorAll(".ProjectType"))
+   ProjectType: Array.from(document.querySelectorAll(".ProjectType"))
     .map(o => o.value)
     .filter(v => v !== "")
     .join(", "),
