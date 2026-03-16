@@ -189,9 +189,9 @@ if (!loginName) {
 }
 
 // 🔹 Auto-fill supervisor name
-document.getElementById("SupervisorName").value = loginName;
-document.getElementById("SupEmpNumber").value = loginempnumber;
-document.getElementById("Supdesignation").value = logindesi;
+document.getElementById("supervisorName").value = loginName;
+document.getElementById("supEmpNumber").value = loginempnumber;
+document.getElementById("supdesignation").value = logindesi;
 
 
 
@@ -399,9 +399,9 @@ form.addEventListener("submit", async e => {
         status.innerText = "✅ Submitted Successfully";
         status.style.color = "green";
         form.reset();
-         document.getElementById("SupervisorName").value = loginName;
-         document.getElementById("SupEmpNumber").value = loginempnumber;
-         document.getElementById("Supdesignation").value = logindesi;
+         document.getElementById("supervisorName").value = loginName;
+         document.getElementById("supEmpNumber").value = loginempnumber;
+         document.getElementById("supdesignation").value = logindesi;
          
          submitBtn.disabled = false;
          resetProjectRows();
