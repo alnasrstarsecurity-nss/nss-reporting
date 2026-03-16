@@ -56,7 +56,7 @@ function removeProject(btn){
 const row = btn.parentElement;
 const container = document.getElementById("projectContainer");
 
-if(container.querySelectorAll(".offenceRow").length > 1){
+if(container.querySelectorAll(".projectRow").length > 1){
 
 row.remove();
 
@@ -69,7 +69,7 @@ row.remove();
 
 function resetProjectRows() {
   const container = document.getElementById("projectContainer");
-  const rows = container.querySelectorAll(".offenceRow");
+  const rows = container.querySelectorAll(".projectRow");
 
   rows.forEach((row, index) => {
     if (index === 0) {
