@@ -364,7 +364,7 @@ form.addEventListener("submit", async e => {
   action: "submitmanpower",
 
   accomodation: form.accomodation.value,
-  ProjectType: Array.from(document.querySelectorAll(".projectRow"))
+  projectType: Array.from(document.querySelectorAll(".projectRow"))
     .map(row => {
     const project = row.querySelector(".ProjectType").value;
     const count = row.querySelector(".projectCount").value;
@@ -380,9 +380,9 @@ form.addEventListener("submit", async e => {
   standbydetails: form.standbydetails.value,
   totalcount: form.totalcount.value,
  
-  SupervisorName: form.SupervisorName.value,
-  SupEmpNumber: form.SupEmpNumber.value,
-  Supdesignation: form.Supdesignation.value,
+  supervisorName: form.supervisorName.value,
+  supEmpNumber: form.supEmpNumber.value,
+  supdesignation: form.supdesignation.value,
   
   supSign: document.getElementById("supSignPad").toDataURL(),
      
@@ -408,14 +408,6 @@ form.addEventListener("submit", async e => {
         clearSupSignature();
         setTimeout(() => status.innerText = "", 3000);
          
-       //  Generate PDF in background 
-         fetch(SCRIPT_URL, {
-         method: "POST",
-         body: JSON.stringify({
-         action: "generatepdf",
-         row: res.row,
-         })
-         }).catch(err => console.log("PDF generation error:", err));
          
 
     } else {
