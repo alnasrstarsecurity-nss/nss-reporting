@@ -95,8 +95,15 @@ if (!["Supervisor","Manager","Admin"].includes(role)) {
     <option value="Lusail Midmac">Lusail Midmac</option>
     <option value="CCC">CCC</option>
     <option value="Qatar Rail">Qatar Rail</option>
- 
-  </select>
+    </select>
+
+
+    <input type="number"
+       class="projectCount"
+       placeholder="Employees"
+       data-maxdigits="4"
+       min="0"
+       required>
 
          <button type="button" class="addBtn" onclick="addProject(this)" style="display:none">+</button>
          <button type="button" class="removeBtn" onclick="removeProject(this)" style="display:none">-</button>
