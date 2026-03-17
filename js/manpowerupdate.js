@@ -3,7 +3,7 @@
 /* ===============================
    CONFIG
 ================================ */
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbywBQM_toemECBSHrLY1G4pxarUDd9AQrI_ddkoJ6R3-Vm7tsi4L7SudAaT5vLu7aDbnw/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw4s35Zgom7xCtJvzkfECTOdcjWWWUTrst9OUKioBVQ0sYogglLmPVeN5vKQKsp-Xk6eA/exec";
 
 const form = document.getElementById("manpower");
 const status = document.getElementById("status");
