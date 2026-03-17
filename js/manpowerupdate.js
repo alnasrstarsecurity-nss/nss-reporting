@@ -199,7 +199,7 @@ form.addEventListener("submit", async e => {
         if (project && count) return `${project} : ${count}`;
       })
       .filter(Boolean)
-      .join(", "),
+      .join("\n"),
     joinerscount: form.joinerscount.value,
     joinersdetails: form.joinersdetails.value,
     standbycount: form.standbycount.value,
