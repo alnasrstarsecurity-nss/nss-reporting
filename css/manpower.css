@@ -460,15 +460,25 @@ input[readonly] {
   cursor: not-allowed;
 }
 
-/* Mobile-friendly project dropdown */
+/* Mobile-friendly project row layout */
 @media (max-width: 600px) {
-  .projectRow select {
-    width: 100%;       /* take full width */
-    font-size: 16px;   /* slightly larger for touch */
-    padding: 6px 8px;  /* more comfortable */
+  .projectRow {
+    flex-direction: column;   /* stack items vertically */
+    align-items: stretch;     /* make them full width */
   }
 
+  .projectRow select,
   .projectRow input.projectCount {
-    width: 60px;       /* keep count input short */
+    width: 100%;              /* full width */
+    min-width: auto;           /* override desktop min-width */
+    margin-bottom: 6px;       /* space between dropdown and input */
+  }
+
+  .projectRow .addBtn,
+  .projectRow .removeBtn {
+    width: 48px;              /* small buttons */
+    height: 48px;
+    font-size: 24px;
+    margin-bottom: 6px;
   }
 }
