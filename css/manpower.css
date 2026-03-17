@@ -459,3 +459,16 @@ input[readonly] {
   border: 1px solid #ccc;
   cursor: not-allowed;
 }
+
+/* Mobile-friendly project dropdown */
+@media (max-width: 600px) {
+  .projectRow select {
+    width: 100%;       /* take full width */
+    font-size: 16px;   /* slightly larger for touch */
+    padding: 6px 8px;  /* more comfortable */
+  }
+
+  .projectRow input.projectCount {
+    width: 60px;       /* keep count input short */
+  }
+}
