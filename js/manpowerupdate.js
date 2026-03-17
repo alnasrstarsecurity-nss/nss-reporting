@@ -366,7 +366,7 @@ form.addEventListener("submit", async e => {
   accomodation: form.accomodation.value,
   projectType: Array.from(document.querySelectorAll(".projectRow"))
     .map(row => {
-    const project = row.querySelector(".ProjectType").value;
+    const project = row.querySelector(".projectType").value;
     const count = row.querySelector(".projectCount").value;
     if (project && count) {
       return `${project} : ${count}`;
