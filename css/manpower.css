@@ -413,7 +413,7 @@ canvas {
 }
 
 .projectRow .projectCount {
-  width: 1.5in;          /* fixed width */
+  width: 1in;          /* fixed width */
   min-width: 2in;
   height: 0.5in;
   padding: 2px 6px;
