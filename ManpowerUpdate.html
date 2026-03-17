@@ -1,180 +1,244 @@
+/* ===============================
+   CONFIG
+================================ */
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxEuqpGQw95isVwQuDjsORqXd2zChkA2EF7DcuHmUHeSH53pzU_0JOWeYp4uf80qMJdtA/exec";
 
+const form = document.getElementById("manpower");
+const status = document.getElementById("status");
+const submitBtn = document.getElementById("submitBtn");
 
+/* ===============================
+   SESSION CHECK
+================================ */
+const loginName = sessionStorage.getItem("LOGIN_NAME");
+const loginempnumber = sessionStorage.getItem("EMP_NO");
+const logindesi = sessionStorage.getItem("DESI");
 
-<!DOCTYPE html>
-<html lang="en">
-  
-<head>
-
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manpower Update</title>
-
-  <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/manpower.css">
-
-  
-</head>
-
-<body>
-  <script>
-/* 🔒 Block direct access without login */
-if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
+if (!loginName) {
+  alert("Session expired. Please login again.");
   window.location.replace("index.html");
 }
-   const role = sessionStorage.getItem("ROLE");
-if (!["Supervisor","Manager","Admin"].includes(role)) {
-  window.location.replace("menu.html");
-   }
-</script>
 
+// Auto-fill reporter
+document.getElementById("supervisorName").value = loginName;
+document.getElementById("supEmpNumber").value = loginempnumber;
+document.getElementById("supdesignation").value = logindesi;
 
+/* ===============================
+   PROJECT ROWS
+================================ */
+let maxProject = 14;
 
-<div class="form-container">
-<div class="form-header">
-  <h1>Daily Accomodation Manpower Status</h1>
- </div>
-  
-  <hr>
+function toggleAddButton(select) {
+  const row = select.parentElement;
+  const addBtn = row.querySelector(".addBtn");
+  const removeBtn = row.querySelector(".removeBtn");
 
-<form id="manpower">
-
-  
-<div class="section">
-  <h3>Accomodation Details </h3>
-  
-
-      <label>Accomodation</label>
-  <select id="accomodation" name="accomodation">
-  <option value="">-- Select --</option>  
-  <option value="ABU NAKLAH HIA CAMP">ABU NAKLAH HIA CAMP</option>
-  <option value="ABU NAKLAH-CAMP 1">ABU NAKLAH-CAMP 1</option>
-    <option value="ABU NAKLAH -CAMP2">ABU NAKLAH-CAMP2</option>
-    <option value="UM SALAL CAMP-1">UM SALAL CAMP-1</option>
-    <option value="UM SALAL CAMP-2">UM SALAL CAMP-2</option>
-    <option value="ASIAN CITY B-21">ASIAN CITY B-21</option>
-    <option value="AL THUMAMA NEW (FEMALE)">AL THUMAMA NEW (FEMALE)</option>
-    <option value="AL THUMAMA (FEMALE)">AL THUMAMA (FEMALE)</option>
-    <option value="BARWA AL BARAHA ">BARWA AL BARAHA </option>
-    <option value="AL WAAB (FEMALE)ASPIRE">AL WAAB (FEMALE)ASPIRE</option>
-    <option value="BIN OMRAN (FEMALE)BALADIYA">BIN OMRAN (FEMALE)BALADIYA</option>
-    <option value="ARGENTINE NEIGHBORHOOD-G3">ARGENTINE NEIGHBORHOOD-G3</option>
-    <option value="ARGENTINE NEIGHBORHOOD-C6">ARGENTINE NEIGHBORHOOD-C6</option>
-    <option value="ARGENTINE NEIGHBORHOOD-T5">ARGENTINE NEIGHBORHOOD-T5</option>
-  
-  </select>
-  </div>
-    
-
-
-   <div class="section">
-     <h3>Man Power Count Project Wise</h3>
-<label>Project</label>
-
-<div id="projectContainer">
-
-<div class="projectRow">
-
-<select class="projectType" name="projectType[]" onchange="toggleAddButton(this)" required>
-       
-  <option value="">-- Select --</option>   
-  <option value="Baladiya">Baladiya</option>
-  <option value="Civil Aviation">Civil Aviation</option>
-    <option value="Q-Mall">Q-Mall</option>
-    <option value="QMA">QMA</option>
-    <option value="VIP Tower">VIP Tower</option>
-    <option value="Katara">Katara</option>
-    <option value="Cyber Security">Cyber Security</option>
-    <option value="HBK PORR">HBK PORR</option>
-    <option value="Aspire">Aspire</option>
-    <option value="MOF">MOF</option>
-    <option value="Lusail Midmac">Lusail Midmac</option>
-    <option value="CCC">CCC</option>
-    <option value="Qatar Rail">Qatar Rail</option>
-    </select>
-
-
-    <input type="number"
-       class="projectCount"
-       placeholder="Count"
-       data-maxdigits="4"
-       min="0"
-       required>
-
-         <button type="button" class="addBtn" onclick="addProject(this)" style="display:none">+</button>
-         <button type="button" class="removeBtn" onclick="removeProject(this)" style="display:none">-</button>
-         </div>
-         </div>
-
-
-   <label>New Joiners Count</label>
-  <input type="number" id="joinerscount" name="joinerscount" data-maxdigits="4" required>
-     
-     <label>New Joiners Details (Employee Number and Name)</label>
- <textarea id="joinersdetails" name="joinersdetails" data-maxchars="200" required></textarea>
-
-     <label>Standby count</label>
-  <input type="number" id="standbycount" name="standbycount" data-maxdigits="4" required>
-     
-     <label>Standby Details (Employee Number and Name)</label>
- <textarea id="standbydetails" name="standbydetails" data-maxchars="200" required></textarea>
-
-
-       <label>Total Manpower</label>
-  <input type="number" id="totalcount" name="totalcount" data-maxdigits="4" readonly>
-
-   </div>
-
-    
-  
-  <div class="section">
-     <h3>Reporter Details</h3>
-
-      <label>Reporter Name</label>
-  <input type="text" id="supervisorName" name="supervisorName" data-maxchars="100" readonly>
-
-   <label>Employee Number</label>
-  <input type="number" id="supEmpNumber" name="supEmpNumber" data-maxdigits="5" readonly>
-
-     <label>Designation</label>
-  <input type="text" id="supdesignation" name="supdesignation" readonly>
-
- 
-   </div>
-
- <!-- SIGNATURE -->
-
-  <label>Signature</label>
-  <canvas id="supSignPad" name="supSignPad"></canvas>
-  
-<button type="button" class="secondary" onclick="clearSupSignature()">Clear Signature</button>
-   
-
-<button type="submit" id="submitBtn" disabled>Submit</button>
-<div id="status"></div>
-
-
-
-</form>
-<button type="button" onclick="goBack()">
-  ⬅ Back to Menu
-</button>
-
-<script>
-function goBack() {
-  window.history.back();
+  if (select.value !== "") {
+    addBtn.style.display = "inline-block";
+    removeBtn.style.display = "inline-block";
+  } else {
+    addBtn.style.display = "none";
+  }
 }
-</script>
 
+function addProject(btn) {
+  const container = document.getElementById("projectContainer");
+  const rows = container.querySelectorAll(".projectRow");
 
-<script src="js/manpowerupdate.js"></script>
-</body>
-</html>
-   
- 
-    
-  
+  if (rows.length >= maxProject) {
+    alert("Maximum 14 Project allowed");
+    return;
+  }
+
+  const newRow = rows[0].cloneNode(true);
+  newRow.querySelector("select").value = "";
+  newRow.querySelector(".projectCount").value = "";
+
+  newRow.querySelector(".addBtn").style.display = "none";
+  newRow.querySelector(".removeBtn").style.display = "inline-block";
+
+  container.appendChild(newRow);
+  calculateTotal();
+}
+
+function removeProject(btn) {
+  const container = document.getElementById("projectContainer");
+  if (container.querySelectorAll(".projectRow").length > 1) {
+    btn.parentElement.remove();
+    calculateTotal();
+  }
+}
+
+function resetProjectRows() {
+  const container = document.getElementById("projectContainer");
+  const rows = container.querySelectorAll(".projectRow");
+  rows.forEach((row, index) => {
+    if (index === 0) {
+      row.querySelector("select").value = "";
+      row.querySelector(".projectCount").value = "";
+      row.querySelector(".addBtn").style.display = "none";
+      row.querySelector(".removeBtn").style.display = "none";
+    } else {
+      row.remove();
+    }
+  });
+}
+
+/* ===============================
+   AUTO TOTAL COUNT
+================================ */
+function calculateTotal() {
+  let projectTotal = 0;
+  document.querySelectorAll(".projectCount").forEach(input => {
+    const val = parseInt(input.value) || 0;
+    projectTotal += val;
+  });
+
+  const joiners = parseInt(document.getElementById("joinerscount").value) || 0;
+  const standby = parseInt(document.getElementById("standbycount").value) || 0;
+
+  document.getElementById("totalcount").value = projectTotal + joiners + standby;
+}
+
+document.addEventListener("input", function (e) {
+  if (e.target.classList.contains("projectCount") ||
+      e.target.id === "joinerscount" ||
+      e.target.id === "standbycount") {
+    calculateTotal();
+  }
+});
+
+/* ===============================
+   SIGNATURE PAD
+================================ */
+function initSignaturePad(canvasId, onSigned, onCleared) {
+  const canvas = document.getElementById(canvasId);
+  const ctx = canvas.getContext("2d");
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width;
+  canvas.height = rect.height;
+
+  ctx.lineWidth = 2.5;
+  ctx.lineCap = "round";
+  ctx.strokeStyle = "#000";
+
+  let drawing = false;
+  let hasSignature = false;
+
+  function getPos(e) {
+    const r = canvas.getBoundingClientRect();
+    if (e.touches) {
+      return { x: e.touches[0].clientX - r.left, y: e.touches[0].clientY - r.top };
+    }
+    return { x: e.clientX - r.left, y: e.clientY - r.top };
+  }
+
+  function startDraw(e) {
+    e.preventDefault();
+    drawing = true;
+    if (!hasSignature) {
+      hasSignature = true;
+      onSigned && onSigned();
+    }
+    const p = getPos(e);
+    ctx.beginPath();
+    ctx.moveTo(p.x, p.y);
+  }
+
+  function draw(e) {
+    if (!drawing) return;
+    e.preventDefault();
+    const p = getPos(e);
+    ctx.lineTo(p.x, p.y);
+    ctx.stroke();
+  }
+
+  function endDraw(e) {
+    drawing = false;
+  }
+
+  canvas.addEventListener("mousedown", startDraw);
+  canvas.addEventListener("mousemove", draw);
+  canvas.addEventListener("mouseup", endDraw);
+  canvas.addEventListener("mouseleave", endDraw);
+
+  canvas.addEventListener("touchstart", startDraw, { passive: false });
+  canvas.addEventListener("touchmove", draw, { passive: false });
+  canvas.addEventListener("touchend", endDraw);
+
+  return () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    hasSignature = false;
+    onCleared && onCleared();
+  };
+}
+
+const clearSupSignature = initSignaturePad(
+  "supSignPad",
+  () => submitBtn.disabled = false,
+  () => submitBtn.disabled = true
+);
+
+/* ===============================
+   FORM SUBMISSION
+================================ */
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  submitBtn.disabled = true;
+  status.innerText = "Submitting...";
+  status.style.color = "blue";
+
+  const payload = {
+    action: "submitmanpower",
+    accomodation: form.accomodation.value,
+    projectType: Array.from(document.querySelectorAll(".projectRow"))
+      .map(row => {
+        const project = row.querySelector(".projectType").value;
+        const count = row.querySelector(".projectCount").value;
+        if (project && count) return `${project} : ${count}`;
+      })
+      .filter(Boolean)
+      .join(", "),
+    joinerscount: form.joinerscount.value,
+    joinersdetails: form.joinersdetails.value,
+    standbycount: form.standbycount.value,
+    standbydetails: form.standbydetails.value,
+    totalcount: form.totalcount.value,
+    supervisorName: form.supervisorName.value,
+    supEmpNumber: form.supEmpNumber.value,
+    supdesignation: form.supdesignation.value,
+    supSign: document.getElementById("supSignPad").toDataURL()
+  };
+
+  console.log("Payload:", payload); // debug
+
+  fetch(SCRIPT_URL, {
+    method: "POST",
+    body: JSON.stringify(payload)
+  })
+  .then(res => res.json())
+  .then(res => {
+    if (res.status === "success") {
+      status.innerText = "✅ Submitted Successfully";
+      status.style.color = "green";
+      form.reset();
+      document.getElementById("supervisorName").value = loginName;
+      document.getElementById("supEmpNumber").value = loginempnumber;
+      document.getElementById("supdesignation").value = logindesi;
+      submitBtn.disabled = false;
+      resetProjectRows();
+      clearSupSignature();
+      setTimeout(() => status.innerText = "", 3000);
+    } else {
+      status.innerText = "❌ Submission Failed";
+      status.style.color = "red";
+      submitBtn.disabled = false;
+    }
+  })
+  .catch(() => {
+    status.innerText = "❌ Network Error";
+    status.style.color = "red";
+    submitBtn.disabled = false;
+  });
+});
