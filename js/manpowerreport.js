@@ -49,8 +49,8 @@ searchBtn.addEventListener("click", async () => {
       status.innerText = "❌ No data found";
       return;
     }
-
-    renderReport(data.data);
+     renderToday(res.today);   // 🔹 GRID
+     renderWeek(res.week);     // 🔹 TABLE
 
     status.innerText = "✅ Loaded";
     status.style.color = "green";
@@ -64,9 +64,15 @@ searchBtn.addEventListener("click", async () => {
 });
 
 /* RENDER */
-function renderReport(data) {
+function renderToday(data) {
 
-  container.innerHTML = "";
+  const container = document.getElementById("reportContainer");
+  container.innerHTML = "<h3>Selected Date Report</h3>";
+
+  if (!data.length) {
+    container.innerHTML += "<p>No data for selected date</p>";
+    return;
+  }
 
   let rowDiv;
 
@@ -86,17 +92,57 @@ function renderReport(data) {
 
       <table class="report-table">
         <tr><td><b>Date</b></td><td>${item.date}</td></tr>
-        <tr><td><b>Project wise Manpower</b></td><td style="white-space:pre-line">${item.project}</td></tr>
-        <tr><td><b>New Joiners</b></td><td>${item.joiners}</td></tr>
-        <tr><td><b>New Joiner Details</b></td><td>${item.joinDetails}</td></tr>
-        <tr><td><b>Standby Employees</b></td><td>${item.standby}</td></tr>
-        <tr><td><b>Standby Employee Details</b></td><td>${item.standbyDetails}</td></tr>
+        <tr><td><b>Project</b></td><td style="white-space:pre-line">${item.project}</td></tr>
+        <tr><td><b>Joiners</b></td><td>${item.joiners}</td></tr>
+        <tr><td><b>Standby</b></td><td>${item.standby}</td></tr>
         <tr><td><b>Total</b></td><td>${item.total}</td></tr>
       </table>
     `;
 
     rowDiv.appendChild(section);
+  });
+}
 
+
+function renderWeek(data) {
+
+  const container = document.getElementById("reportContainer");
+
+  let html = `
+    <h3 style="margin-top:30px;">Last 7 Days Report</h3>
+    <div class="table-wrapper">
+    <table class="report-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Accomodation</th>
+          <th>Project</th>
+          <th>Joiners</th>
+          <th>Standby</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  data.forEach(item => {
+    html += `
+      <tr>
+        <td>${item.date}</td>
+        <td>${item.accomodation}</td>
+        <td>${item.project}</td>
+        <td>${item.joiners}</td>
+        <td>${item.standby}</td>
+        <td>${item.total}</td>
+      </tr>
+    `;
   });
 
+  html += `
+      </tbody>
+    </table>
+    </div>
+  `;
+
+  container.innerHTML += html;
 }
