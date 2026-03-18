@@ -45,14 +45,32 @@ if (!["Controller","Manager","Admin"].includes(role)) {
 
   <form id="manpowerreport">
 
-    <div class="section">
-      <h3>Search</h3>
+   <div class="details-grid">
 
-      <label>Select Date</label>
-      <input type="date" id="searchDate" required>
+  <!-- LEFT SIDE -->
+  <div class="section employee-left">
 
-      <button type="button" id="searchBtn">Search</button>
+    <h3>Search Manpower Report</h3>
+
+    <label>Select Date</label>
+
+    <div class="emp-search-wrapper">
+      <input type="date" id="searchDate">
+
+      <button
+        type="button"
+        id="searchBtn"
+        class="search"
+        disabled>
+        🔍 Search
+      </button>
     </div>
+
+    <div id="status" style="margin-top:6px;font-size:13px;"></div>
+
+  </div>
+
+</div>
 
     <!-- RESULT GRID -->
     <div id="reportContainer"></div>
