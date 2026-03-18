@@ -559,3 +559,27 @@ canvas {
   margin-bottom: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
+
+  width: 100%;
+  border-collapse: collapse;  /* keeps borders clean */
+  font-size: 13px;
+}
+
+.report-table th,
+.report-table td {
+  border: 1px solid #ddd;     /* 👈 vertical & horizontal lines */
+  padding: 6px;
+  vertical-align: top;
+}
+
+.report-table th {
+  background-color: #004080;  /* blue header */
+  color: white;
+  font-weight: bold;
+}
+
+.report-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
