@@ -1,7 +1,7 @@
 /* ===============================
-   CONFIG
+   CONFIG-NSS PATROLLING
 ================================ */
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwGBHL3XMTXiM64vl0aAda2Z1kyaiKEuATQLDMvONMC_DfK27ConTO6JQ4z3bDFH3aa/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbybVHu2jxU3sGN4qsvLHTRZT9mPn2Kt0Bi_HuM8yW8aFcjAVHdx9gHRNjolVjgla9FY/exec";
 
 const form = document.getElementById("patrollingform");
 const status = document.getElementById("status");
