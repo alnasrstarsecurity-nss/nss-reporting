@@ -565,21 +565,31 @@ canvas {
   font-size: 13px;
 }
 
+/* Table wrapper scroll */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Table full borders */
+.report-table {
+  width: 100%;
+  border-collapse: collapse;  /* collapse borders */
+  font-size: 13px;
+}
+
 .report-table th,
 .report-table td {
-  border: 1px solid #ddd;     /* 👈 vertical & horizontal lines */
-  padding: 6px;
+  border: 1px solid #004080; /* 👈 all borders */
+  padding: 8px;
   vertical-align: top;
 }
 
+/* Table header styling */
 .report-table th {
   background-color: #004080;  /* blue header */
   color: white;
   font-weight: bold;
-}
-
-.report-table thead th {
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  text-align: left;
 }
