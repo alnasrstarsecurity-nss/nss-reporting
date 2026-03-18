@@ -71,7 +71,6 @@ searchBtn.addEventListener("click", async () => {
 /**********************************************************************/
 /* RENDER */
 function renderToday(data) {
-
   const container = document.getElementById("reportContainer");
   container.innerHTML = "<h3>Selected Date Report</h3>";
 
@@ -83,7 +82,6 @@ function renderToday(data) {
   let rowDiv;
 
   data.forEach((item, index) => {
-
     if (index % 2 === 0) {
       rowDiv = document.createElement("div");
       rowDiv.className = "details-grid";
@@ -99,8 +97,10 @@ function renderToday(data) {
       <table class="report-table">
         <tr><td><b>Date</b></td><td>${item.date}</td></tr>
         <tr><td><b>Project</b></td><td style="white-space:pre-line">${item.project}</td></tr>
-        <tr><td><b>Joiners</b></td><td>${item.joiners}</td></tr>
+        <tr><td><b>New Joiners</b></td><td>${item.joiners}</td></tr>
+        <tr><td><b>Joiner Details</b></td><td style="white-space:pre-line">${item.joinersdetails}</td></tr>
         <tr><td><b>Standby</b></td><td>${item.standby}</td></tr>
+        <tr><td><b>Standby Details</b></td><td style="white-space:pre-line">${item.standbydetails}</td></tr>
         <tr><td><b>Total</b></td><td>${item.total}</td></tr>
       </table>
     `;
@@ -109,26 +109,29 @@ function renderToday(data) {
   });
 }
 
-
+/********************************************************************************************/
 function renderWeek(data) {
-
   const container = document.getElementById("reportContainer");
+
+  if (!data.length) return; // nothing to show
 
   let html = `
     <h3 style="margin-top:30px;">Last 7 Days Report</h3>
     <div class="table-wrapper">
-    <table class="report-table">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Accomodation</th>
-          <th>Project</th>
-          <th>Joiners</th>
-          <th>Standby</th>
-          <th>Total</th>
-        </tr>
-      </thead>
-      <tbody>
+      <table class="report-table">
+        <thead>
+          <tr style="background-color:#004080; color:white;">
+            <th>Date</th>
+            <th>Accomodation</th>
+            <th>Project</th>
+            <th>New Joiners</th>
+            <th>Joiner Details</th>
+            <th>Standby</th>
+            <th>Standby Details</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
   `;
 
   data.forEach(item => {
@@ -138,15 +141,17 @@ function renderWeek(data) {
         <td>${item.accomodation}</td>
         <td>${item.project}</td>
         <td>${item.joiners}</td>
+        <td style="white-space:pre-line">${item.joinersdetails}</td>
         <td>${item.standby}</td>
+        <td style="white-space:pre-line">${item.standbydetails}</td>
         <td>${item.total}</td>
       </tr>
     `;
   });
 
   html += `
-      </tbody>
-    </table>
+        </tbody>
+      </table>
     </div>
   `;
 
