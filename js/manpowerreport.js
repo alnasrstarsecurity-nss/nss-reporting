@@ -1,4 +1,4 @@
-const SCRIPT_URL = "YOUR_WEB_APP_URL";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyDLH1lJFys4HYoOxxWO65l-YXW3iZ9yXW2Ly3ua18GdHS3AO0dtMCeCJ4NehyqPf7m/exec";
 
 document.getElementById("searchBtn").addEventListener("click", fetchReport);
 
