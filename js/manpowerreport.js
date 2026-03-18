@@ -17,7 +17,7 @@ function formatDateToDDMMYYYY(dateStr) {
   const [y, m, d] = dateStr.split("-");
   return `${d}/${m}/${y}`;
 }
-
+/**********************************************************************/
 /* SEARCH CLICK */
 searchBtn.addEventListener("click", async () => {
 
@@ -25,6 +25,7 @@ searchBtn.addEventListener("click", async () => {
 
   if (!formattedDate) {
     status.innerText = "❌ Select date";
+    status.style.color = "red";
     return;
   }
 
@@ -45,12 +46,17 @@ searchBtn.addEventListener("click", async () => {
 
     const data = await res.json();
 
-    if (data.status !== "success" || !data.data.length) {
+    if (data.status !== "success") {
       status.innerText = "❌ No data found";
+      status.style.color = "red";
       return;
     }
-     renderToday(res.today);   // 🔹 GRID
-     renderWeek(res.week);     // 🔹 TABLE
+
+    // 🔹 Render selected date grid
+    renderToday(data.today || []);
+
+    // 🔹 Render last 7 days table
+    renderWeek(data.week || []);
 
     status.innerText = "✅ Loaded";
     status.style.color = "green";
@@ -62,7 +68,7 @@ searchBtn.addEventListener("click", async () => {
   }
 
 });
-
+/**********************************************************************/
 /* RENDER */
 function renderToday(data) {
 
