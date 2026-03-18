@@ -96,12 +96,12 @@ function renderToday(data) {
 
       <table class="report-table">
         <tr><td><b>Date</b></td><td>${item.date}</td></tr>
-        <tr><td><b>Project</b></td><td style="white-space:pre-line">${item.project}</td></tr>
+        <tr><td><b>Project Wise Manpower</b></td><td style="white-space:pre-line">${item.project}</td></tr>
         <tr><td><b>New Joiners</b></td><td>${item.joiners}</td></tr>
-        <tr><td><b>Joiner Details</b></td><td style="white-space:pre-line">${item.joinersdetails}</td></tr>
-        <tr><td><b>Standby</b></td><td>${item.standby}</td></tr>
-        <tr><td><b>Standby Details</b></td><td style="white-space:pre-line">${item.standbydetails}</td></tr>
-        <tr><td><b>Total</b></td><td>${item.total}</td></tr>
+        <tr><td><b>New Joiner Details</b></td><td style="white-space:pre-line">${item.joinersdetails}</td></tr>
+        <tr><td><b>Standby Employees</b></td><td>${item.standby}</td></tr>
+        <tr><td><b>Standby Employee Details</b></td><td style="white-space:pre-line">${item.standbydetails}</td></tr>
+        <tr><td><b>Total Manpower</b></td><td>${item.total}</td></tr>
       </table>
     `;
 
@@ -125,10 +125,10 @@ function renderWeek(data) {
             <th>Accomodation</th>
             <th>Project</th>
             <th>New Joiners</th>
-            <th>Joiner Details</th>
+            <th>New Joiner Details</th>
             <th>Standby</th>
             <th>Standby Details</th>
-            <th>Total</th>
+            <th>Total Manpower</th>
           </tr>
         </thead>
         <tbody>
