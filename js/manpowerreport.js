@@ -86,11 +86,11 @@ function renderReport(data) {
 
       <table class="report-table">
         <tr><td><b>Date</b></td><td>${item.date}</td></tr>
-        <tr><td><b>Project</b></td><td style="white-space:pre-line">${item.project}</td></tr>
-        <tr><td><b>Joiners</b></td><td>${item.joiners}</td></tr>
-        <tr><td><b>Joiner Details</b></td><td>${item.joinDetails}</td></tr>
-        <tr><td><b>Standby</b></td><td>${item.standby}</td></tr>
-        <tr><td><b>Standby Details</b></td><td>${item.standbyDetails}</td></tr>
+        <tr><td><b>Project wise Manpower</b></td><td style="white-space:pre-line">${item.project}</td></tr>
+        <tr><td><b>New Joiners</b></td><td>${item.joiners}</td></tr>
+        <tr><td><b>New Joiner Details</b></td><td>${item.joinDetails}</td></tr>
+        <tr><td><b>Standby Employees</b></td><td>${item.standby}</td></tr>
+        <tr><td><b>Standby Employee Details</b></td><td>${item.standbyDetails}</td></tr>
         <tr><td><b>Total</b></td><td>${item.total}</td></tr>
       </table>
     `;
