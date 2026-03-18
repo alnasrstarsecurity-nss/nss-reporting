@@ -1,1 +1,83 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manpower Update Report</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style2.css">
+
+</head>
+<body>
+
+<script>
+/* 🔒 Block direct access without login */
+if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
+  window.location.replace("index.html");
+}
+
+  const role = sessionStorage.getItem("ROLE");
+if (!["Controller","Manager","Admin"].includes(role)) {
+  window.location.replace("menu.html");
+}
+</script>
+
+<div class="form-container">
+
+  <!-- HEADER -->
+  <div class="form-header">
+    <h1>Manpower Update Report</h1>
+  </div>
+
+  <hr>
+
+  <!-- FORM -->
+  <form id="manpowerreport">
+
+    <!-- =============================
+         
+         ============================= -->
+   <div class="form-container">
+
+  <div class="form-header">
+    <h1>Manpower Update Report</h1>
+  </div>
+
+  <hr>
+
+  <form id="manpowerreport">
+
+    <div class="section">
+      <h3>Search</h3>
+
+      <label>Select Date</label>
+      <input type="date" id="searchDate" required>
+
+      <button type="button" id="searchBtn">Search</button>
+    </div>
+
+    <!-- RESULT GRID -->
+    <div id="reportContainer"></div>
+
+  </form>
+
+  <button type="button" onclick="goBack()">⬅ Back to Menu</button>
+
+</div>
+<script>
+function goBack() {
+  window.location.replace("menu.html");
+}
+</script>
+
+<!-- YOUR EXISTING JS -->
+<script src="js/manpowerreport.js" defer></script>
+
+</body>
+</html>
