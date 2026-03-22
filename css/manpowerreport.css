@@ -49,6 +49,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 80vh;
+  margin: 0 auto;
 }
 
 @media (min-width: 1200px) {
