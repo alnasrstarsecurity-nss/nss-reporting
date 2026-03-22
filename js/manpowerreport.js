@@ -1,4 +1,4 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwmdebvnQrO2ZNpGuVWrW6GURT5hJcCBdubsG380NdNYWKqmCitW5Bwmy2KssP3n8ux/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxuQWQ0uO_UbqomTAEm7ViMERRrkW6lEiJiaoVXQEacWghxCdMABxxmetGeEtxcZNTX/exec";
 
 
 const searchDate = document.getElementById("searchDate");
