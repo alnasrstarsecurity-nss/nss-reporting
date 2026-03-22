@@ -5,6 +5,7 @@ const searchDate = document.getElementById("searchDate");
 const searchBtn = document.getElementById("searchBtn");
 const status = document.getElementById("status");
 const container = document.getElementById("reportContainer");
+const advStatus = document.getElementById("advStatus");
 
 /* ENABLE BUTTON */
 searchDate.addEventListener("change", () => {
