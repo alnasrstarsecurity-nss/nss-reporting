@@ -462,23 +462,34 @@ input[readonly] {
 
 /* Mobile-friendly project row layout */
 @media (max-width: 600px) {
+
   .projectRow {
-    flex-direction: column;   /* stack items vertically */
-    align-items: stretch;     /* make them full width */
+    flex-direction: row;        /* ✅ KEEP SAME ROW */
+    align-items: center;
+    gap: 6px;
   }
 
-  .projectRow select,
-  .projectRow input.projectCount {
-    width: 100%;              /* full width */
-    min-width: auto;           /* override desktop min-width */
-    margin-bottom: 6px;       /* space between dropdown and input */
+  .projectRow select {
+    flex: 1;                   /* take remaining space */
+    min-width: 0;              /* prevents overflow */
+    height: 42px;
+    font-size: 13px;
   }
 
-  .projectRow .addBtn,
-  .projectRow .removeBtn {
-    width: 48px;              /* small buttons */
-    height: 48px;
-    font-size: 24px;
-    margin-bottom: 6px;
+  .projectRow .projectCount {
+    width: 1in;                /* ✅ EXACT 1 inch */
+    min-width: 1in;            /* override previous 2in */
+    height: 42px;
+    font-size: 13px;
+    text-align: center;
   }
+
+  .addBtn,
+  .removeBtn {
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    flex-shrink: 0;            /* prevent shrinking */
+  }
+}
 }
