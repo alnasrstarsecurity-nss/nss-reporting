@@ -192,7 +192,7 @@ advBtn.addEventListener("click", async () => {
 
     const data = await res.json();
 
-    if (data.advStatus !== "success" || !data.data.length) {
+    if (data.status !== "success" || !data.data.length) {
       advStatus.innerText = "❌ No data found";
       return;
     }
