@@ -172,8 +172,8 @@ advBtn.addEventListener("click", async () => {
     return;
   }
 
-  status.innerText = "Loading...";
-  status.style.color = "blue";
+ advStatus.innerText = "Loading...";
+ advStatus.style.color = "blue";
 
   container.innerHTML = "";
 
@@ -191,19 +191,19 @@ advBtn.addEventListener("click", async () => {
 
     const data = await res.json();
 
-    if (data.status !== "success" || !data.data.length) {
-      status.innerText = "❌ No data found";
+    if (data.advStatus !== "success" || !data.data.length) {
+      advStatus.innerText = "❌ No data found";
       return;
     }
 
     renderRangeTable(data.data);
 
-    status.innerText = "✅ Loaded";
-    status.style.color = "green";
+   advStatus.innerText = "✅ Loaded";
+   advStatus.style.color = "green";
 
   } catch (err) {
-    status.innerText = "❌ Error fetching data";
-    status.style.color = "red";
+    advStatus.innerText = "❌ Error fetching data";
+    advStatus.style.color = "red";
   }
 
 });
