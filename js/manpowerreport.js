@@ -168,7 +168,7 @@ advBtn.addEventListener("click", async () => {
   const acc = document.getElementById("accFilter").value;
 
   if (!from || !to) {
-    status.innerText = "❌ Select date range";
+    advStatus.innerText = "❌ Select date range";
     return;
   }
 
