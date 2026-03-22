@@ -157,3 +157,96 @@ function renderWeek(data) {
 
   container.innerHTML += html;
 }
+
+/******************************************************************************/
+const advBtn = document.getElementById("advSearchBtn");
+
+advBtn.addEventListener("click", async () => {
+
+  const from = formatDateToDDMMYYYY(document.getElementById("fromDate").value);
+  const to = formatDateToDDMMYYYY(document.getElementById("toDate").value);
+  const acc = document.getElementById("accFilter").value;
+
+  if (!from || !to) {
+    status.innerText = "❌ Select date range";
+    return;
+  }
+
+  status.innerText = "Loading...";
+  status.style.color = "blue";
+
+  container.innerHTML = "";
+
+  try {
+
+    const res = await fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify({
+        action: "getManpowerRange",
+        fromDate: from,
+        toDate: to,
+        accomodation: acc
+      })
+    });
+
+    const data = await res.json();
+
+    if (data.status !== "success" || !data.data.length) {
+      status.innerText = "❌ No data found";
+      return;
+    }
+
+    renderRangeTable(data.data);
+
+    status.innerText = "✅ Loaded";
+    status.style.color = "green";
+
+  } catch (err) {
+    status.innerText = "❌ Error fetching data";
+    status.style.color = "red";
+  }
+
+});
+
+/**********************************************************************************/
+
+function renderRangeTable(data) {
+
+  let html = `
+    <h3 style="margin-top:30px;">Filtered Report</h3>
+    <div class="table-wrapper">
+    <table class="report-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Accomodation</th>
+          <th>Project</th>
+          <th>Joiners</th>
+          <th>Joiner Details</th>
+          <th>Standby</th>
+          <th>Standby Details</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  data.forEach(item => {
+    html += `
+      <tr>
+        <td>${item.date}</td>
+        <td>${item.accomodation}</td>
+        <td style="white-space:pre-line">${item.project}</td>
+        <td>${item.joiners}</td>
+        <td>${item.joinDetails}</td>
+        <td>${item.standby}</td>
+        <td>${item.standbyDetails}</td>
+        <td>${item.total}</td>
+      </tr>
+    `;
+  });
+
+  html += `</tbody></table></div>`;
+
+  container.innerHTML = html;
+}
