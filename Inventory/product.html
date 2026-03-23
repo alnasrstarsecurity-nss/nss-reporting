@@ -111,30 +111,7 @@ function goBack() {
   window.location.replace("Inventory/InventoryMenu.html");
 }
 </script>
-
-    <script>
-
-document.getElementById("productForm").addEventListener("submit", function(e){
-  e.preventDefault();
-
-  const data = {
-    itemCode: document.getElementById("itemCode").value,
-    itemName: document.getElementById("itemName").value,
-    category: document.getElementById("category").value,
-    size: document.getElementById("size").value,
-    unit: document.getElementById("unit").value,
-    minStock: document.getElementById("minStock").value,
-    status: document.getElementById("status").value
-  };
-
-  google.script.run.withSuccessHandler(function(res){
-    document.getElementById("msg").innerText = "Saved Successfully!";
-    document.getElementById("productForm").reset();
-  }).addProduct(data);
-
-});
-
-</script>
+<script src="product.js"></script>
 
 
 </body>
