@@ -375,3 +375,57 @@ canvas {
   width: 120px;
   align-self: flex-start;
 }
+.header-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.header-buttons button {
+  width: auto;
+  padding: 8px 14px;
+  font-size: 14px;
+}
+.search-bar {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.search-bar input {
+  flex: 1;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;   /* 👈 LEFT + RIGHT */
+  gap: 30px;
+}
+
+.left-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.right-form {
+  display: flex;
+  flex-direction: column;
+}
+.preview-img {
+  margin-top: 15px;
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fff;
+}
+
+@media (max-width: 768px) {
+  .main-grid {
+    grid-template-columns: 1fr;   /* stack */
+  }
+
+  .header-buttons {
+    flex-wrap: wrap;
+  }
+}
