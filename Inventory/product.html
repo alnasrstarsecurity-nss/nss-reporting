@@ -1,117 +1,124 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manpower Update Report</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Master</title>
 
-  <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="../css/inventory.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/inventory.css">
 
 </head>
+
 <body>
 
 <script>
-/* 🔒 Block direct access without login */
 if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
   window.location.replace("index.html");
 }
 
-  const role = sessionStorage.getItem("ROLE");
+const role = sessionStorage.getItem("ROLE");
 if (!["Controller","Manager","Admin"].includes(role)) {
   window.location.replace("menu.html");
 }
 </script>
 
-
-  <!-- FORM -->
-  <form id="productForm">
-
 <div class="form-container">
 
+  <!-- HEADER -->
   <div class="form-header">
     <h1>Product Master</h1>
-  </div>
 
-           <label>Item Code</label>
-<input type="text" id="itemCode" required>
-
-<label>Item Name</label>
-<input type="text" id="itemName" required>
-
-<label>Category</label>
-<select id="category">
-  <option>Uniform</option>
-  <option>PPE</option>
-  <option>Safety Wear</option>
-</select>
-
-<label>Size</label>
-<select id="size">
-  <option>S</option>
-  <option>M</option>
-  <option>L</option>
-  <option>XL</option>
-  <option>XXL</option>
-</select>
-
-       
-
-  <label>Unit</label>
-<select id="unit">
-  <option>PCS</option>
-  <option>Pair</option>
-</select>
-
-<label>Minimum Stock</label>
-<input type="number" id="minStock" value="10">
-
-<label>Status</label>
-<select id="status">
-  <option>Active</option>
-  <option>Inactive</option>
-</select>
-
-  <div class="top-row">
-
-  <div class="left-section">
-    <label>Item Code</label>
-
-    <div class="search-row">
-      <input type="text" id="itemCode" required>
-      <button type="button" class="search" onclick="searchProduct()">Search</button>
+    <div class="header-buttons">
+      <button type="button" onclick="newProduct()">New</button>
+      <button type="button" onclick="enableEdit()">Edit</button>
+      <button type="button" onclick="goBack()">Back</button>
     </div>
   </div>
 
-  <div class="right-section">
-    <label>Product Image</label>
-    <input type="file" id="productImage" accept="image/*">
+  <!-- SEARCH ROW -->
+  <div class="search-bar">
+    <input type="text" id="searchCode" placeholder="Enter Item Code">
+    <button type="button" class="search" onclick="searchProduct()">Search</button>
   </div>
 
-</div>
+  <!-- MAIN CONTENT -->
+  <form id="productForm">
 
-   <button type="submit" class="small-btn">Save</button>
+    <div class="main-grid">
 
-       
+      <!-- LEFT SIDE -->
+      <div class="left-form">
+
+        <label>Item Code</label>
+        <input type="text" id="itemCode" readonly>
+
+        <label>Item Name</label>
+        <input type="text" id="itemName">
+
+        <label>Category</label>
+        <select id="category">
+          <option>Uniform</option>
+          <option>PPE</option>
+          <option>Safety Wear</option>
+        </select>
+
+        <label>Size</label>
+        <select id="size">
+          <option>S</option>
+          <option>M</option>
+          <option>L</option>
+          <option>XL</option>
+          <option>XXL</option>
+        </select>
+
+        <label>Unit</label>
+        <select id="unit">
+          <option>PCS</option>
+          <option>Pair</option>
+        </select>
+
+        <label>Minimum Stock</label>
+        <input type="number" id="minStock" value="10">
+
+        <label>Status</label>
+        <select id="status">
+          <option>Active</option>
+          <option>Inactive</option>
+        </select>
+
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="right-form">
+
+        <label>Product Image</label>
+        <input type="file" id="productImage" accept="image/*">
+
+        <!-- IMAGE PREVIEW -->
+        <img id="previewImage" class="preview-img" src="" alt="No Image">
+
+      </div>
+
+    </div>
+
+    <!-- SAVE BUTTON -->
+    <button type="submit" class="small-btn">Save</button>
+
     <p id="msg"></p>
 
   </form>
 
-  <button type="button" onclick="goBack()">Back</button>
-  
 </div>
+
 <script>
 function goBack() {
   window.location.replace("Inventory/InventoryMenu.html");
 }
 </script>
-<script src="product.js"></script>
 
+<script src="product.js"></script>
 
 </body>
 </html>
