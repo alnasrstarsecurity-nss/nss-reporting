@@ -60,15 +60,16 @@
    
 
     <div class="spacer"></div>
-
-    <button class="logout-btn" onclick="logout()">Logout</button>
-
+    <button type="button" onclick="goBack()">
+    ⬅ Main Menu
+   </button>
+    
     
   </div>
-  <script>
-function logout() {
-  sessionStorage.clear();
-  window.location.replace("index.html");
+
+<script>
+function goBack() {
+  window.history.back();
 }
 </script>
 
