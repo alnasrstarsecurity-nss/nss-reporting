@@ -77,6 +77,24 @@ if (!["Controller","Manager","Admin"].includes(role)) {
   <option>Inactive</option>
 </select>
 
+  <div class="top-row">
+
+  <div class="left-section">
+    <label>Item Code</label>
+
+    <div class="search-row">
+      <input type="text" id="itemCode" required>
+      <button type="button" class="search" onclick="searchProduct()">Search</button>
+    </div>
+  </div>
+
+  <div class="right-section">
+    <label>Product Image</label>
+    <input type="file" id="productImage" accept="image/*">
+  </div>
+
+</div>
+
    <button type="submit">Save Product</button>
 
        
