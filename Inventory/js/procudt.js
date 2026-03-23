@@ -24,14 +24,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Send to Apps Script
     google.script.run
-      .withSuccessHandler(function (res) {
-        showMessage("Product saved successfully!", "green");
-        form.reset();
-      })
-      .withFailureHandler(function (err) {
-        showMessage("Error: " + err.message, "red");
-      })
-      .doPost(data); // calling doPost router
+  .withSuccessHandler(function (res) {
+    showMessage("Product saved successfully!", "green");
+    form.reset();
+  })
+  .withFailureHandler(function (err) {
+    showMessage("Error: " + err.message, "red");
+  })
+  .addProduct(data);
 
   });
 
