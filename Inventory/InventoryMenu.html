@@ -51,24 +51,23 @@
 
   <div class="form-container">
     <img src="Logo.png" alt="Company Logo" class="logo">
-    <h2 style="text-align:center;">Uniform Inventory System</h2>
+    <h2 style="text-align:center;">Main Menu</h2>
 
-   <button data-role="Manager,Admin" onclick="location.href='Inventory/product.html'">Product Master</button>
-
+    <button data-role="Supervisor,Manager,Admin" onclick="location.href='Patrolling.html'">Patrolling</button>
+    
     
    
 
     <div class="spacer"></div>
-    <button type="button" onclick="goBack()">
-    ⬅ Main Menu
-   </button>
-    
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+
     
   </div>
-
-<script>
-function goBack() {
-  window.history.back();
+  <script>
+function logout() {
+  sessionStorage.clear();
+  window.location.replace("index.html");
 }
 </script>
 
