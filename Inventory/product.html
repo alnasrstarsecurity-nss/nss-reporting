@@ -1,112 +1,131 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <base target="_top">
-  <style>
-    body {
-      font-family: Arial;
-      padding: 20px;
-    }
 
-    .container {
-      max-width: 500px;
-      margin: auto;
-    }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manpower Update Report</title>
 
-    input, select {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-    }
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
-    button {
-      background: #356bc1;
-      color: white;
-      padding: 12px;
-      border: none;
-      width: 100%;
-      cursor: pointer;
-    }
-  </style>
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/manpowerreport.css">
+
 </head>
-
 <body>
 
-<div class="container">
+<script>
+/* 🔒 Block direct access without login */
+if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
+  window.location.replace("index.html");
+}
 
-<h2>Product Master</h2>
+  const role = sessionStorage.getItem("ROLE");
+if (!["Controller","Manager","Admin"].includes(role)) {
+  window.location.replace("menu.html");
+}
+</script>
 
-<form id="productForm">
 
-<label>Item Code</label>
-<input type="text" id="itemCode" required>
+  <!-- FORM -->
+  <form id="manpowerreport">
 
-<label>Item Name</label>
-<input type="text" id="itemName" required>
+    <!-- =============================
+         
+         ============================= -->
+<div class="form-container">
 
-<label>Category</label>
-<select id="category">
-  <option>Uniform</option>
-  <option>PPE</option>
-  <option>Safety Wear</option>
-</select>
+  <div class="form-header">
+    <h1>Manpower Update Report</h1>
+  </div>
 
-<label>Size</label>
-<select id="size">
-  <option>S</option>
-  <option>M</option>
-  <option>L</option>
-  <option>XL</option>
-  <option>XXL</option>
-</select>
+  <hr>
 
-<label>Unit</label>
-<select id="unit">
-  <option>PCS</option>
-  <option>Pair</option>
-</select>
+  <form id="manpowerreport">
 
-<label>Minimum Stock</label>
-<input type="number" id="minStock" value="10">
+    <div class="details-grid">
 
-<label>Status</label>
-<select id="status">
-  <option>Active</option>
-  <option>Inactive</option>
-</select>
+      <div class="section employee-left">
 
-<button type="submit">Save Product</button>
+        <h3>Search Manpower Report</h3>
 
-</form>
+        <label>Select Date</label>
 
-<p id="msg"></p>
+        <div class="emp-search-wrapper">
+          <input type="date" id="searchDate">
 
+          <button type="button" id="searchBtn" class="search" disabled>
+            🔍 Search
+          </button>
+        </div>
+
+        <div id="status"></div>
+
+      </div>
+
+
+
+      <!-- RIGHT SIDE -->
+<div class="section employee-right">
+
+  <h3>Advanced Search</h3>
+
+  <label>From Date</label>
+  <input type="date" id="fromDate">
+
+  <label>To Date</label>
+  <input type="date" id="toDate">
+
+  <label>Accomodation</label>
+  <select id="accFilter">
+    <option value="">-- All --</option>
+    <option value="ABU NAKLAH HIA CAMP">ABU NAKLAH HIA CAMP</option>
+  <option value="ABU NAKLAH-CAMP 1">ABU NAKLAH-CAMP 1</option>
+    <option value="ABU NAKLAH -CAMP2">ABU NAKLAH-CAMP2</option>
+    <option value="UM SALAL CAMP-1">UM SALAL CAMP-1</option>
+    <option value="UM SALAL CAMP-2">UM SALAL CAMP-2</option>
+    <option value="ASIAN CITY B-21">ASIAN CITY B-21</option>
+    <option value="AL THUMAMA NEW (FEMALE)">AL THUMAMA NEW (FEMALE)</option>
+    <option value="AL THUMAMA (FEMALE)">AL THUMAMA (FEMALE)</option>
+    <option value="BARWA AL BARAHA">BARWA AL BARAHA</option>
+    <option value="AL WAAB (FEMALE)ASPIRE">AL WAAB (FEMALE)ASPIRE</option>
+    <option value="BIN OMRAN (FEMALE)BALADIYA">BIN OMRAN (FEMALE)BALADIYA</option>
+    <option value="ARGENTINE NEIGHBORHOOD-G3">ARGENTINE NEIGHBORHOOD-G3</option>
+    <option value="ARGENTINE NEIGHBORHOOD-C6">ARGENTINE NEIGHBORHOOD-C6</option>
+    <option value="ARGENTINE NEIGHBORHOOD-T5">ARGENTINE NEIGHBORHOOD-T5</option>
+  </select>
+
+  <button type="button" id="advSearchBtn" class="search">
+    🔍 Search
+  </button>
+  <div id="advStatus" style="margin-top:6px;font-size:13px;"></div>
 </div>
 
+
+
+
+      
+    </div>
+
+    
+
+    <div id="reportContainer"></div>
+
+  </form>
+
+  <button type="button" onclick="goBack()">⬅ Back to Menu</button>
+
+</div>
 <script>
-
-document.getElementById("productForm").addEventListener("submit", function(e){
-  e.preventDefault();
-
-  const data = {
-    itemCode: document.getElementById("itemCode").value,
-    itemName: document.getElementById("itemName").value,
-    category: document.getElementById("category").value,
-    size: document.getElementById("size").value,
-    unit: document.getElementById("unit").value,
-    minStock: document.getElementById("minStock").value,
-    status: document.getElementById("status").value
-  };
-
-  google.script.run.withSuccessHandler(function(res){
-    document.getElementById("msg").innerText = "Saved Successfully!";
-    document.getElementById("productForm").reset();
-  }).addProduct(data);
-
-});
-
+function goBack() {
+  window.location.replace("menu.html");
+}
 </script>
+
+<!-- YOUR EXISTING JS -->
+<script src="js/manpowerreport.js" defer></script>
 
 </body>
 </html>
