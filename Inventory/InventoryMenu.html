@@ -53,16 +53,8 @@
     <img src="Logo.png" alt="Company Logo" class="logo">
     <h2 style="text-align:center;">Uniform Inventory System</h2>
 
-   <button class="btn" onclick="openPage('product')">Product Master</button>
-   <button class="btn" onclick="openPage('purchase')">Add Stock</button>
-   <button class="btn" onclick="openPage('distribution')">Camp Distribution</button>
-   <button class="btn" onclick="openPage('issue')">Employee Issue</button>
+   <button data-role="Manager,Admin" onclick="location.href='product.html'">Product Master</button>
 
-   <script>
-   function openPage(page){
-   window.location.href = page;
-   }
-   </script>
     
    
 
