@@ -38,14 +38,6 @@ if (!["Controller","Manager","Admin"].includes(role)) {
     <h1>Product Master</h1>
   </div>
 
-  <hr>
-
-    <div class="details-grid">
-
-      <div class="section left">
-
-               <form id="productForm">
-
            <label>Item Code</label>
 <input type="text" id="itemCode" required>
 
@@ -68,16 +60,7 @@ if (!["Controller","Manager","Admin"].includes(role)) {
   <option>XXL</option>
 </select>
 
-        <button type="submit">Save Product</button>
-
-      </div>
-
-
-
-      <!-- RIGHT SIDE -->
-<div class="section right">
-
-  <h3>Advanced Search</h3>
+       
 
   <label>Unit</label>
 <select id="unit">
@@ -94,12 +77,10 @@ if (!["Controller","Manager","Admin"].includes(role)) {
   <option>Inactive</option>
 </select>
 
-</div>
-      
-    </div>
-    <p id="msg"></p>
+   <button type="submit">Save Product</button>
 
-    <div id="reportContainer"></div>
+       </div>
+    <p id="msg"></p>
 
   </form>
 
