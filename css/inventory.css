@@ -349,147 +349,25 @@ canvas {
   flex: 1;
 }
 
-
-/*incident form style */
-
-/* INCIDENT CHECKBOX LIST */
-.check-row {
+.top-row {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 8px 0;
+  gap: 20px;
+  align-items: flex-end;
 }
 
-.check-row label {
+.left-section {
+  flex: 2;
+}
+
+.right-section {
+  flex: 1;
+}
+
+.search-row {
   display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0;
-  font-weight: 500;
-}
-
-.check-row input[type="checkbox"] {
-  width: auto;
-  margin: 0;
-  transform: scale(1.5);
-}
-
-.check-row span {
-  font-size: 14px;
-  font-weight: 400;
-}
-
-.yesno2 {
-  display: grid;
-  grid-template-columns: 220px 1fr; /* left label + right options */
-  align-items: start;
-  margin-bottom: 12px;
-}
-
-.yesno2-title {
-  font-weight: bold;
-}
-
-.yesno2-options {
-  display: flex;
-  flex-direction: column;
   gap: 8px;
 }
 
-
-.projectRow {
-  display: flex;
-  align-items: center;      /* vertical center */
-  gap: 8px;                 /* space between elements */
-  margin-bottom: 6px;
-}
-
-.projectRow select {
-  flex: 1;                  /* fill remaining width */
-  height: 0.5in;
-  padding: 2px 4px;
-  font-size: 14px;
-  box-sizing: border-box;
-}
-
-.projectRow .projectCount {
-  width: 1in;          /* fixed width */
-  min-width: 2in;
-  height: 0.5in;
-  padding: 2px 6px;
-  font-size: 14px;
-}
-
-.addBtn, .removeBtn {
-  width: 0.48in;
-  height: 0.47in;
-  border: none;
-  border-radius: 6px;
-  font-size: 38px;
-  cursor: pointer;
-   position: relative;
-   top: -4px; 
- 
-   display: flex;           /* flex container */
-  align-items: center;     /* vertical center */
-  justify-content: center; /* horizontal center */
-
-  padding: 0;              /* remove extra space */
-  line-height: 1;          /* prevent text baseline shifting */
-}
-
-.addBtn {
-  background: #254029; /* green */
-  color: #ffffff; 
-}
-
-.addBtn:hover { background: #218838; }
-
-.removeBtn {
-  background: #800000; /* red */
-  color: #ffffff; 
-}
-
-.removeBtn:hover { background: #c82333; }
-
-
-input[readonly] {
-  background-color:#fcfafa;
-  color: #000000;
-  border: 1px solid #ccc;
-  cursor: not-allowed;
-}
-
-/* Mobile-friendly project row layout */
-@media (max-width: 600px) {
-
-  .projectRow {
-    flex-direction: row;        /* ✅ KEEP SAME ROW */
-    align-items: center;
-    gap: 6px;
-  }
-
-  .projectRow select {
-    flex: 1;                   /* take remaining space */
-    min-width: 0;              /* prevents overflow */
-    height: 42px;
-    font-size: 13px;
-  }
-
-  .projectRow .projectCount {
-    width: 1in;                /* ✅ EXACT 1 inch */
-    min-width: 1in;            /* override previous 2in */
-    height: 42px;
-    font-size: 13px;
-    text-align: center;
-  }
-
-  .addBtn,
-  .removeBtn {
-    width: 40px;
-    height: 40px;
-    font-size: 22px;
-    flex-shrink: 0;            /* prevent shrinking */
-  }
-}
+.search-row input {
+  flex: 1;
 }
