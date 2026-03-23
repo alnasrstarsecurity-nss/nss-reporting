@@ -51,11 +51,18 @@
 
   <div class="form-container">
     <img src="Logo.png" alt="Company Logo" class="logo">
-    <h2 style="text-align:center;">Main Menu</h2>
+    <h2 style="text-align:center;">Uniform Inventory System</h2>
 
-    <button data-role="Supervisor,Manager,Admin" onclick="product.href='Patrolling.html'">Product Master</button>
-    
-    <br> <br> <br><br><br>
+   <button class="btn" onclick="openPage('product')">Product Master</button>
+   <button class="btn" onclick="openPage('purchase')">Add Stock</button>
+   <button class="btn" onclick="openPage('distribution')">Camp Distribution</button>
+   <button class="btn" onclick="openPage('issue')">Employee Issue</button>
+
+   <script>
+   function openPage(page){
+   window.location.href = page;
+   }
+   </script>
     
    
 
