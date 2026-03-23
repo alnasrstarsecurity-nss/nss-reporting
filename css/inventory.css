@@ -397,7 +397,7 @@ canvas {
 
 .main-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;   /* 👈 LEFT + RIGHT */
+  grid-template-columns: 1.7fr 1.3fr;   /* 👈 LEFT + RIGHT */
   gap: 30px;
 }
 
