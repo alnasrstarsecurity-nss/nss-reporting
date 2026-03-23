@@ -371,3 +371,7 @@ canvas {
 .search-row input {
   flex: 1;
 }
+.small-btn {
+  width: 120px;
+  align-self: flex-start;
+}
