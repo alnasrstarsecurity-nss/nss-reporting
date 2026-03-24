@@ -18,8 +18,17 @@ const searchCode = document.getElementById("searchCode");
 // ------------------
 // Page load
 // ------------------
+let allItemNames = [];
 window.addEventListener("DOMContentLoaded", () => {
   newProduct();
+   fetch(SCRIPT_URL, { 
+    method: "POST", 
+    body: JSON.stringify({ action: "getItemNames" }) 
+  })
+  .then(res => res.json())
+  .then(data => {
+    allItemNames = data.names || [];
+  });
 });
 
 // ------------------
