@@ -452,14 +452,35 @@ canvas {
   flex: 1;
 }
 
+.search-wrapper {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+#searchName {
+  flex: 1;               /* takes remaining width */
+  padding: 8px;
+  font-size: 14px;
+}
+
+#loadItemsBtn {
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Autocomplete list */
 .autocomplete-list {
   position: absolute;
   background: #fff;
   border: 1px solid #ccc;
   max-height: 200px;
   overflow-y: auto;
-  width: calc(100% - 10px);
-  margin-top: 2px;
+  width: 100%;            /* same width as input container */
+  top: 100%;
+  left: 0;
+  margin: 0;
   padding: 0;
   list-style: none;
   z-index: 1000;
