@@ -72,6 +72,7 @@ loadItemsBtn.addEventListener("click", () => {
 // --------------------
 // Autocomplete logic
 // --------------------
+// When clicking a list item
 searchName.addEventListener("input", function() {
   const query = this.value.toLowerCase();
   autocompleteList.innerHTML = "";
@@ -90,19 +91,36 @@ searchName.addEventListener("input", function() {
     li.addEventListener("click", () => {
       searchName.value = name;
       autocompleteList.style.display = "none";
-      searchProductByName(name);  // call function to load product
+
+      // ✅ Load product details by name
+      fetch(SCRIPT_URL, { 
+        method: "POST", 
+        body: JSON.stringify({ action: "getProductByName", itemName: name }) 
+      })
+      .then(res => res.json())
+      .then(data => {
+        if(!data || data.status === "NOT_FOUND") return alert("Product not found");
+
+        // Populate form fields
+        itemCode.value = data.itemCode;
+        itemName.value = data.itemName;
+        category.value = data.category;
+        size.value = data.size;
+        unit.value = data.unit;
+        minStock.value = data.minStock;
+        status.value = data.status;
+        previewImage.src = data.imageUrl || "";
+
+        // Disable editing by default
+        disableForm();
+      });
     });
 
     autocompleteList.appendChild(li);
   });
 
-  if (matches.length) {
-    autocompleteList.style.display = "block";
-  } else {
-    autocompleteList.style.display = "none";
-  }
+  autocompleteList.style.display = matches.length ? "block" : "none";
 });
-
 // --------------------
 // Hide dropdown when clicking outside
 // --------------------
