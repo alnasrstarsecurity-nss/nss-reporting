@@ -48,9 +48,9 @@ if (!["Controller","Manager","Admin"].includes(role)) {
      </div>
 
   <label>Search Item Name</label>
-<div class="search-wrapper" style="position: relative; max-width: 400px;">
-  <input type="text" id="searchName" placeholder="Search Item Name" disabled autocomplete="off">
-  <button type="button" id="loadItemsBtn">Load</button>
+<div class="search-wrapper" style="position: relative; max-width: 400px; display: flex; gap: 6px; align-items: center;">
+  <input type="text" id="searchName" placeholder="Search Item Name" disabled autocomplete="off" style="flex: 1; padding: 8px; font-size: 14px;">
+  <button type="button" id="loadItemsBtn" style="padding: 8px 12px; font-size: 14px;">Load</button>
   <ul id="autocompleteList" class="autocomplete-list"></ul>
 </div>
 
