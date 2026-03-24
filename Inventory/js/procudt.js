@@ -1,7 +1,7 @@
 // ==============================
 // CONFIG
 // ==============================
-const SCRIPT_URL = "YOUR_DEPLOY_URL";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxrm9tCSNZ_FVREzrH5VRpR2bULCdbBOLyOIED4TCVwRJ8ZivfHTQM7xVGhZt7cqFjTYw/exec";
 
 // ==============================
 // GLOBAL STATE
