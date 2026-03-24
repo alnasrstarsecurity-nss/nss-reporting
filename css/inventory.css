@@ -452,6 +452,7 @@ canvas {
   flex: 1;
 }
 
+/* ===== SEARCH BAR FIX ===== */
 .search-wrapper {
   position: relative;
   max-width: 400px;
@@ -460,21 +461,21 @@ canvas {
   gap: 6px;
 }
 
-/* INPUT takes full space */
-#searchName {
+/* Fix input */
+.search-wrapper input {
   flex: 1;
-  min-width: 0;     /* 🔥 IMPORTANT FIX */
+  min-width: 0;
+  width: auto;        /* 🔥 override global 100% */
   padding: 8px;
-  font-size: 14px;
 }
 
-/* BUTTON fixed small size */
-#loadItemsBtn {
-  width: 90px;       /* 🔥 control button size */
-  flex-shrink: 0;    /* 🔥 prevent shrinking */
-  padding: 8px;
-  font-size: 14px;
-  cursor: pointer;
+/* Fix button */
+.search-wrapper button {
+  width: auto !important;   /* 🔥 override global button width */
+  min-width: 80px;
+  padding: 8px 10px;
+  flex-shrink: 0;
+}
 }
 
 /* Autocomplete list */
