@@ -45,6 +45,9 @@ loadItemsBtn.addEventListener("click", () => {
     return;
   }
 
+  loadItemsBtn.innerText = "Loading... please wait";
+  loadItemsBtn.disabled = true;
+
   fetch(SCRIPT_URL, { 
     method: "POST", 
     body: JSON.stringify({ action: "getItemNames" }) 
@@ -55,8 +58,15 @@ loadItemsBtn.addEventListener("click", () => {
     isLoaded = true;
     searchName.disabled = false;
     searchName.focus();
+    loadItemsBtn.innerText = "Search Item";  // restore button text
+    loadItemsBtn.disabled = false;
   })
-  .catch(err => console.error(err));
+  .catch(err => {
+    console.error(err);
+    alert("Error loading items");
+    loadItemsBtn.innerText = "Search Item";
+    loadItemsBtn.disabled = false;
+  });
 });
 
 // --------------------
