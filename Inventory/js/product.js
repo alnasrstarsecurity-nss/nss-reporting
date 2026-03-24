@@ -12,9 +12,8 @@ let isEditMode = false;
 // ON LOAD
 // ==============================
 window.onload = () => {
-  disableForm();
+  newProduct();   // 👈 auto generate
 };
-
 // ==============================
 // FORM CONTROL
 // ==============================
@@ -51,9 +50,7 @@ function newProduct() {
   });
 }
 
-window.onload = () => {
-  newProduct();   // 👈 auto generate
-};
+
 // ==============================
 // EDIT MODE
 // ==============================
