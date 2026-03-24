@@ -204,7 +204,6 @@ function sendData(data) {
 function clearForm() {
   document.getElementById("productForm").reset();
   document.getElementById("previewImage").src = "";
-  document.getElementById("msg").innerText = "";
 }
 
 // ==============================
