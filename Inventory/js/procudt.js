@@ -1,103 +1,200 @@
+// ==============================
+// CONFIG
+// ==============================
+const SCRIPT_URL = "YOUR_DEPLOY_URL";
 
-/* ===============================
-   CONFIG
-================================ */
-const SCRIPT_URL = "";
+// ==============================
+// GLOBAL STATE
+// ==============================
+let isEditMode = false;
 
-const form = document.getElementById("productForm");
-const status = document.getElementById("status");
-
-
-/* ===============================
-  limit the input number
-================================ */
-document.addEventListener("input", function (e) {
-  const el = e.target;
-
-  /* 🔹 NUMBER inputs → digit limit */
-  if (el.tagName === "INPUT" && el.type === "number" && el.dataset.maxdigits) {
-    let value = el.value.replace(/\D/g, "");
-    el.value = value.slice(0, el.dataset.maxdigits);
-  }
-
-  /* 🔹 TEXT inputs + TEXTAREA → character limit */
-  if (
-    (el.tagName === "INPUT" && el.type === "text") ||
-    el.tagName === "TEXTAREA"
-  ) {
-    if (el.dataset.maxchars) {
-      el.value = el.value.slice(0, el.dataset.maxchars);
-    }
-  }
-});
-
-
-/* ===============================
-   FORM SUBMISSION
-================================ */
-form.addEventListener("submit", async e => {
-  e.preventDefault();
-   
-   submitBtn.disabled = true;
-
-  status.innerText = "Saving...";
-  status.style.color = "blue";
-
-  const payload = {
-  action: "product",
-
-  fromplace: form.fromplace.value,
-  toplace: form.toplace.value,
-  purpose: form.purpose.value,
-  instructed: form.instructed.value,
-  remark: form.remark.value,
-  supervisorName: form.SupervisorName.value,
-  supdesignation: form.Supdesignation.value,  
-  supEmpNumber: form.SupEmpNumber.value,
-  supSign: document.getElementById("supSignPad").toDataURL(),  
+// ==============================
+// ON LOAD
+// ==============================
+window.onload = () => {
+  disableForm();
 };
 
+// ==============================
+// FORM CONTROL
+// ==============================
+function disableForm() {
+  document.querySelectorAll("#productForm input, #productForm select").forEach(el => {
+    el.disabled = true;
+  });
+
+  document.getElementById("itemCode").disabled = true;
+}
+
+function enableForm() {
+  document.querySelectorAll("#productForm input, #productForm select").forEach(el => {
+    el.disabled = false;
+  });
+
+  document.getElementById("itemCode").disabled = true; // always locked
+}
+
+// ==============================
+// NEW PRODUCT
+// ==============================
+function newProduct() {
+  isEditMode = false;
+
+  clearForm();
+  enableForm();
+
+  // get next item code from backend
+  fetch(SCRIPT_URL, {
+    method: "POST",
+    body: JSON.stringify({ action: "getNextItemCode" })
+  })
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("itemCode").value = data.itemCode;
+  })
+  .catch(err => alert("Error getting item code"));
+}
+
+// ==============================
+// EDIT MODE
+// ==============================
+function enableEdit() {
+  if (!document.getElementById("itemCode").value) {
+    alert("Search a product first");
+    return;
+  }
+
+  isEditMode = true;
+  enableForm();
+}
+
+// ==============================
+// SEARCH PRODUCT
+// ==============================
+function searchProduct() {
+  const code = document.getElementById("searchCode").value;
+
+  if (!code) {
+    alert("Enter Item Code");
+    return;
+  }
 
   fetch(SCRIPT_URL, {
     method: "POST",
-    body: JSON.stringify(payload)
+    body: JSON.stringify({
+      action: "getProduct",
+      itemCode: code
+    })
   })
-    .then(r => r.json())
-    .then(res => {
-      if (res.status === "success") {
-        status.innerText = "✅ Submitted Successfully";
-        status.style.color = "green";
-        form.reset();
-         document.getElementById("SupervisorName").value = loginName;
-         document.getElementById("SupEmpNumber").value = loginempnumber;
-         document.getElementById("Supdesignation").value = logindesi;
-         
-         submitBtn.disabled = false;
-        
-        clearSupSignature();
-        setTimeout(() => status.innerText = "", 3000)
-         
+  .then(res => res.json())
+  .then(data => {
 
-    } else {
-
-      status.innerText = "❌ Submission Failed";
-      status.style.color = "red";
-      submitBtn.disabled = false;
-
+    if (!data || data.status === "NOT_FOUND") {
+      alert("Product not found");
+      return;
     }
 
-  })
-  .catch(() => {
-    status.innerText = "❌ Network Error";
-    status.style.color = "red";
-    submitBtn.disabled = false;
-  });
-}); 
+    // Fill form
+    document.getElementById("itemCode").value = data.itemCode;
+    document.getElementById("itemName").value = data.itemName;
+    document.getElementById("category").value = data.category;
+    document.getElementById("size").value = data.size;
+    document.getElementById("unit").value = data.unit;
+    document.getElementById("minStock").value = data.minStock;
+    document.getElementById("status").value = data.status;
 
-/* ===============================
-   LOGOUT
-================================ */
-function logout() {
-  localStorage.clear();
-  location.href = "index.html";
+    // Show image
+    if (data.imageUrl) {
+      document.getElementById("previewImage").src = data.imageUrl;
+    } else {
+      document.getElementById("previewImage").src = "";
+    }
+
+    disableForm();
+
+  })
+  .catch(err => {
+    console.error(err);
+    alert("Error loading product");
+  });
+}
+
+// ==============================
+// IMAGE PREVIEW
+// ==============================
+document.getElementById("productImage").addEventListener("change", function () {
+  const file = this.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      document.getElementById("previewImage").src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+});
+
+// ==============================
+// SAVE (CREATE / UPDATE)
+// ==============================
+document.getElementById("productForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const formData = {
+    action: isEditMode ? "updateProduct" : "createProduct",
+    itemCode: document.getElementById("itemCode").value,
+    itemName: document.getElementById("itemName").value,
+    category: document.getElementById("category").value,
+    size: document.getElementById("size").value,
+    unit: document.getElementById("unit").value,
+    minStock: document.getElementById("minStock").value,
+    status: document.getElementById("status").value
+  };
+
+  const file = document.getElementById("productImage").files[0];
+
+  // If image exists → convert to base64
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onload = function () {
+      formData.image = reader.result;
+
+      sendData(formData);
+    };
+
+    reader.readAsDataURL(file);
+  } else {
+    sendData(formData);
+  }
+});
+
+// ==============================
+// SEND DATA
+// ==============================
+function sendData(data) {
+  fetch(SCRIPT_URL, {
+    method: "POST",
+    body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(res => {
+    document.getElementById("msg").innerText = "Saved Successfully";
+
+    disableForm();
+    isEditMode = false;
+  })
+  .catch(err => {
+    console.error(err);
+    alert("Error saving data");
+  });
+}
+
+// ==============================
+// CLEAR FORM
+// ==============================
+function clearForm() {
+  document.getElementById("productForm").reset();
+  document.getElementById("previewImage").src = "";
+  document.getElementById("msg").innerText = "";
 }
