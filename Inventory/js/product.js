@@ -1,4 +1,4 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyDMhdGyGCCrU9uvPlt8hgMqHkPBsFpFKD0tluSRQzJPSJCZlN6IKcdOD72qsR2ajjQ/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz262iGgS38Z5fGypGg7DfsWTdtYi4ToHKtPmOfaoTBTUYe7IqLwQotfJbJuKeSWNSGiw/exec";
 
 let isEditMode = false;
 
