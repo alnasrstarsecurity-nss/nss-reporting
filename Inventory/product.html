@@ -31,23 +31,6 @@ if (!["Controller","Manager","Admin"].includes(role)) {
     <h1>Product Master</h1>
   </div>
 
-<div class="search-row-full">
-
-  <!-- LEFT: SEARCH -->
-  <div class="search-left">
-    <input type="text" id="searchCode" placeholder="Search Item Code">
-    <button type="button" class="search" onclick="searchProduct()">Search</button>
-  </div>
-
-  <!-- RIGHT: BUTTONS -->
-  <div class="search-right">
-    <button type="button" onclick="newProduct()">New</button>
-    <button type="button" onclick="enableEdit()">Edit</button>
-    <button type="button" onclick="goBack()">Back</button>
-  </div>
-
-</div>
-
   <!-- MAIN CONTENT -->
   <form id="productForm">
 
@@ -56,45 +39,59 @@ if (!["Controller","Manager","Admin"].includes(role)) {
       <!-- LEFT SIDE -->
       <div class="left-form">
 
-        <label>Item Code</label>
-        <input type="text" id="itemCode" readonly>
+  <!-- ACTION BUTTONS -->
+  <div class="action-row">
+    <button type="button" onclick="newProduct()">New</button>
+    <button type="button" onclick="enableEdit()">Edit</button>
+    <button type="button" onclick="goBack()">Back</button>
+  </div>
 
-        <label>Item Name</label>
-        <input type="text" id="itemName">
+  <!-- SEARCH -->
+  <div class="search-bar">
+    <input type="text" id="searchCode" placeholder="Enter Item Code">
+    <button type="button" class="search" onclick="searchProduct()">Search</button>
+  </div>
 
-        <label>Category</label>
-        <select id="category">
-          <option>Uniform</option>
-          <option>PPE</option>
-          <option>Safety Wear</option>
-        </select>
+  <!-- FORM FIELDS -->
+  <label>Item Code</label>
+  <input type="text" id="itemCode" readonly>
 
-        <label>Size</label>
-        <select id="size">
-          <option>S</option>
-          <option>M</option>
-          <option>L</option>
-          <option>XL</option>
-          <option>XXL</option>
-        </select>
+  <label>Item Name</label>
+  <input type="text" id="itemName">
 
-        <label>Unit</label>
-        <select id="unit">
-          <option>PCS</option>
-          <option>Pair</option>
-        </select>
+  <label>Category</label>
+  <select id="category">
+    <option>Uniform</option>
+    <option>PPE</option>
+    <option>Safety Wear</option>
+  </select>
 
-        <label>Minimum Stock</label>
-        <input type="number" id="minStock" value="10">
+  <label>Size</label>
+  <select id="size">
+    <option>S</option>
+    <option>M</option>
+    <option>L</option>
+    <option>XL</option>
+    <option>XXL</option>
+  </select>
 
-        <label>Status</label>
-        <select id="status">
-          <option>Active</option>
-          <option>Inactive</option>
-        </select>
+  <label>Unit</label>
+  <select id="unit">
+    <option>PCS</option>
+    <option>Pair</option>
+  </select>
 
-      </div>
+  <label>Minimum Stock</label>
+  <input type="number" id="minStock" value="10">
 
+  <label>Status</label>
+  <select id="status">
+    <option>Active</option>
+    <option>Inactive</option>
+  </select>
+
+</div>
+      
       <!-- RIGHT SIDE -->
       <div class="right-form">
 
