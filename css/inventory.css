@@ -453,19 +453,26 @@ canvas {
 }
 
 .search-wrapper {
+  position: relative;
+  max-width: 400px;
   display: flex;
-  gap: 6px;
   align-items: center;
+  gap: 6px;
 }
 
+/* INPUT takes full space */
 #searchName {
-  flex: 1;               /* takes remaining width */
+  flex: 1;
+  min-width: 0;     /* 🔥 IMPORTANT FIX */
   padding: 8px;
   font-size: 14px;
 }
 
+/* BUTTON fixed small size */
 #loadItemsBtn {
-  padding: 8px 12px;
+  width: 90px;       /* 🔥 control button size */
+  flex-shrink: 0;    /* 🔥 prevent shrinking */
+  padding: 8px;
   font-size: 14px;
   cursor: pointer;
 }
