@@ -18,17 +18,9 @@ const searchCode = document.getElementById("searchCode");
 // ------------------
 // Page load
 // ------------------
-let allItemNames = [];
-window.addEventListener("DOMContentLoaded", () => {
+
+window.addEventListener("DOMContentLoaded", () => { 
   newProduct();
-   fetch(SCRIPT_URL, { 
-    method: "POST", 
-    body: JSON.stringify({ action: "getItemNames" }) 
-  })
-  .then(res => res.json())
-  .then(data => {
-    allItemNames = data.names || [];
-  });
 });
 
 
@@ -37,29 +29,77 @@ window.addEventListener("DOMContentLoaded", () => {
 // search by name
 // ------------------
 const searchName = document.getElementById("searchName");
+const loadItemsBtn = document.getElementById("loadItemsBtn");
 const autocompleteList = document.getElementById("autocompleteList");
 
+let allItemNames = [];
+let isLoaded = false;
+
+// --------------------
+// Load items on demand
+// --------------------
+loadItemsBtn.addEventListener("click", () => {
+  if (isLoaded) {
+    searchName.disabled = false;
+    searchName.focus();
+    return;
+  }
+
+  fetch(SCRIPT_URL, { 
+    method: "POST", 
+    body: JSON.stringify({ action: "getItemNames" }) 
+  })
+  .then(res => res.json())
+  .then(data => {
+    allItemNames = data.names || [];
+    isLoaded = true;
+    searchName.disabled = false;
+    searchName.focus();
+  })
+  .catch(err => console.error(err));
+});
+
+// --------------------
+// Autocomplete logic
+// --------------------
 searchName.addEventListener("input", function() {
   const query = this.value.toLowerCase();
   autocompleteList.innerHTML = "";
 
-  if (!query) return;
+  if (!query) {
+    autocompleteList.style.display = "none";
+    return;
+  }
 
-  // Filter names starting with query
   const matches = allItemNames.filter(name => name.toLowerCase().startsWith(query));
 
-  matches.slice(0, 10).forEach(name => { // limit to 10 results
+  matches.slice(0, 10).forEach(name => {
     const li = document.createElement("li");
     li.textContent = name;
+
     li.addEventListener("click", () => {
       searchName.value = name;
-      autocompleteList.innerHTML = "";
-
-      // Load the selected item
-      searchProductByName(name);
+      autocompleteList.style.display = "none";
+      searchProductByName(name);  // call function to load product
     });
+
     autocompleteList.appendChild(li);
   });
+
+  if (matches.length) {
+    autocompleteList.style.display = "block";
+  } else {
+    autocompleteList.style.display = "none";
+  }
+});
+
+// --------------------
+// Hide dropdown when clicking outside
+// --------------------
+document.addEventListener("click", function(e) {
+  if (!searchName.contains(e.target) && !autocompleteList.contains(e.target) && e.target !== loadItemsBtn) {
+    autocompleteList.style.display = "none";
+  }
 });
 // ------------------
 // Enable / Disable Form
