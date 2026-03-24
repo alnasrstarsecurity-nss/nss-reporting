@@ -470,6 +470,11 @@ canvas {
 /* ===== AUTOCOMPLETE DROPDOWN ===== */
 .autocomplete-list {
   position: absolute;
+  top: 100%;              /* 🔥 EXACTLY below input */
+  left: 0;
+
+  width: 100%;            /* same width as search bar */
+
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -477,10 +482,7 @@ canvas {
   max-height: 200px;
   overflow-y: auto;
 
-  width: 100%;             /* 🔥 FULL WIDTH SAME AS INPUT */
-  max-width: 720px;        /* match your form width */
-
-  margin-top: -10px;       /* align just below input */
+  margin-top: 2px;        /* small gap */
   padding: 0;
   list-style: none;
 
@@ -502,4 +504,8 @@ canvas {
 
 .autocomplete-list li:hover {
   background-color: #f3f4f6;
+}
+.search-name-container {
+  position: relative;
+  width: 100%;
 }
