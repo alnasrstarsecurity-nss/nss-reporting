@@ -477,7 +477,7 @@ canvas {
   border: 1px solid #ccc;
   max-height: 200px;
   overflow-y: auto;
-  width: 100%;            /* same width as input container */
+  width: 100%;        /* same as input width */
   top: 100%;
   left: 0;
   margin: 0;
