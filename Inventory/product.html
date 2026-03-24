@@ -48,8 +48,11 @@ if (!["Controller","Manager","Admin"].includes(role)) {
      </div>
 
   <label>Search Item Name</label>
-<input type="text" id="searchName" autocomplete="off">
-<ul id="autocompleteList" class="autocomplete-list"></ul>
+<div class="search-wrapper">
+  <input type="text" id="searchName" placeholder="Search Item Name" disabled autocomplete="off">
+  <button type="button" id="loadItemsBtn">Load</button>
+  <ul id="autocompleteList" class="autocomplete-list"></ul>
+  </div>
 
   <!-- SEARCH -->
   <div class="search-bar">
