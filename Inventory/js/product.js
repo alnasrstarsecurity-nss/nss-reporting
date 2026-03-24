@@ -45,7 +45,7 @@ loadItemsBtn.addEventListener("click", () => {
     return;
   }
 
-  loadItemsBtn.innerText = "Loading... please wait";
+  loadItemsBtn.innerText = "Loading";
   loadItemsBtn.disabled = true;
 
   fetch(SCRIPT_URL, { 
