@@ -1,7 +1,7 @@
 // ==============================
 // CONFIG
 // ==============================
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxrm9tCSNZ_FVREzrH5VRpR2bULCdbBOLyOIED4TCVwRJ8ZivfHTQM7xVGhZt7cqFjTYw/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwVS1fRhN4oT7zb55YWHVyUvGhmszukOMM9pM2JBJ7af28YYcrxfZsYwZJY4907qJbOYw/exec";
 
 // ==============================
 // GLOBAL STATE
