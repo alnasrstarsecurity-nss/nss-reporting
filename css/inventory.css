@@ -436,8 +436,9 @@ canvas {
 }
 
 .action-row button {
-  width: auto;
-  padding: 8px 14px;
+  width: auto !important;   /* 👈 FIX */
+  flex: 0 0 auto;           /* 👈 prevent stretching */
+  padding: 8px 16px;
   font-size: 14px;
 }
 
