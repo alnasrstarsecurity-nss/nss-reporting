@@ -19,19 +19,22 @@ window.onload = () => {
 // FORM CONTROL
 // ==============================
 function disableForm() {
-  document.querySelectorAll("#productForm input, #productForm select").forEach(el => {
-    el.disabled = true;
+  document.querySelectorAll(".left-form input, .left-form select").forEach(el => {
+    if (el.id !== "searchCode") {
+      el.disabled = true;
+    }
   });
+}
 
   document.getElementById("itemCode").disabled = true;
 }
 
 function enableForm() {
-  document.querySelectorAll("#productForm input, #productForm select").forEach(el => {
+  document.querySelectorAll(".left-form input, .left-form select").forEach(el => {
     el.disabled = false;
   });
 
-  document.getElementById("itemCode").disabled = true; // always locked
+  document.getElementById("itemCode").disabled = true;
 }
 
 // ==============================
@@ -43,18 +46,14 @@ function newProduct() {
   clearForm();
   enableForm();
 
-  // get next item code from backend
-  fetch(SCRIPT_URL, {
-    method: "POST",
-    body: JSON.stringify({ action: "getNextItemCode" })
-  })
-  .then(res => res.json())
-  .then(data => {
-    document.getElementById("itemCode").value = data.itemCode;
-  })
-  .catch(err => alert("Error getting item code"));
+  generateItemCode().then(code => {
+    document.getElementById("itemCode").value = code;
+  });
 }
 
+window.onload = () => {
+  newProduct();   // 👈 auto generate
+};
 // ==============================
 // EDIT MODE
 // ==============================
@@ -140,26 +139,27 @@ document.getElementById("productImage").addEventListener("change", function () {
 document.getElementById("productForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
+  const msg = document.getElementById("msg");
+  msg.innerText = "Saving...";
+
   const formData = {
     action: isEditMode ? "updateProduct" : "createProduct",
-    itemCode: document.getElementById("itemCode").value,
-    itemName: document.getElementById("itemName").value,
-    category: document.getElementById("category").value,
-    size: document.getElementById("size").value,
-    unit: document.getElementById("unit").value,
-    minStock: document.getElementById("minStock").value,
-    status: document.getElementById("status").value
+    itemCode: itemCode.value,
+    itemName: itemName.value,
+    category: category.value,
+    size: size.value,
+    unit: unit.value,
+    minStock: minStock.value,
+    status: status.value
   };
 
-  const file = document.getElementById("productImage").files[0];
+  const file = productImage.files[0];
 
-  // If image exists → convert to base64
   if (file) {
     const reader = new FileReader();
 
     reader.onload = function () {
       formData.image = reader.result;
-
       sendData(formData);
     };
 
@@ -179,14 +179,22 @@ function sendData(data) {
   })
   .then(res => res.json())
   .then(res => {
-    document.getElementById("msg").innerText = "Saved Successfully";
 
-    disableForm();
+    document.getElementById("msg").innerText = "✅ Saved Successfully";
+
+    clearForm();
+
+    // 👇 get next code again
+    generateItemCode().then(code => {
+      document.getElementById("itemCode").value = code;
+    });
+
     isEditMode = false;
+
   })
   .catch(err => {
     console.error(err);
-    alert("Error saving data");
+    document.getElementById("msg").innerText = "❌ Error saving";
   });
 }
 
@@ -197,4 +205,23 @@ function clearForm() {
   document.getElementById("productForm").reset();
   document.getElementById("previewImage").src = "";
   document.getElementById("msg").innerText = "";
+}
+
+// ==============================
+// item code
+// ==============================
+function generateItemCode() {
+  return fetch(SCRIPT_URL, {
+    method: "POST",
+    body: JSON.stringify({ action: "getLastItemCode" })
+  })
+  .then(res => res.json())
+  .then(data => {
+
+    let lastCode = data.lastCode || "NSS00000";
+
+    let num = parseInt(lastCode.replace("NSS", "")) + 1;
+
+    return "NSS" + num.toString().padStart(5, "0");
+  });
 }
