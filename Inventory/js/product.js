@@ -1,7 +1,7 @@
 // ==============================
 // CONFIG
 // ==============================
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyDUyW7q1UuoTM_SJUVeGVlzBq7aTuBkhBqFyW5sNorLLSsCBc1jA4Sp4J-wLYXkvYd2Q/exec";
+const SCRIPT_URL = "YOUR_DEPLOY_URL";
 
 // ==============================
 // GLOBAL STATE
@@ -43,26 +43,16 @@ function newProduct() {
   clearForm();
   enableForm();
 
-  document.getElementById("msg").innerText = "Generating item code...";
-
+  // get next item code from backend
   fetch(SCRIPT_URL, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ action: "getNextItemCode" })
   })
   .then(res => res.json())
   .then(data => {
-    if (data.itemCode) {
-      document.getElementById("itemCode").value = data.itemCode;
-      document.getElementById("msg").innerText = "New product ready";
-    } else {
-      document.getElementById("msg").innerText = "Failed to generate code";
-    }
+    document.getElementById("itemCode").value = data.itemCode;
   })
-  .catch(err => {
-    console.error(err);
-    document.getElementById("msg").innerText = "Error getting item code";
-  });
+  .catch(err => alert("Error getting item code"));
 }
 
 // ==============================
@@ -89,13 +79,13 @@ function searchProduct() {
     return;
   }
 
- fetch(SCRIPT_URL, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify(data)
-})
+  fetch(SCRIPT_URL, {
+    method: "POST",
+    body: JSON.stringify({
+      action: "getProduct",
+      itemCode: code
+    })
+  })
   .then(res => res.json())
   .then(data => {
 
@@ -150,9 +140,6 @@ document.getElementById("productImage").addEventListener("change", function () {
 document.getElementById("productForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const msg = document.getElementById("msg");
-  msg.innerText = "Saving...";
-
   const formData = {
     action: isEditMode ? "updateProduct" : "createProduct",
     itemCode: document.getElementById("itemCode").value,
@@ -166,11 +153,13 @@ document.getElementById("productForm").addEventListener("submit", function (e) {
 
   const file = document.getElementById("productImage").files[0];
 
+  // If image exists → convert to base64
   if (file) {
     const reader = new FileReader();
 
     reader.onload = function () {
       formData.image = reader.result;
+
       sendData(formData);
     };
 
@@ -186,29 +175,18 @@ document.getElementById("productForm").addEventListener("submit", function (e) {
 function sendData(data) {
   fetch(SCRIPT_URL, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
   })
   .then(res => res.json())
   .then(res => {
-
-    if (res.status === "SUCCESS") {
-      document.getElementById("msg").innerText = "✅ Product Saved";
-    } 
-    else if (res.status === "UPDATED") {
-      document.getElementById("msg").innerText = "✏️ Product Updated";
-    } 
-    else {
-      document.getElementById("msg").innerText = "⚠️ " + res.status;
-    }
+    document.getElementById("msg").innerText = "Saved Successfully";
 
     disableForm();
     isEditMode = false;
-
   })
   .catch(err => {
     console.error(err);
-    document.getElementById("msg").innerText = "❌ Error saving data";
+    alert("Error saving data");
   });
 }
 
