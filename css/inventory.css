@@ -413,7 +413,7 @@ canvas {
 .preview-img {
   margin-top: 15px;
   width: 100%;
-  height: 700px;
+  height: 550px;
   object-fit: contain;
   border: 1px solid #ccc;
   border-radius: 8px;
