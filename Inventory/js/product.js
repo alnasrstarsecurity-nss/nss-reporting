@@ -26,7 +26,7 @@ function disableForm() {
 }
 
   document.getElementById("itemCode").disabled = true;
-}
+
 
 function enableForm() {
   document.querySelectorAll(".left-form input, .left-form select").forEach(el => {
