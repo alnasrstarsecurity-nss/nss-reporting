@@ -29,19 +29,24 @@ if (!["Controller","Manager","Admin"].includes(role)) {
   <!-- HEADER -->
   <div class="form-header">
     <h1>Product Master</h1>
-
-    <div class="header-buttons">
-      <button type="button" onclick="newProduct()">New</button>
-      <button type="button" onclick="enableEdit()">Edit</button>
-      <button type="button" onclick="goBack()">Back</button>
-    </div>
   </div>
 
-  <!-- SEARCH ROW -->
-  <div class="search-bar">
+<div class="search-row-full">
+
+  <!-- LEFT: SEARCH -->
+  <div class="search-left">
     <input type="text" id="searchCode" placeholder="Enter Item Code">
     <button type="button" class="search" onclick="searchProduct()">Search</button>
   </div>
+
+  <!-- RIGHT: BUTTONS -->
+  <div class="search-right">
+    <button type="button" onclick="newProduct()">New</button>
+    <button type="button" onclick="enableEdit()">Edit</button>
+    <button type="button" onclick="goBack()">Back</button>
+  </div>
+
+</div>
 
   <!-- MAIN CONTENT -->
   <form id="productForm">
