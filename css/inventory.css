@@ -442,54 +442,34 @@ canvas {
   font-size: 14px;
 }
 
+/* ===== COMMON SEARCH STYLE (USED BY BOTH) ===== */
 .search-bar {
   display: flex;
   gap: 10px;
   margin-bottom: 15px;
 }
 
+/* INPUT SAME AS ITEM CODE */
 .search-bar input {
   flex: 1;
-}
-
-/* ===== SEARCH BAR FIX ===== */
-.search-wrapper {
-  position: relative;
-  max-width: 400px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-/* INPUT (same style as item code search) */
-.search-wrapper input {
-  flex: 1;
-  min-width: 0;
-  width: 100%;              /* match other inputs */
-  padding: 10px;            /* same as your main input */
+  padding: 12px;
   font-size: 16px;
   border-radius: 8px;
   border: 1px solid #d1d5db;
 }
 
-/* BUTTON (same height as input) */
-.search-wrapper button {
-  width: auto !important;
-  min-width: 90px;
-  height: 42px;             /* 🔥 match input height */
-  padding: 0 12px;
-  font-size: 14px;
+/* BUTTON SAME HEIGHT */
+.search-bar button {
+  width: 110px;           /* same as your Search button */
+  height: 45px;
+  padding: 0;
+  font-size: 15px;
   flex-shrink: 0;
 }
 
-/* ===== DROPDOWN FIX ===== */
+/* ===== AUTOCOMPLETE DROPDOWN ===== */
 .autocomplete-list {
   position: absolute;
-  top: calc(100% + 2px);
-  left: 0;
-
-  width: calc(100% - 96px);  /* 🔥 subtract button width */
-  
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -497,7 +477,10 @@ canvas {
   max-height: 200px;
   overflow-y: auto;
 
-  margin: 0;
+  width: 100%;             /* 🔥 FULL WIDTH SAME AS INPUT */
+  max-width: 720px;        /* match your form width */
+
+  margin-top: -10px;       /* align just below input */
   padding: 0;
   list-style: none;
 
@@ -505,18 +488,18 @@ canvas {
   display: none;
 }
 
+/* ITEMS */
 .autocomplete-list li {
   padding: 10px;
   cursor: pointer;
   font-size: 14px;
+  border-bottom: 1px solid #eee;
+}
+
+.autocomplete-list li:last-child {
+  border-bottom: none;
 }
 
 .autocomplete-list li:hover {
   background-color: #f3f4f6;
-}
-.autocomplete-list li {
-  border-bottom: 1px solid #eee;
-}
-.autocomplete-list li:last-child {
-  border-bottom: none;
 }
