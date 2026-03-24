@@ -40,6 +40,13 @@ if (!["Controller","Manager","Admin"].includes(role)) {
       <div class="left-form">
 
   <!-- ACTION BUTTONS -->
+
+          <div class="action-row">
+    <button type="button" onclick="newProduct()">New</button>
+    <button type="button" onclick="enableEdit()">Edit</button>
+    <button type="button" onclick="goBack()">Back</button>
+     </div>
+
   <label>Search Item Name</label>
 <input type="text" id="searchName" autocomplete="off">
 <ul id="autocompleteList" class="autocomplete-list"></ul>
