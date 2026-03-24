@@ -1,4 +1,4 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxl0vsdR2-YhAIhRnjRPUMCcwL76RnHkigMFxYfLuHFQQP_9WpNjAv0Uu4SoJ9hn4mhmg/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwUodSiQo-FITdr9sLuvm5LYldKuReDVyESsLusHd0BZVDmNNEL954oi4DwT0fF6rKZlA/exec";
 
 let isEditMode = false;
 
@@ -31,6 +31,36 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+
+
+// ------------------
+// search by name
+// ------------------
+const searchName = document.getElementById("searchName");
+const autocompleteList = document.getElementById("autocompleteList");
+
+searchName.addEventListener("input", function() {
+  const query = this.value.toLowerCase();
+  autocompleteList.innerHTML = "";
+
+  if (!query) return;
+
+  // Filter names starting with query
+  const matches = allItemNames.filter(name => name.toLowerCase().startsWith(query));
+
+  matches.slice(0, 10).forEach(name => { // limit to 10 results
+    const li = document.createElement("li");
+    li.textContent = name;
+    li.addEventListener("click", () => {
+      searchName.value = name;
+      autocompleteList.innerHTML = "";
+
+      // Load the selected item
+      searchProductByName(name);
+    });
+    autocompleteList.appendChild(li);
+  });
+});
 // ------------------
 // Enable / Disable Form
 // ------------------
@@ -155,6 +185,31 @@ function sendData(data){
     });
 }
 
+// ------------------
+// searchProductByName
+// ------------------
+
+function searchProductByName(itemName) {
+  fetch(SCRIPT_URL, { 
+    method: "POST", 
+    body: JSON.stringify({ action: "getProductByName", itemName: itemName }) 
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (!data || data.status === "NOT_FOUND") return alert("Product not found");
+
+    itemCode.value = data.itemCode;
+    itemName.value = data.itemName;
+    category.value = data.category;
+    size.value = data.size;
+    unit.value = data.unit;
+    minStock.value = data.minStock;
+    status.value = data.status;
+    previewImage.src = data.imageUrl || "";
+
+    disableForm();
+  });
+}
 // ------------------
 // Clear Form
 // ------------------
