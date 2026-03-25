@@ -452,8 +452,8 @@ canvas {
 /* INPUT SAME AS ITEM CODE */
 .search-bar input {
   flex: 1;
-  padding: 10px;
-  font-size: 14px;
+  padding: 12px;
+  font-size: 16x;
   border-radius: 8px;
   border: 1px solid #d1d5db;
 }
