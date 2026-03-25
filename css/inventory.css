@@ -529,9 +529,7 @@ canvas {
 .search-status.error {
   color: #b91c1c;   /* red */
 }
-.search-name-container {
-  display: none;   /* 🔥 hidden on page load */
-}
+
 /* 🔥 FORCE DISABLED INPUT STYLE */
 input:disabled,
 select:disabled,
