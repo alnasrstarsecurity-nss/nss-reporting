@@ -74,7 +74,7 @@ loadItemsBtn.addEventListener("click", () => {
 // --------------------
 
 // When clicking a list item
-searchName.addEventListener("input", function() {
+/*searchName.addEventListener("input", function() {
   const query = this.value.toLowerCase();
   autocompleteList.innerHTML = "";
 
@@ -89,7 +89,7 @@ searchName.addEventListener("input", function() {
     const li = document.createElement("li");
     li.textContent = name;
 
-   /* li.addEventListener("click", () => {
+    li.addEventListener("click", () => {
       searchName.value = name;
       autocompleteList.style.display = "none";
 
@@ -123,48 +123,75 @@ searchName.addEventListener("input", function() {
   autocompleteList.style.display = matches.length ? "block" : "none";
 });*/
 
+searchName.addEventListener("input", function() {
+  const query = this.value.toLowerCase();
+  autocompleteList.innerHTML = "";
+
+  // 🔹 Clear status when typing
+  searchStatus.innerText = "";
+
+  if (!query) {
+    autocompleteList.style.display = "none";
+    return;
+  }
+
+  const matches = allItemNames.filter(name => name.toLowerCase().startsWith(query));
+
+  matches.slice(0, 10).forEach(name => {
+    const li = document.createElement("li");
+    li.textContent = name;
+
     li.addEventListener("click", () => {
-  searchName.value = name;
-  autocompleteList.style.display = "none";
+      searchName.value = name;
+      autocompleteList.style.display = "none";
 
-  // ✅ SHOW SEARCHING STATUS
-  searchStatus.innerText = "Searching...";
-  searchStatus.className = "search-status loading";
+      // ✅ SHOW SEARCHING STATUS
+      searchStatus.innerText = "Searching...";
+      searchStatus.className = "search-status loading";
 
-  fetch(SCRIPT_URL, { 
-    method: "POST", 
-    body: JSON.stringify({ action: "getProductByName", itemName: name }) 
-  })
-  .then(res => res.json())
-  .then(data => {
+      // ✅ Load product details by name
+      fetch(SCRIPT_URL, { 
+        method: "POST", 
+        body: JSON.stringify({ action: "getProductByName", itemName: name }) 
+      })
+      .then(res => res.json())
+      .then(data => {
 
-    if (!data || data.status === "NOT_FOUND") {
-      searchStatus.innerText = "Product not found";
-      searchStatus.className = "search-status error";
-      return;
-    }
+        if (!data || data.status === "NOT_FOUND") {
+          searchStatus.innerText = "Product not found";
+          searchStatus.className = "search-status error";
+          return;
+        }
 
-    // ✅ Fill form
-    itemCode.value = data.itemCode;
-    itemName.value = data.itemName;
-    category.value = data.category;
-    size.value = data.size;
-    unit.value = data.unit;
-    minStock.value = data.minStock;
-    status.value = data.status;
-    previewImage.src = data.imageUrl || "";
+        // ✅ Populate form fields
+        itemCode.value = data.itemCode;
+        itemName.value = data.itemName;
+        category.value = data.category;
+        size.value = data.size;
+        unit.value = data.unit;
+        minStock.value = data.minStock;
+        status.value = data.status;
+        previewImage.src = data.imageUrl || "";
 
-    disableForm();
+        // Disable editing by default
+        disableForm();
 
-    // ✅ SUCCESS STATUS
-    searchStatus.innerText = "Details found";
-    searchStatus.className = "search-status success";
-  })
-  .catch(err => {
-    console.error(err);
-    searchStatus.innerText = "Error loading data";
-    searchStatus.className = "search-status error";
+        // ✅ SUCCESS STATUS
+        searchStatus.innerText = "Details found";
+        searchStatus.className = "search-status success";
+      })
+      .catch(err => {
+        console.error(err);
+
+        searchStatus.innerText = "Error loading data";
+        searchStatus.className = "search-status error";
+      });
+    });
+
+    autocompleteList.appendChild(li);
   });
+
+  autocompleteList.style.display = matches.length ? "block" : "none";
 });
 // --------------------
 // Hide dropdown when clicking outside
