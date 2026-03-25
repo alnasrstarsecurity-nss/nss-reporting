@@ -89,7 +89,7 @@ searchName.addEventListener("input", function() {
     const li = document.createElement("li");
     li.textContent = name;
 
-    li.addEventListener("click", () => {
+   /* li.addEventListener("click", () => {
       searchName.value = name;
       autocompleteList.style.display = "none";
 
@@ -121,6 +121,50 @@ searchName.addEventListener("input", function() {
   });
 
   autocompleteList.style.display = matches.length ? "block" : "none";
+});*/
+
+    li.addEventListener("click", () => {
+  searchName.value = name;
+  autocompleteList.style.display = "none";
+
+  // ✅ SHOW SEARCHING STATUS
+  searchStatus.innerText = "Searching...";
+  searchStatus.className = "search-status loading";
+
+  fetch(SCRIPT_URL, { 
+    method: "POST", 
+    body: JSON.stringify({ action: "getProductByName", itemName: name }) 
+  })
+  .then(res => res.json())
+  .then(data => {
+
+    if (!data || data.status === "NOT_FOUND") {
+      searchStatus.innerText = "Product not found";
+      searchStatus.className = "search-status error";
+      return;
+    }
+
+    // ✅ Fill form
+    itemCode.value = data.itemCode;
+    itemName.value = data.itemName;
+    category.value = data.category;
+    size.value = data.size;
+    unit.value = data.unit;
+    minStock.value = data.minStock;
+    status.value = data.status;
+    previewImage.src = data.imageUrl || "";
+
+    disableForm();
+
+    // ✅ SUCCESS STATUS
+    searchStatus.innerText = "Details found";
+    searchStatus.className = "search-status success";
+  })
+  .catch(err => {
+    console.error(err);
+    searchStatus.innerText = "Error loading data";
+    searchStatus.className = "search-status error";
+  });
 });
 // --------------------
 // Hide dropdown when clicking outside
