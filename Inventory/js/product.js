@@ -13,7 +13,7 @@ const status = document.getElementById("status");
 const productImage = document.getElementById("productImage");
 const previewImage = document.getElementById("previewImage");
 const msg = document.getElementById("msg");
-const searchCode = document.getElementById("searchCode");
+
 
 
 
@@ -215,31 +215,6 @@ function enableEdit() {
 }
 
 // ------------------
-// Search Product
-// ------------------
-function searchProduct() {
-  const code = searchCode.value.trim();
-  if (!code) return alert("Enter Item Code");
-
-  fetch(SCRIPT_URL, { method:"POST", body:JSON.stringify({ action:"getProduct", itemCode: code }) })
-    .then(res=>res.json())
-    .then(data=>{
-      if(!data || data.status==="NOT_FOUND") return alert("Product not found");
-
-      itemCode.value = data.itemCode;
-      itemName.value = data.itemName;
-      category.value = data.category;
-      size.value = data.size;
-      unit.value = data.unit;
-      minStock.value = data.minStock;
-      status.value = data.status;
-      previewImage.src = data.imageUrl || "";
-
-      disableForm();
-    });
-}
-
-// ------------------
 // Image Preview
 // ------------------
 productImage.addEventListener("change", function(){
@@ -323,5 +298,4 @@ function searchProductByName(itemName) {
 function clearForm(){
   document.getElementById("productForm").reset();
   previewImage.src="";
-  searchCode.value="";
 }
