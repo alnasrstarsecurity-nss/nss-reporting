@@ -75,7 +75,7 @@ let isLoaded = false;
 loadItemsBtn.addEventListener("click", () => {
 
   // ✅ FORCE SHOW (strong override)
-  searchContainer.style.display = "block";
+searchContainer.classList.add("show");
 
   // 🔥 DEBUG (remove later)
   console.log("Search container shown");
