@@ -540,3 +540,12 @@ textarea:disabled {
   opacity: 1 !important;           /* remove faded look */
   cursor: not-allowed;
 }
+
+
+.search-name-container {
+  display: none;
+}
+
+.search-name-container.show {
+  display: block;
+}
