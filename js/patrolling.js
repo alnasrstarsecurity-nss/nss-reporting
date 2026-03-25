@@ -1,7 +1,10 @@
 /* ===============================
    CONFIG-NSS PATROLLING
 ================================ */
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbybVHu2jxU3sGN4qsvLHTRZT9mPn2Kt0Bi_HuM8yW8aFcjAVHdx9gHRNjolVjgla9FY/exec";
+//const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbybVHu2jxU3sGN4qsvLHTRZT9mPn2Kt0Bi_HuM8yW8aFcjAVHdx9gHRNjolVjgla9FY/exec";
+
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz7MVhq98Y0FYtkgdwUpcfn1vR40S9_SlGY3jDVqREBu44Ekf9yn3AtHzT_jtDeqI9q/exec";
+
 
 const form = document.getElementById("patrollingform");
 const status = document.getElementById("status");
