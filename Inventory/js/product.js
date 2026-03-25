@@ -74,54 +74,6 @@ loadItemsBtn.addEventListener("click", () => {
 // --------------------
 
 // When clicking a list item
-/*searchName.addEventListener("input", function() {
-  const query = this.value.toLowerCase();
-  autocompleteList.innerHTML = "";
-
-  if (!query) {
-    autocompleteList.style.display = "none";
-    return;
-  }
-
-  const matches = allItemNames.filter(name => name.toLowerCase().startsWith(query));
-
-  matches.slice(0, 10).forEach(name => {
-    const li = document.createElement("li");
-    li.textContent = name;
-
-    li.addEventListener("click", () => {
-      searchName.value = name;
-      autocompleteList.style.display = "none";
-
-      // ✅ Load product details by name
-      fetch(SCRIPT_URL, { 
-        method: "POST", 
-        body: JSON.stringify({ action: "getProductByName", itemName: name }) 
-      })
-      .then(res => res.json())
-      .then(data => {
-        if(!data || data.status === "NOT_FOUND") return alert("Product not found");
-
-        // Populate form fields
-        itemCode.value = data.itemCode;
-        itemName.value = data.itemName;
-        category.value = data.category;
-        size.value = data.size;
-        unit.value = data.unit;
-        minStock.value = data.minStock;
-        status.value = data.status;
-        previewImage.src = data.imageUrl || "";
-
-        // Disable editing by default
-        disableForm();
-      });
-    });
-
-    autocompleteList.appendChild(li);
-  });
-
-  autocompleteList.style.display = matches.length ? "block" : "none";
-});*/
 
 searchName.addEventListener("input", function() {
   const query = this.value.toLowerCase();
@@ -146,7 +98,7 @@ searchName.addEventListener("input", function() {
       autocompleteList.style.display = "none";
 
       // ✅ SHOW SEARCHING STATUS
-      searchStatus.innerText = "Searching...";
+      searchStatus.innerText = "Loading...";
       searchStatus.className = "search-status loading";
 
       // ✅ Load product details by name
