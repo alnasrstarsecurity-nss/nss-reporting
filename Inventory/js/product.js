@@ -15,6 +15,9 @@ const previewImage = document.getElementById("previewImage");
 const msg = document.getElementById("msg");
 const searchCode = document.getElementById("searchCode");
 
+const searchContainer = document.querySelector(".search-name-container");
+const loadItemsBtn = document.getElementById("loadItemsBtn");
+
 // ------------------
 // Page load
 // ------------------
@@ -38,7 +41,7 @@ let isLoaded = false;
 // --------------------
 // Load items on demand
 // --------------------
-loadItemsBtn.addEventListener("click", () => {
+/*loadItemsBtn.addEventListener("click", () => {
     
   if (isLoaded) {
     searchName.disabled = false;
@@ -66,6 +69,46 @@ loadItemsBtn.addEventListener("click", () => {
     console.error(err);
     alert("Error loading items");
     loadItemsBtn.innerText = "Search Item";
+    loadItemsBtn.disabled = false;
+  });
+});*/
+loadItemsBtn.addEventListener("click", () => {
+
+  // ✅ FORCE SHOW (strong override)
+  searchContainer.style.display = "block";
+
+  // 🔥 DEBUG (remove later)
+  console.log("Search container shown");
+
+  if (isLoaded) {
+    searchName.disabled = false;
+    searchName.focus();
+    return;
+  }
+
+  loadItemsBtn.innerText = "Loading...";
+  loadItemsBtn.disabled = true;
+
+  fetch(SCRIPT_URL, { 
+    method: "POST", 
+    body: JSON.stringify({ action: "getItemNames" }) 
+  })
+  .then(res => res.json())
+  .then(data => {
+    allItemNames = data.names || [];
+    isLoaded = true;
+
+    searchName.disabled = false;
+    searchName.focus();
+
+    loadItemsBtn.innerText = "Search";
+    loadItemsBtn.disabled = false;
+  })
+  .catch(err => {
+    console.error(err);
+    alert("Error loading items");
+
+    loadItemsBtn.innerText = "Search";
     loadItemsBtn.disabled = false;
   });
 });
