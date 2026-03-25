@@ -592,7 +592,7 @@ function validateEmployeeFields() {
   const designation = document.getElementById("designation").value.trim();
 
   if (!name || !designation) {
-    alert("Please fetch employee details before submitting.");
+    alert("Please search employee details before submitting.");
     return false;
   }
 
