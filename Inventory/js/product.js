@@ -13,6 +13,8 @@ const status = document.getElementById("status");
 const productImage = document.getElementById("productImage");
 const previewImage = document.getElementById("previewImage");
 const msg = document.getElementById("msg");
+const searchCode = document.getElementById("searchCode");
+
 
 
 const searchContainer = document.querySelector(".search-name-container");
@@ -41,37 +43,6 @@ let isLoaded = false;
 // --------------------
 // Load items on demand
 // --------------------
-/*loadItemsBtn.addEventListener("click", () => {
-    
-  if (isLoaded) {
-    searchName.disabled = false;
-    searchName.focus();
-    return;
-  }
-
-  loadItemsBtn.innerText = "Loading";
-  loadItemsBtn.disabled = true;
-
-  fetch(SCRIPT_URL, { 
-    method: "POST", 
-    body: JSON.stringify({ action: "getItemNames" }) 
-  })
-  .then(res => res.json())
-  .then(data => {
-    allItemNames = data.names || [];
-    isLoaded = true;
-    searchName.disabled = false;
-    searchName.focus();
-    loadItemsBtn.innerText = "Search Item";  // restore button text
-    loadItemsBtn.disabled = false;
-  })
-  .catch(err => {
-    console.error(err);
-    alert("Error loading items");
-    loadItemsBtn.innerText = "Search Item";
-    loadItemsBtn.disabled = false;
-  });
-});*/
 loadItemsBtn.addEventListener("click", () => {
 
   // ✅ FORCE SHOW (strong override)
@@ -246,7 +217,7 @@ function enableEdit() {
 // ------------------
 // Search Product
 // ------------------
-/*function searchProduct() {
+function searchProduct() {
   const code = searchCode.value.trim();
   if (!code) return alert("Enter Item Code");
 
@@ -266,7 +237,7 @@ function enableEdit() {
 
       disableForm();
     });
-}*/
+}
 
 // ------------------
 // Image Preview
