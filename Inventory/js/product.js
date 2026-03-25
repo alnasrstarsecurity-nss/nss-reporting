@@ -39,7 +39,7 @@ let isLoaded = false;
 // Load items on demand
 // --------------------
 loadItemsBtn.addEventListener("click", () => {
-    searchContainer.style.display = "block";
+    
   if (isLoaded) {
     searchName.disabled = false;
     searchName.focus();
