@@ -1,6 +1,8 @@
 // opscomment.js
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzsw9T4OYgQuJcRm2aUz7rbL_MFh1B7UOGbk6Sfrrdfw3aBQAjeaiqyerdCgVLEB44b/exec";
+//const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzsw9T4OYgQuJcRm2aUz7rbL_MFh1B7UOGbk6Sfrrdfw3aBQAjeaiqyerdCgVLEB44b/exec";
+
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyQ0byRt865-8VA4DeLvQmpvuv54eN4a7G7UF9chmO3iT9_PWG_EHcWt1837O-707Bv/exec";
 
 const form = document.getElementById("opscomment");
 const status = document.getElementById("status");
