@@ -455,7 +455,7 @@ canvas {
   padding: 10px;
   font-size: 14px;
   border-radius: 8px;
-  border: 0.5px solid #d1d5db;
+  border: 1px solid #d1d5db;
 }
 
 /* BUTTON SAME HEIGHT */
