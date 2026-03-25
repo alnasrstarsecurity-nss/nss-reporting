@@ -523,6 +523,21 @@ form.addEventListener("submit", async e => {
   });
 }); 
 
+
+/* ===============================
+   validateEmployeeFields
+================================ */
+function validateEmployeeFields() {
+  const name = document.getElementById("name").value.trim();
+  const designation = document.getElementById("designation").value.trim();
+
+  if (!name || !designation) {
+    alert("Please search employee details before submitting.");
+    return false;
+  }
+
+  return true;
+}
 /* ===============================
    LOGOUT
 ================================ */
