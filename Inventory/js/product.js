@@ -32,7 +32,7 @@ window.addEventListener("DOMContentLoaded", () => {
 // search by name
 // ------------------
 const searchName = document.getElementById("searchName");
-const loadItemsBtn = document.getElementById("loadItemsBtn");
+
 const autocompleteList = document.getElementById("autocompleteList");
 
 let allItemNames = [];
