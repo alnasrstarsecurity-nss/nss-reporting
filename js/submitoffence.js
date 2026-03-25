@@ -425,6 +425,9 @@ window.clearSupSignature = clearSupSignature;
 ================================ */
 form.addEventListener("submit", async e => {
   e.preventDefault();
+
+    //  ADD THIS LINE (no change to your logic)
+   if (!validateEmployeeFields()) return;
    
    submitBtn.disabled = true;
 
