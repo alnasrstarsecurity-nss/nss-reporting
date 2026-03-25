@@ -13,7 +13,7 @@ const status = document.getElementById("status");
 const productImage = document.getElementById("productImage");
 const previewImage = document.getElementById("previewImage");
 const msg = document.getElementById("msg");
-const searchCode = document.getElementById("searchCode");
+
 
 const searchContainer = document.querySelector(".search-name-container");
 const loadItemsBtn = document.getElementById("loadItemsBtn");
@@ -246,7 +246,7 @@ function enableEdit() {
 // ------------------
 // Search Product
 // ------------------
-function searchProduct() {
+/*function searchProduct() {
   const code = searchCode.value.trim();
   if (!code) return alert("Enter Item Code");
 
@@ -266,7 +266,7 @@ function searchProduct() {
 
       disableForm();
     });
-}
+}*/
 
 // ------------------
 // Image Preview
