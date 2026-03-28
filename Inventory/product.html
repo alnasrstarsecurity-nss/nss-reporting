@@ -19,7 +19,7 @@ if (sessionStorage.getItem("LOGGED_IN") !== "YES") {
 }
 
 const role = sessionStorage.getItem("ROLE");
-if (!["Controller","Manager","Admin"].includes(role)) {
+if (!["Manager","Admin"].includes(role)) {
   window.location.replace("menu.html");
 }
 </script>
